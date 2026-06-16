@@ -633,6 +633,257 @@ public class PerfectNumber {
       yield { type: 'out', text: perfect === sump ? `${perfect} is a Perfect Number ✓` : `${perfect} is Non Perfect Number ✗` };
       yield { type: 'success', text: '\nProcess finished with exit code 0' };
     }
+  },
+
+  {
+    id: 'largest-digit',
+    title: 'Largest Digit',
+    icon: '🔝',
+    category: 'Logic',
+    difficulty: 'Easy',
+    tags: ['while loop', 'digits', 'max'],
+    desc: 'Finds the largest digit in a given integer by checking each digit with a while loop.',
+    accentColor: '#10b981',
+    glowColor: 'rgba(16,185,129,0.2)',
+    iconBg: 'rgba(16,185,129,0.15)',
+    code: `import java.util.Scanner;
+
+public class LargestDigit {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter number to find Largest Digit: ");
+        int ld = s.nextInt();
+
+        int largest = 0;
+        while (ld > 0) {
+            int digit = ld % 10;
+            if (digit > largest) {
+                largest = digit;
+            }
+            ld /= 10;
+        }
+
+        System.out.println("Largest Digit = " + largest);
+        s.close();
+    }
+}`,
+    run: function*(inputs) {
+      yield { type: 'system', text: 'Compiling LargestDigit.java...' };
+      yield { type: 'system', text: 'Build successful ✓' };
+      yield { type: 'out',    text: '' };
+      yield { type: 'ask', text: 'Enter number to find Largest Digit: ', inputKey: 'ld' };
+      let ld = parseInt(inputs['ld']);
+      if (isNaN(ld) || ld < 0) { yield { type: 'error', text: 'Invalid input.' }; return; }
+      let largest = 0;
+      let temp = ld;
+      while (temp > 0) { const d = temp % 10; if (d > largest) largest = d; temp = Math.floor(temp / 10); }
+      yield { type: 'out', text: `Largest Digit = ${largest}` };
+      yield { type: 'success', text: '\nProcess finished with exit code 0' };
+    }
+  },
+
+  {
+    id: 'smallest-digit',
+    title: 'Smallest Digit',
+    icon: '🔻',
+    category: 'Logic',
+    difficulty: 'Easy',
+    tags: ['while loop', 'digits', 'min'],
+    desc: 'Finds the smallest digit in a given integer by comparing each digit using a while loop.',
+    accentColor: '#f43f5e',
+    glowColor: 'rgba(244,63,94,0.2)',
+    iconBg: 'rgba(244,63,94,0.15)',
+    code: `import java.util.Scanner;
+
+public class SmallestDigit {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter number to find Smallest Digit: ");
+        int sd = s.nextInt();
+
+        int smallest = 9;
+        while (sd > 0) {
+            int digit = sd % 10;
+            if (digit < smallest) {
+                smallest = digit;
+            }
+            sd /= 10;
+        }
+
+        System.out.println("Smallest Digit = " + smallest);
+        s.close();
+    }
+}`,
+    run: function*(inputs) {
+      yield { type: 'system', text: 'Compiling SmallestDigit.java...' };
+      yield { type: 'system', text: 'Build successful ✓' };
+      yield { type: 'out',    text: '' };
+      yield { type: 'ask', text: 'Enter number to find Smallest Digit: ', inputKey: 'sd' };
+      let sd = parseInt(inputs['sd']);
+      if (isNaN(sd) || sd < 0) { yield { type: 'error', text: 'Invalid input.' }; return; }
+      let smallest = 9;
+      let temp = sd;
+      while (temp > 0) { const d = temp % 10; if (d < smallest) smallest = d; temp = Math.floor(temp / 10); }
+      yield { type: 'out', text: `Smallest Digit = ${smallest}` };
+      yield { type: 'success', text: '\nProcess finished with exit code 0' };
+    }
+  },
+
+  {
+    id: 'count-even-odd-digits',
+    title: 'Count Even & Odd Digits',
+    icon: '⚖️',
+    category: 'Logic',
+    difficulty: 'Easy',
+    tags: ['while loop', 'even', 'odd', 'digits'],
+    desc: 'Counts how many digits in a number are even and how many are odd using a while loop.',
+    accentColor: '#7c3aed',
+    glowColor: 'rgba(124,58,237,0.2)',
+    iconBg: 'rgba(124,58,237,0.15)',
+    code: `import java.util.Scanner;
+
+public class CountEvenOddDigits {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter number to Count Even/Odd Digits: ");
+        int eo = s.nextInt();
+
+        int evenCount = 0;
+        int oddCount  = 0;
+
+        while (eo > 0) {
+            int digit = eo % 10;
+            if (digit % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+            eo /= 10;
+        }
+
+        System.out.println("Even Digits Count = " + evenCount);
+        System.out.println("Odd Digits Count  = " + oddCount);
+        s.close();
+    }
+}`,
+    run: function*(inputs) {
+      yield { type: 'system', text: 'Compiling CountEvenOddDigits.java...' };
+      yield { type: 'system', text: 'Build successful ✓' };
+      yield { type: 'out',    text: '' };
+      yield { type: 'ask', text: 'Enter number to Count Even/Odd Digits: ', inputKey: 'eo' };
+      let eo = parseInt(inputs['eo']);
+      if (isNaN(eo) || eo < 0) { yield { type: 'error', text: 'Invalid input.' }; return; }
+      let evenCount = 0, oddCount = 0;
+      let temp = eo;
+      while (temp > 0) { const d = temp % 10; if (d % 2 === 0) evenCount++; else oddCount++; temp = Math.floor(temp / 10); }
+      yield { type: 'out', text: `Even Digits Count = ${evenCount}` };
+      yield { type: 'out', text: `Odd Digits Count  = ${oddCount}` };
+      yield { type: 'success', text: '\nProcess finished with exit code 0' };
+    }
+  },
+
+  {
+    id: 'digits-greater-than-5',
+    title: 'Print Digits > 5',
+    icon: '5️⃣',
+    category: 'Logic',
+    difficulty: 'Easy',
+    tags: ['while loop', 'filter', 'digits'],
+    desc: 'Extracts and prints all digits from a number that are strictly greater than 5.',
+    accentColor: '#0ea5e9',
+    glowColor: 'rgba(14,165,233,0.2)',
+    iconBg: 'rgba(14,165,233,0.15)',
+    code: `import java.util.Scanner;
+
+public class DigitsGreaterThan5 {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter number to Print Digits > 5: ");
+        int gt = s.nextInt();
+
+        System.out.print("Digits greater than 5: ");
+        while (gt > 0) {
+            int digit = gt % 10;
+            if (digit > 5) {
+                System.out.print(digit + " ");
+            }
+            gt /= 10;
+        }
+
+        s.close();
+    }
+}`,
+    run: function*(inputs) {
+      yield { type: 'system', text: 'Compiling DigitsGreaterThan5.java...' };
+      yield { type: 'system', text: 'Build successful ✓' };
+      yield { type: 'out',    text: '' };
+      yield { type: 'ask', text: 'Enter number to Print Digits > 5: ', inputKey: 'gt' };
+      let gt = parseInt(inputs['gt']);
+      if (isNaN(gt) || gt < 0) { yield { type: 'error', text: 'Invalid input.' }; return; }
+      let result = '';
+      let temp = gt;
+      while (temp > 0) { const d = temp % 10; if (d > 5) result = d + ' ' + result; temp = Math.floor(temp / 10); }
+      yield { type: 'out', text: `Digits greater than 5: ${result.trim() || 'None'}` };
+      yield { type: 'success', text: '\nProcess finished with exit code 0' };
+    }
+  },
+
+  {
+    id: 'contains-zero',
+    title: 'Contains Zero Check',
+    icon: '0️⃣',
+    category: 'Logic',
+    difficulty: 'Easy',
+    tags: ['while loop', 'zero', 'digits'],
+    desc: 'Checks whether a given integer contains the digit 0 anywhere in its digits.',
+    accentColor: '#64748b',
+    glowColor: 'rgba(100,116,139,0.2)',
+    iconBg: 'rgba(100,116,139,0.15)',
+    code: `import java.util.Scanner;
+
+public class ContainsZero {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter number to Check for Zero: ");
+        int cz = s.nextInt();
+
+        boolean hasZero = false;
+        int czTemp = cz;
+
+        while (czTemp > 0) {
+            if (czTemp % 10 == 0) {
+                hasZero = true;
+            }
+            czTemp /= 10;
+        }
+
+        if (hasZero) {
+            System.out.println(cz + " Contains Zero ✓");
+        } else {
+            System.out.println(cz + " Does Not Contain Zero ✗");
+        }
+
+        s.close();
+    }
+}`,
+    run: function*(inputs) {
+      yield { type: 'system', text: 'Compiling ContainsZero.java...' };
+      yield { type: 'system', text: 'Build successful ✓' };
+      yield { type: 'out',    text: '' };
+      yield { type: 'ask', text: 'Enter number to Check for Zero: ', inputKey: 'cz' };
+      let cz = parseInt(inputs['cz']);
+      if (isNaN(cz) || cz < 0) { yield { type: 'error', text: 'Invalid input.' }; return; }
+      let hasZero = false;
+      let temp = cz;
+      while (temp > 0) { if (temp % 10 === 0) hasZero = true; temp = Math.floor(temp / 10); }
+      yield { type: 'out', text: hasZero ? `${cz} Contains Zero ✓` : `${cz} Does Not Contain Zero ✗` };
+      yield { type: 'success', text: '\nProcess finished with exit code 0' };
+    }
   }
 ];
 

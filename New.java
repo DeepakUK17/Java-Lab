@@ -195,6 +195,88 @@ public class New {
             System.out.println("Non Perfect Number");
         }    
 
+// -------------------------------------Largest Digit-------------------------------------------------------------
+
+        System.out.println("\n\n\n\t------Largest Digit------");
+        System.out.print("Enter number to find Largest Digit:");
+        int ld = s.nextInt();
+        int largest = 0;
+        while (ld > 0) {
+            int digit = ld % 10;
+            if (digit > largest) {
+                largest = digit;
+            }
+            ld -= ld % 10; ld /= 10;
+        }
+        System.out.println("Largest Digit = " + largest);
+
+// -------------------------------------Smallest Digit-------------------------------------------------------------
+
+        System.out.println("\n\n\n\t------Smallest Digit------");
+        System.out.print("Enter number to find Smallest Digit:");
+        int sd = s.nextInt();
+        int smallest = 9;
+        while (sd > 0) {
+            int digit = sd % 10;
+            if (digit < smallest) {
+                smallest = digit;
+            }
+            sd -= sd % 10; sd /= 10;
+        }
+        System.out.println("Smallest Digit = " + smallest);
+
+// -------------------------------------Count Even and Odd Digits-------------------------------------------------------------
+
+        System.out.println("\n\n\n\t------Count Even and Odd Digits------");
+        System.out.print("Enter number to Count Even/Odd Digits:");
+        int eo = s.nextInt();
+        int evenCount = 0;
+        int oddCount = 0;
+        while (eo > 0) {
+            int digit = eo % 10;
+            if (digit % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+            eo -= eo % 10; eo /= 10;
+        }
+        System.out.println("Even Digits Count = " + evenCount);
+        System.out.println("Odd Digits Count  = " + oddCount);
+
+// -------------------------------------Print Digits Greater Than 5-------------------------------------------------------------
+
+        System.out.println("\n\n\n\t------Print Digits Greater Than 5------");
+        System.out.print("Enter number to Print Digits > 5:");
+        int gt = s.nextInt();
+        System.out.print("Digits greater than 5: ");
+        while (gt > 0) {
+            int digit = gt % 10;
+            if (digit > 5) {
+                System.out.print(digit + " ");
+            }
+            gt -= gt % 10; gt /= 10;
+        }
+
+// -------------------------------------Check if Number Contains Zero-------------------------------------------------------------
+
+        System.out.println("\n\n\n\t------Check if Number Contains Zero------");
+        System.out.print("Enter number to Check for Zero:");
+        int cz = s.nextInt();
+        boolean hasZero = false;
+        int czTemp = cz;
+        while (czTemp > 0) {
+            if (czTemp % 10 == 0) {
+                hasZero = true;
+            }
+            czTemp -= czTemp % 10; czTemp /= 10;
+        }
+        if (hasZero) {
+            System.out.println(cz + " Contains Zero");
+        } else {
+            System.out.println(cz + " Does Not Contain Zero");
+        }
+
         s.close();
     }
 }
