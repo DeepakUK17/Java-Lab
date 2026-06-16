@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Programs | Code Explorer</title>
+  <meta name="description" content="Explore classic Java programs with interactive code viewer and terminal simulator. Learn Sum of N Numbers, Fibonacci, Factorial, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background particles -->
+  <div class="bg-particles" id="bgParticles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">☕</span>
+        <span class="logo-text">Java<span class="logo-accent">Lab</span></span>
+      </div>
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        <span>12 Programs</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-tag">Interactive Java Learning</div>
+    <h1 class="hero-title">
+      Java Programs
+      <span class="hero-gradient">Code Explorer</span>
+    </h1>
+    <p class="hero-subtitle">Click any card to explore the source code. Hit <kbd>Run</kbd> to simulate execution right in the browser.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">12</span><span class="stat-label">Programs</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Interactive</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">Java</span><span class="stat-label">Language</span></div>
+    </div>
+  </section>
+
+  <!-- Cards Grid -->
+  <main class="main">
+    <div class="cards-grid" id="cardsGrid"></div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon" id="modalIcon"></span>
+          <div>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-meta" id="modalMeta"></p>
+          </div>
+        </div>
+        <button class="modal-close" id="modalClose" title="Close">✕</button>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="tab-btn active" id="tabCode" onclick="switchTab('code')">
+          <span>📄</span> Source Code
+        </button>
+        <button class="tab-btn" id="tabTerminal" onclick="switchTab('terminal')">
+          <span>⚡</span> Terminal
+        </button>
+      </div>
+
+      <div class="tab-panel" id="panelCode">
+        <div class="code-toolbar">
+          <div class="code-lang-badge">Java</div>
+          <button class="copy-btn" id="copyBtn" onclick="copyCode()">
+            <span>📋</span> Copy Code
+          </button>
+        </div>
+        <pre class="code-block" id="codeBlock"><code id="codeContent"></code></pre>
+      </div>
+
+      <div class="tab-panel hidden" id="panelTerminal">
+        <div class="terminal-wrap">
+          <div class="terminal-titlebar">
+            <span class="tbar-dot red"></span>
+            <span class="tbar-dot yellow"></span>
+            <span class="tbar-dot green"></span>
+            <span class="tbar-name" id="terminalName">Terminal</span>
+          </div>
+          <div class="terminal-body" id="terminalBody">
+            <div class="term-line term-info">Click <strong>Run</strong> to start the program...</div>
+          </div>
+          <div class="terminal-input-row" id="terminalInputRow" style="display:none">
+            <span class="term-prompt">›</span>
+            <input type="text" class="term-input" id="termInput" placeholder="Enter value and press Enter..." />
+            <button class="term-submit" id="termSubmit">Enter ↵</button>
+          </div>
+          <div class="terminal-footer">
+            <button class="run-btn" id="runBtn" onclick="runProgram()">
+              <span class="run-icon">▶</span> Run Program
+            </button>
+            <button class="clear-btn" onclick="clearTerminal()">🗑 Clear</button>
+            <div class="term-status" id="termStatus">Ready</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Built with ☕ Java + ❤️ | JavaLab Code Explorer</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
