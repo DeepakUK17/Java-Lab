@@ -3587,9 +3587,10 @@ public class NumberTriangle {
         tags: ['nested loop', 'pattern', 'numbers'],
         desc: 'Prints a triangle where each row i contains numbers 1 to i (row 3 → 1 2 3).',
         code: `import java.util.Scanner;
-public class Main {
+public class IncrementalNumberTriangle {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
         int n = sc.nextInt();
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= i; j++) {
@@ -3601,7 +3602,7 @@ public class Main {
     }
 }`,
         run: function*(inputs) {
-          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Compiling IncrementalNumberTriangle.java...' };
           yield { type: 'system', text: 'Build successful ✓' };
           yield { type: 'out', text: '' };
           yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
@@ -3625,9 +3626,10 @@ public class Main {
         tags: ['nested loop', 'pattern', 'numbers'],
         desc: 'Prints an inverted number triangle — first row has n numbers, last row has 1.',
         code: `import java.util.Scanner;
-public class Main {
+public class InvertedNumberTriangle {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
         int n = sc.nextInt();
         for (int i = n; i >= 1; i--) {
             for (int j = 1; j <= i; j++) {
@@ -3639,7 +3641,7 @@ public class Main {
     }
 }`,
         run: function*(inputs) {
-          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Compiling InvertedNumberTriangle.java...' };
           yield { type: 'system', text: 'Build successful ✓' };
           yield { type: 'out', text: '' };
           yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
@@ -3663,9 +3665,10 @@ public class Main {
         tags: ['nested loop', 'pattern', 'numbers'],
         desc: 'Prints a triangle with continuously incrementing numbers: row 1 → 1, row 2 → 2 3, row 3 → 4 5 6.',
         code: `import java.util.Scanner;
-public class Main {
+public class ContinuousNumberTriangle {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
         int n = sc.nextInt();
         int num = 1;
         for (int i = 1; i <= n; i++) {
@@ -3679,7 +3682,7 @@ public class Main {
     }
 }`,
         run: function*(inputs) {
-          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Compiling ContinuousNumberTriangle.java...' };
           yield { type: 'system', text: 'Build successful ✓' };
           yield { type: 'out', text: '' };
           yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
@@ -3695,18 +3698,19 @@ public class Main {
         }
       },
 
-      // ─── Pattern 4: Right-Aligned Star Pyramid ───
+      // ─── Pattern 4: Pyramid Pattern ───
       {
-        id: 'right-aligned-star-pyramid',
-        title: 'Right-Aligned Star Pyramid',
+        id: 'pyramid-pattern',
+        title: 'Pyramid Pattern',
         icon: '🔺',
         difficulty: 'Medium',
         tags: ['nested loop', 'pattern', 'stars', 'spaces'],
-        desc: 'Prints a right-aligned star pyramid with leading spaces (row 1 → "   *", row n → "* * * *").',
+        desc: 'Prints a centered star pyramid with leading spaces (row 1 → "   *", row n → "* * * *").',
         code: `import java.util.Scanner;
-public class Main {
+public class PyramidPattern {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
         int n = sc.nextInt();
         for (int i = 1; i <= n; i++) {
             for (int sp = 0; sp < n - i; sp++) {
@@ -3721,7 +3725,7 @@ public class Main {
     }
 }`,
         run: function*(inputs) {
-          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Compiling PyramidPattern.java...' };
           yield { type: 'system', text: 'Build successful ✓' };
           yield { type: 'out', text: '' };
           yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
@@ -3736,18 +3740,19 @@ public class Main {
         }
       },
 
-      // ─── Pattern 5: Inverted Right-Aligned Star Pyramid ───
+      // ─── Pattern 5: Inverted Pyramid Pattern ───
       {
-        id: 'inverted-star-pyramid',
-        title: 'Inverted Star Pyramid',
+        id: 'inverted-pyramid-pattern',
+        title: 'Inverted Pyramid Pattern',
         icon: '▼',
         difficulty: 'Medium',
         tags: ['nested loop', 'pattern', 'stars', 'spaces'],
-        desc: 'Prints an inverted right-aligned star pyramid (top row full stars, bottom row one star with spaces).',
+        desc: 'Prints an inverted centered star pyramid (top row full stars, bottom row one star).',
         code: `import java.util.Scanner;
-public class Main {
+public class InvertedPyramidPattern {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
         int n = sc.nextInt();
         for (int i = n; i >= 1; i--) {
             for (int sp = 0; sp < n - i; sp++) {
@@ -3762,7 +3767,7 @@ public class Main {
     }
 }`,
         run: function*(inputs) {
-          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Compiling InvertedPyramidPattern.java...' };
           yield { type: 'system', text: 'Build successful ✓' };
           yield { type: 'out', text: '' };
           yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
