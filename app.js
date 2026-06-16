@@ -3576,6 +3576,205 @@ public class NumberTriangle {
           }
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
+      },
+
+      // ─── Pattern 1: Incremental Number Triangle (1 / 1 2 / 1 2 3 ...) ───
+      {
+        id: 'incremental-number-triangle',
+        title: 'Incremental Number Triangle',
+        icon: '🔼',
+        difficulty: 'Medium',
+        tags: ['nested loop', 'pattern', 'numbers'],
+        desc: 'Prints a triangle where each row i contains numbers 1 to i (row 3 → 1 2 3).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= i; j++) row += j + ' ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      // ─── Pattern 2: Inverted Incremental Number Triangle ───
+      {
+        id: 'inverted-number-triangle',
+        title: 'Inverted Number Triangle',
+        icon: '🔽',
+        difficulty: 'Medium',
+        tags: ['nested loop', 'pattern', 'numbers'],
+        desc: 'Prints an inverted number triangle — first row has n numbers, last row has 1.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = n; i >= 1; i--) {
+            let row = '';
+            for (let j = 1; j <= i; j++) row += j + ' ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      // ─── Pattern 3: Continuous Number Triangle ───
+      {
+        id: 'continuous-number-triangle',
+        title: 'Continuous Number Triangle',
+        icon: '🔢',
+        difficulty: 'Medium',
+        tags: ['nested loop', 'pattern', 'numbers'],
+        desc: 'Prints a triangle with continuously incrementing numbers: row 1 → 1, row 2 → 2 3, row 3 → 4 5 6.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int num = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(num + " ");
+                num++;
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          let num = 1;
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= i; j++) { row += num + ' '; num++; }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      // ─── Pattern 4: Right-Aligned Star Pyramid ───
+      {
+        id: 'right-aligned-star-pyramid',
+        title: 'Right-Aligned Star Pyramid',
+        icon: '🔺',
+        difficulty: 'Medium',
+        tags: ['nested loop', 'pattern', 'stars', 'spaces'],
+        desc: 'Prints a right-aligned star pyramid with leading spaces (row 1 → "   *", row n → "* * * *").',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int sp = 0; sp < n - i; sp++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += '* ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      // ─── Pattern 5: Inverted Right-Aligned Star Pyramid ───
+      {
+        id: 'inverted-star-pyramid',
+        title: 'Inverted Star Pyramid',
+        icon: '▼',
+        difficulty: 'Medium',
+        tags: ['nested loop', 'pattern', 'stars', 'spaces'],
+        desc: 'Prints an inverted right-aligned star pyramid (top row full stars, bottom row one star with spaces).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = n; i >= 1; i--) {
+            for (int sp = 0; sp < n - i; sp++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = n; i >= 1; i--) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += '* ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
       }
 
     ]
