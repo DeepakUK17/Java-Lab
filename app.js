@@ -345,6 +345,375 @@ public class Main {
           yield { type: 'out', text: `Roll No: ${inputs['roll']}, Name: ${inputs['name']}` };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
+      },
+
+      {
+        id: 'hex-to-int',
+        title: 'Hexadecimal to Integer',
+        icon: '🔢',
+        difficulty: 'Easy',
+        tags: ['parseInt', 'hex', 'conversion'],
+        desc: 'Converts a given hexadecimal string to an integer format.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String hexa = sc.next();
+        int num = Integer.parseInt(hexa, 16);
+        System.out.print(num);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter hexadecimal string: ', inputKey: 'hex' };
+          const h = inputs['hex'];
+          if (!h) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          yield { type: 'out', text: parseInt(h, 16).toString() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'octal-to-int',
+        title: 'Octal to Integer',
+        icon: '🔢',
+        difficulty: 'Easy',
+        tags: ['parseInt', 'octal', 'conversion'],
+        desc: 'Converts a given octal string to an integer format.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String oct = sc.next();
+        int num = Integer.parseInt(oct, 8);
+        System.out.println(num);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter octal string: ', inputKey: 'oct' };
+          const o = inputs['oct'];
+          if (!o) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          yield { type: 'out', text: parseInt(o, 8).toString() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'print-space',
+        title: 'Two Numbers with Space',
+        icon: '↔️',
+        difficulty: 'Easy',
+        tags: ['print', 'space'],
+        desc: 'Prints two numbers with a space between them.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println(a + " " + b);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter first number: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter second number: ', inputKey: 'b' };
+          yield { type: 'out', text: `${inputs['a']} ${inputs['b']}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'print-tab',
+        title: 'Two Numbers with Tab',
+        icon: '⏭️',
+        difficulty: 'Easy',
+        tags: ['print', 'tab', 'escape'],
+        desc: 'Prints two numbers with a tab space between them.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println(a + "\\t" + b);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter first number: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter second number: ', inputKey: 'b' };
+          yield { type: 'out', text: `${inputs['a']}\t${inputs['b']}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'print-lines',
+        title: 'Two Numbers in Two Lines',
+        icon: '↕️',
+        difficulty: 'Easy',
+        tags: ['println', 'newline'],
+        desc: 'Prints two numbers in two separate lines.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println(a);
+        System.out.println(b);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter first number: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter second number: ', inputKey: 'b' };
+          yield { type: 'out', text: `${inputs['a']}\n${inputs['b']}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'char-single-quote',
+        title: 'Char in Single Quotes',
+        icon: '🔡',
+        difficulty: 'Easy',
+        tags: ['print', 'char', 'quotes'],
+        desc: 'Prints a character surrounded by single quotes.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char ch = sc.next().charAt(0);
+        System.out.print("'" + ch + "'");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a character: ', inputKey: 'c' };
+          yield { type: 'out', text: `'${inputs['c'][0]}'` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'words-double-quote',
+        title: 'Words in Double Quotes',
+        icon: '💬',
+        difficulty: 'Easy',
+        tags: ['print', 'string', 'escape'],
+        desc: 'Prints two words surrounded by double quotes using escape sequence.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String words = sc.nextLine();
+        System.out.print("\\"" + words + "\\"");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter words: ', inputKey: 'w' };
+          yield { type: 'out', text: `"${inputs['w']}"` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'plus-sign',
+        title: 'Integer with Plus Sign',
+        icon: '➕',
+        difficulty: 'Easy',
+        tags: ['print', 'format'],
+        desc: 'Prints an integer with a plus sign (+) before it.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.print("+" + n);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter an integer: ', inputKey: 'n' };
+          yield { type: 'out', text: `+${inputs['n']}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'five-subjects',
+        title: 'Marks in 5 Subjects',
+        icon: '📝',
+        difficulty: 'Easy',
+        tags: ['input', 'print', 'newline'],
+        desc: 'Takes marks in 5 subjects and prints them each on a new line.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int sub1 = sc.nextInt();
+        int sub2 = sc.nextInt();
+        int sub3 = sc.nextInt();
+        int sub4 = sc.nextInt();
+        int sub5 = sc.nextInt();
+        System.out.println("Subject 1:" + sub1);
+        System.out.println("Subject 2:" + sub2);
+        System.out.println("Subject 3:" + sub3);
+        System.out.println("Subject 4:" + sub4);
+        System.out.println("Subject 5:" + sub5);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Subject 1 marks: ', inputKey: 's1' };
+          yield { type: 'ask', text: 'Subject 2 marks: ', inputKey: 's2' };
+          yield { type: 'ask', text: 'Subject 3 marks: ', inputKey: 's3' };
+          yield { type: 'ask', text: 'Subject 4 marks: ', inputKey: 's4' };
+          yield { type: 'ask', text: 'Subject 5 marks: ', inputKey: 's5' };
+          yield { type: 'out', text: `Subject 1:${inputs['s1']}\nSubject 2:${inputs['s2']}\nSubject 3:${inputs['s3']}\nSubject 4:${inputs['s4']}\nSubject 5:${inputs['s5']}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'blood-group',
+        title: 'Print Blood Group',
+        icon: '🩸',
+        difficulty: 'Easy',
+        tags: ['string', 'input'],
+        desc: 'Reads a blood group and prints it.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String bloodgroup = sc.nextLine();
+        System.out.print(bloodgroup);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter blood group: ', inputKey: 'bg' };
+          yield { type: 'out', text: `${inputs['bg']}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'current-time',
+        title: 'Current Time (HH:MM:SS)',
+        icon: '⌚',
+        difficulty: 'Easy',
+        tags: ['format', 'time'],
+        desc: 'Takes hours, minutes, and seconds as input and prints them formatted as HH:MM:SS.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int h = sc.nextInt();
+        int m = sc.nextInt();
+        int s = sc.nextInt();
+        System.out.printf("%02d:%02d:%02d", h, m, s);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter Hours: ', inputKey: 'h' };
+          yield { type: 'ask', text: 'Enter Minutes: ', inputKey: 'm' };
+          yield { type: 'ask', text: 'Enter Seconds: ', inputKey: 's' };
+          const h = parseInt(inputs['h']) || 0, m = parseInt(inputs['m']) || 0, s = parseInt(inputs['s']) || 0;
+          yield { type: 'out', text: `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'print-address',
+        title: 'Address in Multiple Lines',
+        icon: '🏠',
+        difficulty: 'Easy',
+        tags: ['newline', 'escape', 'print'],
+        desc: 'Prints an address using newline escape characters.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("123 Main Street\\nApartment 4B\\nNew York, NY 10001");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '123 Main Street\nApartment 4B\nNew York, NY 10001' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-board-marks',
+        title: 'Dhoni Class X Board Marks',
+        icon: '🏏',
+        difficulty: 'Easy',
+        tags: ['scenario', 'input', 'print'],
+        desc: 'Prints Dhoni\'s Class X board exam scores in English, Hindi, Science, and Social.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the marks scored");
+        System.out.println("English:");
+        int english = sc.nextInt();
+        System.out.println("Hindi:");
+        int hindi = sc.nextInt();
+        System.out.println("Science:");
+        int science = sc.nextInt();
+        System.out.println("Social:");
+        int social = sc.nextInt();
+        
+        System.out.println("MS.Dhoni Class X board exams score details");
+        System.out.println("English: " + english);
+        System.out.println("Hindi: " + hindi);
+        System.out.println("Science: " + science);
+        System.out.println("Social: " + social);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: 'Enter the marks scored\nEnglish:' };
+          yield { type: 'ask', text: '', inputKey: 'e' };
+          yield { type: 'out', text: 'Hindi:' };
+          yield { type: 'ask', text: '', inputKey: 'h' };
+          yield { type: 'out', text: 'Science:' };
+          yield { type: 'ask', text: '', inputKey: 'sc' };
+          yield { type: 'out', text: 'Social:' };
+          yield { type: 'ask', text: '', inputKey: 'so' };
+          yield { type: 'out', text: `MS.Dhoni Class X board exams score details\nEnglish: ${inputs['e']}\nHindi: ${inputs['h']}\nScience: ${inputs['sc']}\nSocial: ${inputs['so']}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
       }
 
     ]
@@ -808,6 +1177,371 @@ public class Main {
           const m = parseInt(inputs['m']);
           if (isNaN(m)) { yield { type:'error', text:'Invalid input.' }; return; }
           yield { type: 'out', text: `${m} minutes = ${m*60} seconds` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'swap-third-var',
+        title: 'Swap (Using Temp)',
+        icon: '🔄',
+        difficulty: 'Easy',
+        tags: ['swap', 'variable'],
+        desc: 'Swaps two numbers using a third temporary variable.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num1 = sc.nextInt();
+        int num2 = sc.nextInt();
+        int temp = num1;
+        num1 = num2;
+        num2 = temp;
+        System.out.print(num1 + " " + num2);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter first number: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter second number: ', inputKey: 'b' };
+          const a = inputs['a'], b = inputs['b'];
+          yield { type: 'out', text: `After Swap: ${b} ${a}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'swap-no-third-var',
+        title: 'Swap (Without Temp)',
+        icon: '🔃',
+        difficulty: 'Medium',
+        tags: ['swap', 'math'],
+        desc: 'Swaps two numbers without using a third temporary variable.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        System.out.print(a + " " + b);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter first number: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter second number: ', inputKey: 'b' };
+          const a = inputs['a'], b = inputs['b'];
+          yield { type: 'out', text: `After Swap: ${b} ${a}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'last-digit',
+        title: 'Last Digit',
+        icon: '🔚',
+        difficulty: 'Easy',
+        tags: ['modulo', 'digits'],
+        desc: 'Prints the last digit of a given number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int last_digit = num % 10;
+        System.out.print(last_digit);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `Last digit is ${Math.abs(n % 10)}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'all-but-last-digit',
+        title: 'All But Last Digit',
+        icon: '➖',
+        difficulty: 'Easy',
+        tags: ['division', 'digits'],
+        desc: 'Prints all digits except the last digit of a given number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        long all_digits = num / 10;
+        System.out.print(all_digits);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `Result is ${Math.floor(n / 10)}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'sum-first-last-digit',
+        title: 'Sum First & Last Digit',
+        icon: '➕',
+        difficulty: 'Medium',
+        tags: ['modulo', 'division', 'digits'],
+        desc: 'Prints the sum of the first and last digit of a 3-digit number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int last = num % 10;
+        int first = num / 100;
+        System.out.print(first + last);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a 3-digit number: ', inputKey: 'n' };
+          const n = Math.abs(parseInt(inputs['n']));
+          if (isNaN(n) || n < 100 || n > 999) { yield { type:'error', text:'Invalid 3-digit number.' }; return; }
+          yield { type: 'out', text: `Sum = ${Math.floor(n / 100) + (n % 10)}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'middle-digit',
+        title: 'Middle Digit',
+        icon: '🎯',
+        difficulty: 'Medium',
+        tags: ['modulo', 'division', 'digits'],
+        desc: 'Prints the middle digit of a 3-digit number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long num = sc.nextLong();
+        long middle = (num / 10) % 10;
+        System.out.print(middle);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a 3-digit number: ', inputKey: 'n' };
+          const n = Math.abs(parseInt(inputs['n']));
+          if (isNaN(n) || n < 100 || n > 999) { yield { type:'error', text:'Invalid 3-digit number.' }; return; }
+          yield { type: 'out', text: `Middle digit = ${Math.floor(n / 10) % 10}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'absolute-value',
+        title: 'Absolute Value',
+        icon: '📏',
+        difficulty: 'Easy',
+        tags: ['math', 'abs'],
+        desc: 'Prints the absolute value of a given number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int abs = Math.abs(num);
+        System.out.print(abs);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `Absolute value is ${Math.abs(n)}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'square-number',
+        title: 'Square of a Number',
+        icon: '📐',
+        difficulty: 'Easy',
+        tags: ['multiplication', 'math'],
+        desc: 'Prints the square of a given number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int sq = num * num;
+        System.out.print(sq);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `Square is ${n * n}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'cube-number',
+        title: 'Cube of a Number',
+        icon: '📦',
+        difficulty: 'Easy',
+        tags: ['multiplication', 'math'],
+        desc: 'Prints the cube of a given number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int cube = num * num * num;
+        System.out.print(cube);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `Cube is ${n * n * n}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'bitwise-not',
+        title: 'Bitwise NOT',
+        icon: '🔣',
+        difficulty: 'Medium',
+        tags: ['bitwise', 'NOT'],
+        desc: 'Demonstrates the Bitwise NOT (~) operator.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        int i = 10;
+        System.out.println(~i); // -11
+        
+        i = -7;
+        System.out.println(~i); // 6
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '-11\n6' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'bitwise-shift-logic',
+        title: 'Bitwise Logic & Shifts',
+        icon: '🛠️',
+        difficulty: 'Medium',
+        tags: ['bitwise', 'AND', 'OR', 'XOR', 'shift'],
+        desc: 'Demonstrates Bitwise AND, OR, XOR, Left Shift, and Right Shift.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println(4 & 5);
+        System.out.println(4 | 5);
+        System.out.println(4 ^ 5);
+        System.out.println(4 << 1);
+        System.out.println(4 >> 1);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '4\n5\n1\n8\n2' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'distance-travelled',
+        title: 'Distance Travelled',
+        icon: '🚗',
+        difficulty: 'Easy',
+        tags: ['math', 'physics'],
+        desc: 'Calculates the distance travelled given speed and time.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double speed = sc.nextDouble();
+        double time = sc.nextDouble();
+        double distance = speed * time;
+        System.out.println("Distance: " + distance);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter speed: ', inputKey: 's' };
+          yield { type: 'ask', text: 'Enter time: ', inputKey: 't' };
+          const s = parseFloat(inputs['s']), t = parseFloat(inputs['t']);
+          if (isNaN(s) || isNaN(t)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `Distance: ${s * t}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'km-to-meters',
+        title: 'Kilometers to Meters',
+        icon: '📏',
+        difficulty: 'Easy',
+        tags: ['conversion', 'math'],
+        desc: 'Converts distance in kilometers to meters.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double km = sc.nextDouble();
+        double meters = km * 1000;
+        System.out.println(meters + " meters");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter Kilometers: ', inputKey: 'k' };
+          const k = parseFloat(inputs['k']);
+          if (isNaN(k)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `${k * 1000} meters` };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
       }
@@ -1765,6 +2499,232 @@ public class Main {
           yield { type:'out', text: map[c]||'Invalid color' };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
+      },
+
+      {
+        id: 'decimal-sum',
+        title: 'Decimal Sum',
+        icon: '➕',
+        difficulty: 'Easy',
+        tags: ['if-else', 'math', 'format'],
+        desc: 'Prints sum of two numbers with 1 decimal place or as integer.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double a = sc.nextDouble();
+        double b = sc.nextDouble();
+        double sum = a + b;
+        if (Math.abs(sum - (int)sum) < 1e-6)
+            System.out.print((int)sum);
+        else
+            System.out.printf("%.1f", sum);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter A: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter B: ', inputKey: 'b' };
+          const a = parseFloat(inputs['a']), b = parseFloat(inputs['b']);
+          if (isNaN(a)||isNaN(b)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const sum = a + b;
+          yield { type:'out', text: Math.abs(sum - Math.round(sum)) < 1e-6 ? String(Math.round(sum)) : sum.toFixed(1) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'grade-vc',
+        title: 'Vice Chancellor Grading',
+        icon: '🎓',
+        difficulty: 'Easy',
+        tags: ['if-else', 'grade'],
+        desc: 'Grading system (S, A, B, C, D, E, F) based on strict ranges.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int marks = sc.nextInt();
+        if (marks > 100 || marks < 0) System.out.println("Invalid Input");
+        else if (marks == 100) System.out.println("S");
+        else if (marks >= 90) System.out.println("A");
+        else if (marks >= 80) System.out.println("B");
+        else if (marks >= 70) System.out.println("C");
+        else if (marks >= 60) System.out.println("D");
+        else if (marks >= 50) System.out.println("E");
+        else System.out.println("F");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter marks: ', inputKey: 'marks' };
+          const m = parseInt(inputs['marks']);
+          if (isNaN(m)) { yield { type:'error', text:'Invalid input.' }; return; }
+          if (m>100||m<0) yield { type:'out', text:'Invalid Input' };
+          else if (m===100) yield { type:'out', text:'S' };
+          else if (m>=90) yield { type:'out', text:'A' };
+          else if (m>=80) yield { type:'out', text:'B' };
+          else if (m>=70) yield { type:'out', text:'C' };
+          else if (m>=60) yield { type:'out', text:'D' };
+          else if (m>=50) yield { type:'out', text:'E' };
+          else yield { type:'out', text:'F' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'mango-tree',
+        title: 'Mango Tree',
+        icon: '🥭',
+        difficulty: 'Medium',
+        tags: ['if-else', 'math', 'grid'],
+        desc: 'Checks if a tree in a grid is a mango tree (2nd or 2nd to last column).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int rows = sc.nextInt();
+        int cols = sc.nextInt();
+        int num = sc.nextInt();
+        int col = (num - 1) / rows + 1;
+        if (col == 2 || col == cols - 1)
+            System.out.println("It is a mango tree");
+        else
+            System.out.println("It is not a mango tree");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter rows: ', inputKey: 'r' };
+          yield { type: 'ask', text: 'Enter columns: ', inputKey: 'c' };
+          yield { type: 'ask', text: 'Enter tree number: ', inputKey: 't' };
+          const r = parseInt(inputs['r']), c = parseInt(inputs['c']), t = parseInt(inputs['t']);
+          if (isNaN(r)||isNaN(c)||isNaN(t)||t<1||t>(r*c)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const col = Math.floor((t - 1) / r) + 1;
+          if (col === 2 || col === c - 1) yield { type:'out', text:'It is a mango tree' };
+          else yield { type:'out', text:'It is not a mango tree' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'last-digit-div-3',
+        title: 'Last Digit Divisible by 3',
+        icon: '3️⃣',
+        difficulty: 'Easy',
+        tags: ['if-else', 'modulo'],
+        desc: 'Checks if the last digit of a number is divisible by 3.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int last = Math.abs(n) % 10;
+        if (last % 3 == 0)
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const last = Math.abs(n) % 10;
+          yield { type:'out', text: last % 3 === 0 ? "Yes, divisible by 3" : "No, not divisible by 3" };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'nth-term-square',
+        title: 'Nth Term (Square)',
+        icon: '📉',
+        difficulty: 'Easy',
+        tags: ['if-else', 'math'],
+        desc: 'Finds the Nth term of series 1, 4, 9, 16... (which is N²).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n < 0) {
+            System.out.print("Error");
+        } else if (n == 0) {
+            System.out.print(0);
+        } else {
+            long term = (long)n * n;
+            System.out.print(term);
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          if (n<0) yield { type:'out', text:'Error' };
+          else yield { type:'out', text: String(n*n) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'quadratic-roots',
+        title: 'Quadratic Equation Roots',
+        icon: '📈',
+        difficulty: 'Medium',
+        tags: ['math', 'roots'],
+        desc: 'Finds roots of a quadratic equation using Shri Dharacharya method.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double a = sc.nextDouble();
+        double b = sc.nextDouble();
+        double c = sc.nextDouble();
+        double d = b * b - 4 * a * c;
+        if (d >= 0) {
+            double r1 = (-b + Math.sqrt(d)) / (2 * a);
+            double r2 = (-b - Math.sqrt(d)) / (2 * a);
+            System.out.printf("%.2f\\n", r1);
+            System.out.printf("%.2f\\n", r2);
+        } else {
+            System.out.println("Imaginary roots");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter A (coeff of x²): ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter B (coeff of x): ', inputKey: 'b' };
+          yield { type: 'ask', text: 'Enter C (constant): ', inputKey: 'c' };
+          const a=parseFloat(inputs['a']),b=parseFloat(inputs['b']),c=parseFloat(inputs['c']);
+          if (isNaN(a)||isNaN(b)||isNaN(c)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const d = b*b - 4*a*c;
+          if (d >= 0) {
+              const r1 = (-b + Math.sqrt(d))/(2*a);
+              const r2 = (-b - Math.sqrt(d))/(2*a);
+              yield { type:'out', text: r1.toFixed(2) };
+              yield { type:'out', text: r2.toFixed(2) };
+          } else {
+              yield { type:'out', text: 'Imaginary roots' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
       }
 
     ]
@@ -2009,6 +2969,246 @@ public class Main {
           yield { type: 'out', text: `Gross Salary = ₹${gross.toFixed(2)}` };
           yield { type: 'out', text: `Tax (10%)    = ₹${tax.toFixed(2)}` };
           yield { type: 'out', text: `Net Salary   = ₹${net.toFixed(2)}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-motivational',
+        title: 'Dhoni\'s Motivational Message',
+        icon: '💬',
+        difficulty: 'Easy',
+        tags: ['print', 'scenario'],
+        desc: 'Prints Dhoni\'s motivational message in a single line.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("Believe in hard work and trust your journey.");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: 'Believe in hard work and trust your journey.' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-achievements',
+        title: 'Dhoni\'s Achievements',
+        icon: '🏆',
+        difficulty: 'Easy',
+        tags: ['print', 'scenario'],
+        desc: 'Prints two major achievements of Dhoni in separate lines.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("ICC T20 World Cup Winner 2007");
+        System.out.println("ICC World Cup Winner 2011");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: 'ICC T20 World Cup Winner 2007\nICC World Cup Winner 2011' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-favorite-games',
+        title: 'Dhoni\'s Favorite Games',
+        icon: '⚽',
+        difficulty: 'Easy',
+        tags: ['print', 'scenario'],
+        desc: 'Prints Dhoni\'s favorite games in different lines.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("Football");
+        System.out.println("Badminton");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: 'Football\nBadminton' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-school',
+        title: 'Dhoni\'s School & City',
+        icon: '🏫',
+        difficulty: 'Easy',
+        tags: ['print', 'scenario'],
+        desc: 'Prints Dhoni\'s school name and city in two separate lines.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("Jawahar Vidya Mandir");
+        System.out.println("Ranchi");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: 'Jawahar Vidya Mandir\nRanchi' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-intro',
+        title: 'Dhoni\'s Intro (Scanner)',
+        icon: '🎤',
+        difficulty: 'Easy',
+        tags: ['scanner', 'scenario'],
+        desc: 'Takes Name and Role as input and prints a formatted sentence.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        String role = sc.nextLine();
+        System.out.println("My name is " + name + " and I worked as " + role + " of the Indian Cricket Team.");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter Name: ', inputKey: 'name' };
+          yield { type: 'ask', text: 'Enter Role: ', inputKey: 'role' };
+          const name = inputs['name'], role = inputs['role'];
+          if (!name || !role) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `My name is ${name} and I worked as ${role} of the Indian Cricket Team.` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-skills',
+        title: 'Dhoni\'s Academy Skills',
+        icon: '🎯',
+        difficulty: 'Easy',
+        tags: ['print', 'scenario'],
+        desc: 'Prints the skills trained at Dhoni\'s academy separated by commas.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("Wicketkeeping, Batting, Fitness Training");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: 'Wicketkeeping, Batting, Fitness Training' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-family',
+        title: 'Dhoni\'s Family Details',
+        icon: '👨‍👩‍👧‍👦',
+        difficulty: 'Easy',
+        tags: ['print', 'scenario'],
+        desc: 'Prints Dhoni\'s family details in a specific format.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("MS Dhoni");
+        System.out.println("Father: Pan Singh");
+        System.out.println("Mother: Devki Devi");
+        System.out.println("Siblings: Narendra Singh and Jayanti Gupta");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: 'MS Dhoni\nFather: Pan Singh\nMother: Devki Devi\nSiblings: Narendra Singh and Jayanti Gupta' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-reaction',
+        title: 'Dhoni\'s Emotional Reply',
+        icon: '🎙️',
+        difficulty: 'Easy',
+        tags: ['print', 'scenario'],
+        desc: 'Prints Dhoni\'s emotional reply to a journalist\'s question.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("Question:");
+        System.out.println("How did you feel when you were selected for India?");
+        System.out.println("Dhoni's reply:");
+        System.out.println("It was a dream come true and a proud moment.");
+        System.out.println("For the question \\"How did you feel when you were selected for India?\\" Dhoni replied \\"It was a dream come true and a proud moment.\\"");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: "Question:\nHow did you feel when you were selected for India?\nDhoni's reply:\nIt was a dream come true and a proud moment.\nFor the question \"How did you feel when you were selected for India?\" Dhoni replied \"It was a dream come true and a proud moment.\"" };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-training',
+        title: 'Dhoni\'s Training Hours',
+        icon: '🏋️',
+        difficulty: 'Easy',
+        tags: ['scanner', 'scenario'],
+        desc: 'Takes training hours as input and displays it formatted.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int hours = sc.nextInt();
+        System.out.println("Dhoni trains for " + hours + " hours per week.");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter training hours: ', inputKey: 'hours' };
+          const hours = parseInt(inputs['hours']);
+          if (isNaN(hours)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `Dhoni trains for ${hours} hours per week.` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'dhoni-marks',
+        title: 'Dhoni\'s Sports Performance',
+        icon: '📋',
+        difficulty: 'Easy',
+        tags: ['scanner', 'scenario'],
+        desc: 'Takes marks for Fitness, Strategy, and Teamwork and displays them.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int fitness = sc.nextInt();
+        int strategy = sc.nextInt();
+        int teamwork = sc.nextInt();
+        System.out.println("Dhoni's Sports Performance");
+        System.out.println("Fitness: " + fitness);
+        System.out.println("Strategy: " + strategy);
+        System.out.println("Teamwork: " + teamwork);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Fitness marks: ', inputKey: 'f' };
+          yield { type: 'ask', text: 'Strategy marks: ', inputKey: 's' };
+          yield { type: 'ask', text: 'Teamwork marks: ', inputKey: 't' };
+          const f = parseInt(inputs['f']), s = parseInt(inputs['s']), t = parseInt(inputs['t']);
+          if (isNaN(f)||isNaN(s)||isNaN(t)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: `Dhoni's Sports Performance\nFitness: ${f}\nStrategy: ${s}\nTeamwork: ${t}` };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
       }
@@ -2384,7 +3584,7 @@ public class NumberTriangle {
 ];
 
 // ─────────────────────────────────────────────
-//  Flatten all programs (for counting / lookup)
+//- [x] Add 10 missing Scenario Based programs (`Scenario based question (2).txt`), `Decision Making.txt`), `Operators - class session.txt`)
 // ─────────────────────────────────────────────
 function getAllPrograms() {
   const all = [];

@@ -1,0 +1,57 @@
+Q1.Write a Java Program to print sum of two numbers 
+Q2.Write a Java Program to print difference of two numbers 
+Q3.Write a Java Program to print product of two numbers 
+Q4.Write a Java Program to print quotient of two numbers 
+Q5.Write a Java Program to print remainder of two numbers 
+Q6.Write a Java Program to Swap two numbers using third variable 
+Q7.Write a Java Program to Swap of two numbers without using third variable 
+Q8.Write a Java Program to print the last digit of given number N 
+Q9.Write a Java Program to print the all digits Except last digit of given number N 
+Q10.Write a Java Program to print the sum of the first and last digit of a 3-digit number. 
+Q11.Write a Java Program to print the middle digit of a 3-digit number. 
+Q12.Write a Java Program to print the absolute value of a given number. 
+Q13. Write a Java Program to print the square of a given number 
+Q14. Write a Java Program to print the cube of a given number 
+Q15. Write a Java Program to calculate the average of three numbers 
+Q16.Write a Java Program to check whether two numbers are equal, True if equal else False. 
+Q17.Write a Java Program to check if a number is power of 2 using bitwise AND. 
+Q18.Write a Java Program to print whether a number is positive or negative. 
+Q19.Write a Java Program to find the greatest of three numbers. 
+Scenario based
+Q20.Write a Java Program to print Price After Discount 
+Q21.Write a Java Program to Convert Minutes to Seconds 
+Q22.Write a Java Program to Split the Bill Among 3 Friends 
+Q23.Write a Java Program to Calculate the Distance Travelled 
+Q24.Write a Java Program to Convert Kilometers to Meters
+
+Q25. Problem Statement:
+The area of an equilateral triangle is ¼(√3a²) where "a" represents a side of the triangle. You are provided with the side "a". Find the area of the equilateral triangle.
+Input Description:
+The side of an equilateral triangle is provided as the input.
+Output Description:
+Find the area of the equilateral triangle and print the answer up to 2 decimal places after rounding off.
+Explanation:
+Area of Triangle = ½ × base × height
+⇒ Area = ½ × a × ½(√3a)
+when a = 20
+Area = 173.21
+Sample Input:
+20
+Sample Output:
+173.21
+
+Q26. Problem Statement:
+You are given with a number A i.e. the temperature in Celcius. Write a program to convert this into Fahrenheit. Note: In case of decimal values, round-off to two decimal places.
+Input Description:
+A number is provided in Celcius as the input of the program.
+Output Description:
+The output shall be the temperature converted into Fahrenheit corresponding to the input value print up to two decimal places and round off if required.
+Explanation:
+(X°C × 9/5) + 32 = 32°Fhere X is the input
+Sample Input:
+12
+Sample Output:
+53.60
+
+Q27. Write a C Program to Distribute Candies Equally Among People
+

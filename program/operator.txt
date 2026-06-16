@@ -1,0 +1,309 @@
+//1. Write a Java Program to print sum of two numbers
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num1 = sc.nextInt();
+//             int num2 = sc.nextInt();
+//             int sum = num1+num2;
+//             System.out.print("The sum is: "+sum);
+//       }
+// }
+
+//2. Write a Java Program to print difference of two numbers
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num1 = sc.nextInt();
+//             int num2 = sc.nextInt();
+//             int difference = num1-num2;
+//             System.out.print("The difference is: "+difference);
+//       }
+// }
+
+//3. Write a Java Program to print product of two numbers 
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num1 = sc.nextInt();
+//             int num2 = sc.nextInt();
+//             int product = num1*num2;
+//             System.out.print("The Product is: "+product);
+//       }
+// }
+
+//4. Write a Java Program to print quotient of two numbers
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num1 = sc.nextInt();
+//             int num2 = sc.nextInt();
+//             int quotient = num1/num2;
+//             System.out.print("The difference is: "+quotient);
+//       }
+// }
+
+//5. Write a Java Program to print remainder of two numbers
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num1 = sc.nextInt();
+//             int num2 = sc.nextInt();
+//             int remainder = num1%num2;
+//             System.out.print("The remainder is: "+remainder);
+//       }
+// }
+
+//6. Write a Java Program to Swap two numbers using third variable
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num1 = sc.nextInt();
+//             int num2 = sc.nextInt();
+//             int temp = num1;
+//             num1 = num2;
+//             num2 = temp;
+//             System.out.print(num1+" "+num2);}}
+
+//7.Write a Java Program to Swap of two numbers without using third variable 
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int a = sc.nextInt();
+//             int b = sc.nextInt();
+//             a = a+b;
+//             b = a-b;
+//             a = a-b;
+//             System.out.print(a+" "+b);
+//       }
+// }
+
+//8.Write a Java Program to print the last digit of given number N 
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num = sc.nextInt();
+//             int last_digit = num%10;
+//             System.out.print(last_digit);
+//       }
+// }
+
+//9.Write a Java Program to print the all digits Except last digit of given number N
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num = sc.nextInt();
+//             long all_digits = num/10;
+//             System.out.print(all_digits);
+//       }
+// }
+
+//10.Write a Java Program to print the sum of the first and last digit of a 3-digit number.
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num = sc.nextInt();
+//             int last = num % 10;
+//             int first = num/100;
+//             System.out.print(first+last);
+//       }
+// }
+
+//11.Write a Java Program to print the middle digit of a 3-digit number.
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             long num = sc.nextLong();
+//             long middle = (num/10)%10;
+//             System.out.print(middle);}}
+
+//12. Write a Java Program to print the absolute value of a given number.
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num = sc.nextInt();
+//             int abs = Math.abs(num);
+//             System.out.print(abs); } }
+
+//13.Write a Java Program to print the square of a given number
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num = sc.nextInt();
+//             int sq = num*num;
+//             System.out.print(sq);
+//       }
+// }
+
+//14.Write a Java Program to print the cube of a given number
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num = sc.nextInt();
+//             int cube = num*num*num;
+//             System.out.print(cube);
+//       }
+// }
+
+//15.Write a Java Program to calculate the average of three numbers
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int a = sc.nextInt();
+//             int b = sc.nextInt();
+//             int c = sc.nextInt();
+//             double avg = (a+b+c)/3.0;
+//             System.out.print(avg);
+//       }
+// }
+
+//16.Write a Java Program to check whether two numbers are equal, True if equal else False.
+// import java.util.*;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int a = sc.nextInt();
+//             int b = sc.nextInt();
+//             if(a==b)
+//                   System.out.print("True");
+//             else  
+//                   System.out.print("False");
+//       }
+// }
+
+//17.Write a Java Program to check if a number is power of 2 using bitwise AND.
+// without using bitwise AND
+// import java.util.*;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int n = sc.nextInt();
+//             if(n<=0)
+//                   System.out.print("Not a power of 2");
+//             else{
+//                   while(n%2==0){
+//                         n = n/2;
+//                   }
+//                   if(n==1){
+//                         System.out.print("Power of 2");
+//                   }
+//                   else{
+//                         System.out.print("Not a power of 2");
+//                   }
+//             }
+//       }
+// }
+
+// same using bitwise AND
+// import java.util.Scanner;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int n = sc.nextInt();
+//             if(n > 0 && (n & (n-1))==0){                    //0010
+//                   System.out.print("Power of 2");           //0011
+//             }                                                 0000
+//             else{
+//                   System.out.print("Not a power of 2");
+//             }
+//       }
+// }
+
+//Write a Java Program to print whether a number is positive or negative.
+// import java.uutil.*;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int n = sc.nextInt();
+//             if(n>0){
+//                   System.out.print("Positive");
+//             }
+//             else if(n<0){
+//                   System.out.print("Negative");
+//             }
+//             else{
+//                   System.out.print("Zero");
+//             }
+//             sc.close();
+//       }
+// }
+
+//Using ternary operator
+// import java.util.*;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             System.out.print("Enter the number: ");     
+//             int n = sc.nextInt();
+//             String result = (n>0)?"Positive" : (n<0)?"Negative":"Zero";
+//             System.out.print(result);
+//             sc.close();}}
+
+//using bitwise operator
+// import java.util.*;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             int num = sc.nextInt();
+//             int sign = num>>31;
+//             String result = (num==0)?"Zero":(sign==0)?"Positive":"Negative";
+//             System.out.print(result);
+//       }
+// }
+
+//Write a Java Program to find the greatest of three numbers.
+// import java.util.*;
+// public class Main{
+//     public static void main(String[] args){
+//           Scanner sc = new Scanner(System.in);
+//           int a = sc.nextInt();
+//           int b = sc.nextInt();
+//           int c = sc.nextInt();
+//           String large = (a>b)?(a>c)?"a is large":"c is large":(b>c)?"b is large":"c is large";
+//           System.out.print(large);
+//       }  
+// }
+
+//Write a Java Program to print Price After Discount 
+// import java.util.*;
+// public class Main{
+//       public static void main(String[] args){
+//             Scanner sc = new Scanner(System.in);
+//             double price = sc.nextDouble();
+//             double discount = sc.nextDouble();
+//             double discountamount = (price*discount)/100;
+//             double final_price = price - discountamount;
+//             System.out.print(final_price);
+//       }
+// }
+
+//Write a Java Program to Convert Minutes to Seconds 
+import java.util.*;
+public class Main{
+     public static void main(String[] args){
+           Scanner sc = new Scanner(System.in);
+           int mints = sc.nextInt();
+           long sec = mints * 60;
+           System.out.print(sec);
+     } 
+}
+
+
+
+            
+
+

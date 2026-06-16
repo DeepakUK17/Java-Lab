@@ -1,0 +1,159 @@
+1. When Dhoni visited a sports academy in Chennai, young players requested him to share a motivational message for beginners.
+Write a program to print Dhoni’s motivational message in a single line.
+
+Input Format:
+No input.
+
+Output Format:
+Print a motivational message.
+(Example output given only for format.)
+
+Sample Output:
+Believe in hard work and trust your journey.
+--------------------------------------------------------------------------------------------------
+2. During a charity match event, the organizers displayed Dhoni's achievements on a digital screen.
+Write a program to print any two major achievements of Dhoni in two separate lines.
+
+Input Format:
+No input.
+
+Output Format:
+Print two achievements in separate lines.
+
+Sample Output:
+ICC T20 World Cup Winner 2007
+ICC World Cup Winner 2011
+-------------------------------------------------------------------------------------------------
+3.At a fan meet in Ranchi, a child asked Dhoni to reveal his favorite sports other than cricket.
+Write a program to display Dhoni’s favorite games in different lines.
+
+Input Format:
+No input.
+
+Output Format:
+Print the games in separate lines.
+
+Sample Output:
+Football
+Badminton
+-------------------------------------------------------------------------------------------------
+4.Dhoni visited his old school and met his Mathematics teacher.
+The teacher asked Dhoni to write his school name and the city where he studied.
+Write a program to print the school name and city in two separate lines.
+
+Input Format:
+No input.
+
+Output Format:
+Two lines — school name and city.
+
+Sample Output:
+Jawahar Vidya Mandir
+Ranchi
+-------------------------------------------------------------------------------------------------
+5.A journalist asked Dhoni to introduce himself with his name and his role in the Indian Cricket Team.
+Write a program to get Dhoni’s name and role as input and display the sentence in the format shown.
+
+Input Format:
+Two lines of input:
+
+1.Name
+2.Role
+
+Output Format:
+Print a sentence:
+“My name is <name> and I worked as <role> of the Indian Cricket Team.”
+
+Sample Input & Output:
+Name:
+MS Dhoni
+Role:
+Captain
+My name is MS Dhoni and I worked as Captain of the Indian Cricket Team.
+--------------------------------------------------------------------------------------------------
+6.Dhoni launched a new sports academy where he trains young players in different skills.
+Write a program to print the skills trained at the academy separated by commas.
+
+Input Format:
+No input.
+
+Output Format:
+Print three skills separated by commas.
+
+Sample Output:
+Wicketkeeping, Batting, Fitness Training
+-------------------------------------------------------------------------------------------------
+7.At a press conference, Dhoni was asked to introduce his parents and siblings.
+Write a program to print the details in the following format:
+
+MS Dhoni
+Father: <father’s name>
+Mother: <mother’s name>
+Siblings: <sibling1> and <sibling2>
+
+Input Format:
+No input.
+
+Output Format:
+Print exactly in the above format.
+
+Sample Output:
+MS Dhoni
+Father: Pan Singh
+Mother: Devki Devi
+Siblings: Narendra Singh and Jayanti Gupta
+--------------------------------------------------------------------------------------------------
+8.A documentary filmmaker asked Dhoni to recall his first reaction after being selected for the Indian cricket team.
+Write a program to print Dhoni’s question and his emotional reply using the format shown.
+
+Input Format:
+No input.
+
+Output Format:
+Follow the sample format.
+
+Sample Output:
+
+Question:
+How did you feel when you were selected for India?
+Dhoni's reply:
+It was a dream come true and a proud moment.
+For the question "How did you feel when you were selected for India?" Dhoni replied "It was a dream come true and a proud moment."
+------------------------------------------------------------------------------------------------
+9.During a fitness session, Dhoni was asked to record his total training hours per week.
+Write a program to input the number of hours and display it as shown.
+
+Input Format:
+One integer (training hours).
+
+Output Format:
+Display the hours in a formatted sentence.
+
+Sample Input & Output:
+Enter training hours:
+12
+Dhoni trains for 12 hours per week.
+---------------------------------------------------------------------------------------------------
+10.At an award ceremony, Dhoni’s school principal announced Dhoni’s marks in three sports-related subjects.
+Write a program to input and display his marks in Fitness, Strategy, and Teamwork.
+
+Input Format:
+Three integer marks.
+
+Output Format:
+Print the marks in the format shown.
+
+Sample Input & Output:
+
+Enter the marks:
+Fitness:
+85
+Strategy:
+90
+Teamwork:
+88
+Dhoni's Sports Performance
+Fitness: 85
+Strategy: 90
+Teamwork: 88
+------------------------------------------------------------------------------------------------

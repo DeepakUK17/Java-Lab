@@ -1,0 +1,15 @@
+Q1. Write a Java program to print the first digit of a given number.
+Q2. Write a Java program to find whether the first digit of a given number is odd or even.
+Q3. Write a Java program to check whether the given digit is occurred in a number.
+Q4. Write a Java program to count the occurrence of a digit in a number.
+Q5. Write a Java program to check whether the digits of a number are in ascending order.
+Q6. Write a Java program to check whether the digits of a number are in descending order.
+Q7. Write a Java program to swap the first and last digit of a given number.
+Q8. Write a Java program to find the frequency of each digit in a given number.
+Q9. Write a Java program to find the largest digit in a given number.
+Q10. Write a Java program to find the smallest digit in a given number.
+Q11. Write a Java program to check whether all digits of a number are even or odd or mixed.
+Q12. Write a Java program to find the difference between the sum of even digits and odd digits of a number.
+Q13. Write a Java program to remove all zeroes from a given number.
+Q14. Write a Java program to calculate the sum of squares and cubes of digits of a number.
+Q15. Write a Java program to print each digit of a number in words.

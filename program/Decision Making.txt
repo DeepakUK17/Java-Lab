@@ -1,0 +1,323 @@
+Problem Statement:
+You are given Two Numbers, A and B. If C = A + B. Find C. Note: Round off the output to a single decimal place.
+Input Description:
+You are provided with two numbers A and B.
+Output Description:
+Find the sum of the two numbers (A + B)
+Explanation:
+1+1 = 2
+Sample Input:
+1
+1
+Sample Output:
+2
+
+Case 1 (Integer result)
+Input:
+5.0 5.0
+Output:
+10
+
+Case 2 (Decimal result)
+Input:
+5.2 3.1
+Output:
+8.3
+
+Case 3
+Input:
+2.4 2.6
+Output:
+5
+
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(system.in);
+		double a = sc.nextDouble();
+		double b = sc.nextDouble();
+		double sum = a+b;
+		if(Math.abs(sum - (int)sum)<1e-6)
+			System.out.print((int)sum);
+		else
+			System.out.print("%.1f",sum);
+
+Print grade based on marks: 90+ → A, 75+ → B, 50+ → C, else Fail
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(system.in);
+		int marks = sc.nextInt();	//90
+		if(marks>=90){
+			System.out.print("A");
+		}
+		else if(marks>=75){
+			System.out.print("B");
+		}
+		else if(marks>=50){
+			System.out.print("C");
+		}
+		else{
+			System.out.print("Fail");}
+
+Create a simple calculator using switch case
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(system.in);
+		int a = sc.nextInt();	
+		int b = sc.nextInt();	
+		char op = sc.next().charAt(0);
+		switch(op){
+			case '+':System.out.print(a+b);break;
+			case '-':System.out.print(a-b);break;
+			case '*':System.out.print(a*b);break;
+			case '/':
+			if(b!=0)	
+				System.out.print(a/b);	
+			else
+				System.out.print("Error:Divison by Zero);
+			default: System.out.print("Invalid operator");	}
+
+Problem Statement:
+Let "A" be a year, write a program to check whether this year is a leap year or not. Print "Y" if its a leap year and "N" if its a common year.
+Input Description:
+A Year is the input in the form of a positive integer.
+Output Description:
+Print "Y" if its a leap year and "N" if its a common year.
+Sample Input:
+2020
+Sample Output:
+Y
+Explanation:
+2020 is a leap year.
+
+if ((year % 4 ==0 && year %100 !=0)|| year % 400 == 0)
+	leap year
+else
+	not
+
+Problem Statement:
+You will be provided with a number. Print the number of days in the month corresponding to that number. Note: In case the input is February, print 28 days. If the Input is not in valid range print "Error".
+Input Description:
+The input is in the form of a number.
+Output Description:
+Find the days in the month corresponding to the input number.
+Print Error if the input is not in a valid range.
+Explanation:
+8 corresponds to august month.
+There are 31 days in the month of August.
+Sample Input:
+8
+Sample Output:
+31
+
+int month = sc.nextInt();
+if(month <1 || month >12)
+	S.O.P("Error);
+else if(month==2)
+	S.O.P("28");
+else if(month == 4 || month == 6 || month==9 || month == 11)
+	S.O.P("30);
+else
+	S.O.P("31");
+			
+1. Get two integers x and y from the user and write a program to relate 2 integers as equal to, less than or greater than.
+Input format:
+Input consist of 2 integers
+The first input corresponds to the first number(x)
+The second input corresponds to the second number(Y)
+Output format:
+If the first number is equal to the second number, print "x and y are equal". Otherwise, print "x greater than y" or "x less than y"
+Sample Input:
+6
+8
+Sample Output:
+6 less than 8
+
+2. Write a program to check whether the given character is vowel or consonant.
+Input format:
+The input consist of a character
+Output format:
+The output consists of a below-given string:
+“Vowel” / “Consonant” / “Not an alphabet”
+Sample Input:
+e
+Sample Output:
+Vowel
+
+char ch = sc.next().charAt(0);	//A
+if(ch>='a' && ch<='z') || (ch>='A' && ch<='Z'))
+	ch = Character.toLowerCase(ch);
+	if(ch=='a' || ch == 'e' ||
+		S.O.P("Vowel")
+	else
+		S.O.P("Consonant")
+else
+	S.O.P("Not an alphabet");
+	
+
+
+3.The newly appointed Vice-Chancellor of Anna University wanted to create an automated grading system for the students to check their grade. 
+When a student enters a mark, the grading system displays the corresponding grade.
+Write a program to solve the given problem.
+Marks scored     Grade
+100                S
+90 - 99            A
+80 - 89            B
+70 - 79            C
+60 - 69            D
+50 - 59            E
+<50                F
+Input format:
+The input consists of one integer which corresponds to the marks scored by the student
+Output format:
+If a student marks greater than 100, print "Invalid Input". Otherwise, print the grade.
+Sample Input:
+78
+Sample Output:
+C
+
+Rabina is interested so much in gardening and she plants more trees in her garden. She plants trees in the order of rows and columns. She numbered the trees in column wise order. She planted mango tree only in the second column from both first and last. But later when the trees grew up she forgot where she planted mango trees. So help her to find whether the given tree number is a number of mango trees or not. Display whether “It is a mango tree” or “It is not a mango tree”.
+
+INPUT FORMAT:
+Input consists of 3 integers.
+First input corresponds to the number of rows.
+Second input corresponds to the number of columns.
+Third input corresponds to the tree number
+Output :Display whether “It is a mango tree” or “It is not a mango tree”.
+
+Sample Input:
+5
+5
+20
+Sample Output:
+It is a mango tree
+
+//Write a java Program to find whether the last digit of given number is divisible by 3
+
+Problem Statement:
+You are provided with a number "N", Find the Nth term of the series: 1, 4, 9, 16, 25, 36, 49, 64, 81, .......
+(Print "Error" if N = negative value and 0 if N = 0).
+Input Description:
+An integer N is provided to you as the input.
+Output Description:
+Find the Nth term in the provided series.
+Explanation:
+The Nth term is the series = NN
+1818 = 324
+Sample Input:
+18
+Sample Output:
+324
+
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+if(n<0){
+	System.out.print("Error");}
+else if(n==0){
+	System.out.print(0);
+else{
+	long n_term = (long)n*n;
+	System.out.print(n_term);
+
+
+
+
+Problem Statement:
+You are given the coefficients of a quadratic equation in order A, B & C.
+Where A is the coefficient of X², B is the coefficient of X and C is the constant term in the most simplified form.
+Example: For X² + 5X + 6 = 0, you are given the input as: 1 5 6.
+Write a program to find all of the roots of the quadratic.
+Note: The output should be up to 2nd decimal place (round off if needed) and in case of a recurring decimal use braces i.e. for eg: 0.33333..... => 0.33.
+Note: Use Shri Dharacharya's Method to solve i.e. X = {-b + √(b² - 4ac) } / 2a & {-b-√(b² -4ac)} / 2a
+Input Description:
+Three numbers corresponding to the coefficients of x(squared), x and constant are given as an input in that particular order
+Output Description:
+Print the two values of X after rounding off to 2 decimal places if required.
+Explanation:
+X = {-b + √(b² - 4ac) } / 2a & {-b-√(b² -4ac)} / 2a
+a = 1, b = 5, c = 6.
+Sample Input:
+1 5 6
+Sample Output:
+-2.00
+-3.00
+
+Write a Java Program to Distribute Candies Equally Among People
+Enter total candies: 17
+Enter number of people: 5
+Each person gets: 3 candies
+Leftover candies: 2
+
+Write a Java program to calculate an Electricity Bill based on the following rules:
+Units Consumed		Rate per Unit
+0 – 100 units		₹1.5
+101 – 200 units		₹2.5
+Above 200 units		₹4.0
+Also add 15% surcharge if total bill exceeds ₹500.
+Formula:
+Bill = units * rate (+ surcharge if applicable)
+Example Output:
+Enter units consumed: 250
+Electricity Bill before surcharge: 1000.00
+Surcharge: 150.00
+Total Bill: 1150.00
+
+Write a Java program to calculate Gross Salary of an employee.
+Use the following conditions:
+If Basic Pay ≤ 10000:
+HRA = 20% of Basic, DA = 80% of Basic
+If Basic Pay ≤ 20000:
+HRA = 25% of Basic, DA = 90% of Basic
+If Basic Pay > 20000:
+HRA = 30% of Basic, DA = 95% of Basic
+Also calculate Net Salary = Gross Salary - Tax, where Tax = 10% of Gross Salary.
+Formula:
+Gross = Basic + HRA + DA
+Net = Gross - Tax
+Example Output:
+Enter Basic Salary: 15000
+Gross Salary = 32250.00
+Net Salary = 29025.00
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(Syste.in);
+		long basic = sc.nextLong();
+		double hra = 0;
+		double da = 0;
+		if(basic <= 10000){
+			hra = 0.2 * basic;
+			da = 0.8 * basic;
+		}
+		else if(basic<=2000){
+			hra = 0.25 * basic;
+			da = 0.9 * basic;
+		}
+		else if(basic>20000){
+			hra = 0.3 * basic;
+			da = 0.95 * basic;
+		}
+		double gross = basic + hra + da;
+		double tax = 0.1 * gross;
+		double net = gross - tax;
+		
+		 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
