@@ -3757,26 +3757,46 @@ function renderCards() {
 }
 
 // ─────────────────────────────────────────────
-//  Syntax Highlighter
+//  Syntax Highlighter  (single-pass tokeniser)
 // ─────────────────────────────────────────────
 function highlight(code) {
-  const keywords = /\b(import|public|class|static|void|int|long|double|float|boolean|char|String|new|return|if|else|for|while|do|switch|case|break|continue|final|null|true|false|this|super)\b/g;
-  const classes  = /\b(Scanner|System|Math|String|Integer|Character|Float|Double)\b/g;
-  const methods  = /\b(\w+)(?=\s*\()/g;
-  const strings  = /(["'`])(?:(?!\1)[^\\]|\\.)*?\1/g;
-  const comments = /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)/g;
-  const numbers  = /\b(\d+\.?\d*)\b/g;
-  const annotations = /(@\w+)/g;
+  function esc(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
 
-  return code
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(comments,    m => `<span class="cm">${m}</span>`)
-    .replace(strings,     m => `<span class="st">${m}</span>`)
-    .replace(annotations, m => `<span class="an">${m}</span>`)
-    .replace(keywords,    m => `<span class="kw">${m}</span>`)
-    .replace(classes,     m => `<span class="cl">${m}</span>`)
-    .replace(methods,     (m,g) => `<span class="fn">${g}</span>(`)
-    .replace(numbers,     m => `<span class="nm">${m}</span>`);
+  const KW  = /\b(import|public|class|static|void|int|long|double|float|boolean|char|String|new|return|if|else|for|while|do|switch|case|break|continue|final|null|true|false|this|super)\b/g;
+  const CLS = /\b(Scanner|System|Math|Integer|Character|Float|Double)\b/g;
+  const MTH = /\b([a-zA-Z_]\w*)(?=\s*\()/g;
+  const NUM = /\b(\d+\.?\d*)\b/g;
+  const ANN = /(@\w+)/g;
+
+  function colourPlain(s) {
+    return esc(s)
+      .replace(ANN, (_,g) => `<span class="an">${g}</span>`)
+      .replace(KW,  m     => `<span class="kw">${m}</span>`)
+      .replace(CLS, m     => `<span class="cl">${m}</span>`)
+      .replace(MTH, (_,g) => `<span class="fn">${g}</span>`)
+      .replace(NUM, m     => `<span class="nm">${m}</span>`);
+  }
+
+  // Tokenise: protect comments & strings, colour plain code between them
+  const tokenRe = /(\/\/[^\n]*)|(\/\*[\s\S]*?\*\/)|("(?:[^"\\]|\\.)*")|('(?:[^'\\]|\\.)*')/g;
+  let result = '';
+  let last = 0;
+  let mt;
+  tokenRe.lastIndex = 0;
+
+  while ((mt = tokenRe.exec(code)) !== null) {
+    result += colourPlain(code.slice(last, mt.index));
+    if (mt[1] || mt[2]) {
+      result += `<span class="cm">${esc(mt[0])}</span>`;
+    } else {
+      result += `<span class="st">${esc(mt[0])}</span>`;
+    }
+    last = tokenRe.lastIndex;
+  }
+  result += colourPlain(code.slice(last));
+  return result;
 }
 
 // ─────────────────────────────────────────────
