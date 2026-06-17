@@ -7204,10 +7204,12 @@ renderCards();
 initSearch();
 
 // Update stats count
-document.querySelectorAll('.stat-num').forEach(el => {
-  const num = parseInt(el.textContent);
-  if (!isNaN(num) && num < ALL_PROGRAMS.length) el.textContent = ALL_PROGRAMS.length;
-});
+const statNums = document.querySelectorAll('.stat-num');
+if (statNums.length >= 3) {
+  statNums[0].textContent = ALL_PROGRAMS.length;
+  statNums[1].textContent = SECTIONS.length;
+  statNums[2].textContent = '100%';
+}
 
 console.log('%c☕ Java Lab Loaded', 'font-size:18px;color:#f89820;font-weight:bold');
 console.log(`%c${ALL_PROGRAMS.length} programs across ${SECTIONS.length} sections`, 'color:#34d399');
