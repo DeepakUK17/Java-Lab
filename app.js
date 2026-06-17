@@ -5769,7 +5769,7 @@ public class InvertedTriangle {
         icon: '🔢',
         difficulty: 'Medium',
         tags: ['nested loop', 'pattern', 'numbers'],
-        desc: 'Prints a right triangle pattern using row numbers instead of stars.',
+        desc: 'Prints a right triangle pattern using increasing column numbers.',
         code: `import java.util.Scanner;
 public class NumberTriangle {
     public static void main(String[] args) {
@@ -5778,7 +5778,7 @@ public class NumberTriangle {
         int n = s.nextInt();
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= i; j++) {
-                System.out.print(i + " ");
+                System.out.print(j + " ");
             }
             System.out.println();
         }
@@ -5794,30 +5794,30 @@ public class NumberTriangle {
           if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
           for (let i=1;i<=n;i++) {
             let row='';
-            for (let j=1;j<=i;j++) row+=i+' ';
-            yield { type: 'out', text: row };
+            for (let j=1;j<=i;j++) row+=j+' ';
+            yield { type: 'out', text: row.trimEnd() };
           }
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
       },
 
-      // ─── Pattern 1: Incremental Number Triangle (1 / 1 2 / 1 2 3 ...) ───
+      // ─── Pattern 1: Same Number Triangle (1 / 2 2 / 3 3 3 ...) ───
       {
-        id: 'incremental-number-triangle',
-        title: 'Incremental Number Triangle',
+        id: 'same-number-triangle',
+        title: 'Same Number Triangle',
         icon: '🔼',
         difficulty: 'Medium',
         tags: ['nested loop', 'pattern', 'numbers'],
-        desc: 'Prints a triangle where each row i contains numbers 1 to i (row 3 → 1 2 3).',
+        desc: 'Prints a triangle using row numbers where each row contains the same number.',
         code: `import java.util.Scanner;
-public class IncrementalNumberTriangle {
+public class SameNumberTriangle {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter number of rows: ");
         int n = sc.nextInt();
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= i; j++) {
-                System.out.print(j + " ");
+                System.out.print(i + " ");
             }
             System.out.println();
         }
@@ -5825,7 +5825,7 @@ public class IncrementalNumberTriangle {
     }
 }`,
         run: function*(inputs) {
-          yield { type: 'system', text: 'Compiling IncrementalNumberTriangle.java...' };
+          yield { type: 'system', text: 'Compiling SameNumberTriangle.java...' };
           yield { type: 'system', text: 'Build successful ✓' };
           yield { type: 'out', text: '' };
           yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
@@ -5833,7 +5833,7 @@ public class IncrementalNumberTriangle {
           if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
           for (let i = 1; i <= n; i++) {
             let row = '';
-            for (let j = 1; j <= i; j++) row += j + ' ';
+            for (let j = 1; j <= i; j++) row += i + ' ';
             yield { type: 'out', text: row.trimEnd() };
           }
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
