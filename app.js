@@ -5634,6 +5634,192 @@ public class PerfectNumber {
           yield { type: 'out', text: perfect===sump?`${perfect} is a Perfect Number ✓`:`${perfect} is Non Perfect Number ✗` };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
+      },
+
+      {
+        id: 'fibonacci-sum',
+        title: 'Sum of nth Fibonacci Series',
+        icon: '➕',
+        difficulty: 'Medium',
+        tags: ['for loop', 'fibonacci', 'sum'],
+        desc: 'Calculates the sum of the first N terms of the Fibonacci sequence.',
+        code: `import java.util.Scanner;
+public class FibonacciSum {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = s.nextInt();
+        int num1 = 0, num2 = 1, sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += num1;
+            int next = num1 + num2;
+            num1 = num2;
+            num2 = next;
+        }
+        System.out.println("Sum of first " + n + " terms: " + sum);
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling FibonacciSum.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          let num1 = 0, num2 = 1, sum = 0;
+          for (let i = 0; i < n; i++) {
+            sum += num1;
+            let next = num1 + num2;
+            num1 = num2;
+            num2 = next;
+          }
+          yield { type: 'out', text: `Sum of first ${n} terms: ${sum}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'fibonacci-check',
+        title: 'Check Fibonacci Number',
+        icon: '🔍',
+        difficulty: 'Medium',
+        tags: ['while loop', 'fibonacci', 'check'],
+        desc: 'Checks whether a given number is part of the Fibonacci sequence.',
+        code: `import java.util.Scanner;
+public class FibonacciCheck {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = s.nextInt();
+        int n1 = 0, n2 = 1;
+        boolean isFib = false;
+        if (num == 0 || num == 1) {
+            isFib = true;
+        } else {
+            int next = n1 + n2;
+            while (next <= num) {
+                if (next == num) {
+                    isFib = true;
+                    break;
+                }
+                n1 = n2;
+                n2 = next;
+                next = n1 + n2;
+            }
+        }
+        if (isFib) {
+            System.out.println(num + " is a Fibonacci number ✓");
+        } else {
+            System.out.println(num + " is not a Fibonacci number ✗");
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling FibonacciCheck.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'num' };
+          const num = parseInt(inputs['num']);
+          if (isNaN(num) || num < 0) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          let n1 = 0, n2 = 1, isFib = false;
+          if (num === 0 || num === 1) {
+            isFib = true;
+          } else {
+            let next = n1 + n2;
+            while (next <= num) {
+              if (next === num) { isFib = true; break; }
+              n1 = n2;
+              n2 = next;
+              next = n1 + n2;
+            }
+          }
+          yield { type: 'out', text: isFib ? `${num} is a Fibonacci number ✓` : `${num} is not a Fibonacci number ✗` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'power-without-pow',
+        title: 'Power without Math.pow()',
+        icon: '⚡',
+        difficulty: 'Easy',
+        tags: ['for loop', 'exponent', 'math'],
+        desc: 'Calculates the power of a base to an exponent without using Math.pow().',
+        code: `import java.util.Scanner;
+public class PowerWithoutPow {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter base: ");
+        int base = s.nextInt();
+        System.out.print("Enter exponent: ");
+        int exp = s.nextInt();
+        long result = 1;
+        for (int i = 1; i <= exp; i++) {
+            result *= base;
+        }
+        System.out.println(base + "^" + exp + " = " + result);
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling PowerWithoutPow.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter base: ', inputKey: 'base' };
+          yield { type: 'ask', text: 'Enter exponent: ', inputKey: 'exp' };
+          const base = parseInt(inputs['base']);
+          const exp = parseInt(inputs['exp']);
+          if (isNaN(base) || isNaN(exp) || exp < 0) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          let result = 1;
+          for (let i = 1; i <= exp; i++) {
+            result *= base;
+          }
+          yield { type: 'out', text: `${base}^${exp} = ${result}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'power-series-sum',
+        title: 'Power Series Sum',
+        icon: '➕',
+        difficulty: 'Medium',
+        tags: ['for loop', 'series', 'sum'],
+        desc: 'Calculates the sum of the series 2^1 + 2^2 + 2^3 + ... + 2^n without Math.pow().',
+        code: `import java.util.Scanner;
+public class PowerSeriesSum {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter n: ");
+        int n = s.nextInt();
+        long sum = 0;
+        long currentPower = 1;
+        for (int i = 1; i <= n; i++) {
+            currentPower *= 2;
+            sum += currentPower;
+        }
+        System.out.println("Sum of series: " + sum);
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling PowerSeriesSum.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter n: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          let sum = 0;
+          let currentPower = 1;
+          for (let i = 1; i <= n; i++) {
+            currentPower *= 2;
+            sum += currentPower;
+          }
+          yield { type: 'out', text: `Sum of series: ${sum}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
       }
 
     ]
@@ -5999,6 +6185,373 @@ public class InvertedPyramidPattern {
           for (let i = n; i >= 1; i--) {
             let row = ' '.repeat(n - i);
             for (let j = 1; j <= i; j++) row += '* ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'diamond-triangle',
+        title: 'Diamond Triangle',
+        icon: '💎',
+        difficulty: 'Medium',
+        tags: ['nested loop', 'pattern', 'stars', 'spaces'],
+        desc: 'Prints a diamond pattern of stars with N rows (odd number).',
+        code: `import java.util.Scanner;
+public class DiamondTriangle {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter rows (odd): ");
+        int n = s.nextInt();
+        int space = n / 2;
+        int stars = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= space; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= stars; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+            if (i < n / 2 + 1) {
+                space--;
+                stars += 2;
+            } else {
+                space++;
+                stars -= 2;
+            }
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling DiamondTriangle.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows (odd): ', inputKey: 'n' };
+          let n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          if (n % 2 === 0) n++; // make it odd for perfect symmetry
+          let space = Math.floor(n / 2);
+          let stars = 1;
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(space) + '*'.repeat(stars);
+            yield { type: 'out', text: row };
+            if (i < Math.floor(n / 2) + 1) {
+              space--;
+              stars += 2;
+            } else {
+              space++;
+              stars -= 2;
+            }
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'odd-number-triangle',
+        title: 'Odd Number Triangle',
+        icon: '🔢',
+        difficulty: 'Easy',
+        tags: ['nested loop', 'pattern', 'odd'],
+        desc: 'Prints a right triangle using incrementing odd numbers.',
+        code: `import java.util.Scanner;
+public class OddNumberTriangle {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int n = s.nextInt();
+        int val = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(val + " ");
+                val += 2;
+            }
+            System.out.println();
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling OddNumberTriangle.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          let val = 1;
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= i; j++) {
+              row += val + ' ';
+              val += 2;
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'even-number-triangle',
+        title: 'Even Number Triangle',
+        icon: '🔢',
+        difficulty: 'Easy',
+        tags: ['nested loop', 'pattern', 'even'],
+        desc: 'Prints a right triangle using incrementing even numbers.',
+        code: `import java.util.Scanner;
+public class EvenNumberTriangle {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int n = s.nextInt();
+        int val = 2;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(val + " ");
+                val += 2;
+            }
+            System.out.println();
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling EvenNumberTriangle.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          let val = 2;
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= i; j++) {
+              row += val + ' ';
+              val += 2;
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'alphabet-triangle',
+        title: 'Alphabet Triangle',
+        icon: '🔤',
+        difficulty: 'Easy',
+        tags: ['nested loop', 'pattern', 'characters'],
+        desc: 'Prints a right triangle of alphabet letters (A / A B / A B C...).',
+        code: `import java.util.Scanner;
+public class AlphabetTriangle {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int n = s.nextInt();
+        for (int i = 1; i <= n; i++) {
+            char ch = 'A';
+            for (int j = 1; j <= i; j++) {
+                System.out.print(ch + " ");
+                ch++;
+            }
+            System.out.println();
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling AlphabetTriangle.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            let code = 65; // 'A'
+            for (let j = 1; j <= i; j++) {
+              row += String.fromCharCode(code) + ' ';
+              code++;
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'reverse-number-triangle',
+        title: 'Reverse Number Triangle',
+        icon: '🔄',
+        difficulty: 'Easy',
+        tags: ['nested loop', 'pattern', 'reverse'],
+        desc: 'Prints a right triangle where each row starts at the row index and counts down to 1.',
+        code: `import java.util.Scanner;
+public class ReverseNumberTriangle {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int n = s.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = i; j >= 1; j--) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling ReverseNumberTriangle.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = i; j >= 1; j--) {
+              row += j + ' ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'row-sum-pattern',
+        title: 'Row Sum Pattern',
+        icon: '➕',
+        difficulty: 'Medium',
+        tags: ['nested loop', 'pattern', 'sum'],
+        desc: 'Prints a right triangle where each row shows the addition expression of values and their sum.',
+        code: `import java.util.Scanner;
+public class RowSumPattern {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int n = s.nextInt();
+        for (int i = 1; i <= n; i++) {
+            int sum = 0;
+            for (int j = 1; j <= i; j++) {
+                sum += j;
+                System.out.print(j);
+                if (j < i) {
+                    System.out.print("+");
+                }
+            }
+            System.out.println(" = " + sum);
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling RowSumPattern.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of rows: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            let sum = 0;
+            for (let j = 1; j <= i; j++) {
+              sum += j;
+              row += j + (j < i ? '+' : '');
+            }
+            row += ' = ' + sum;
+            yield { type: 'out', text: row };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'column-constant-pattern',
+        title: 'Column Constant Pattern',
+        icon: '📊',
+        difficulty: 'Easy',
+        tags: ['nested loop', 'pattern', 'grid'],
+        desc: 'Prints an N×N square where columns have constant values across rows.',
+        code: `import java.util.Scanner;
+public class ColumnConstantPattern {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter size N: ");
+        int n = s.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling ColumnConstantPattern.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter size N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              row += j + ' ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'hollow-box-pattern',
+        title: 'Hollow Box Pattern',
+        icon: '⬜',
+        difficulty: 'Medium',
+        tags: ['nested loop', 'pattern', 'hollow'],
+        desc: 'Prints a hollow square pattern of stars.',
+        code: `import java.util.Scanner;
+public class HollowBoxPattern {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter size N: ");
+        int n = s.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == 1 || i == n || j == 1 || j == n) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+        s.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling HollowBoxPattern.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter size N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 1) { yield { type: 'error', text: 'Invalid input.' }; return; }
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              if (i === 1 || i === n || j === 1 || j === n) {
+                row += '* ';
+              } else {
+                row += '  ';
+              }
+            }
             yield { type: 'out', text: row.trimEnd() };
           }
           yield { type: 'success', text: '\nProcess finished with exit code 0' };

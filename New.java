@@ -814,6 +814,57 @@ public class New {
             System.out.print(i + " ");
         }
 
+// Q31. Sum of nth Fibonacci Series
+//      int n = s.nextInt();
+//      int num1 = 0, num2 = 1, sum = 0;
+//      for (int i = 0; i < n; i++) {
+//          sum += num1;
+//          int next = num1 + num2;
+//          num1 = num2;
+//          num2 = next;
+//      }
+//      System.out.println("Sum of first " + n + " terms: " + sum);
+
+// Q32. Check if a number is part of the Fibonacci Series or not
+//      int num = s.nextInt();
+//      int n1 = 0, n2 = 1;
+//      boolean isFib = false;
+//      if (num == 0 || num == 1) {
+//          isFib = true;
+//      } else {
+//          int next = n1 + n2;
+//          while (next <= num) {
+//              if (next == num) {
+//                  isFib = true;
+//                  break;
+//              }
+//              n1 = n2;
+//              n2 = next;
+//              next = n1 + n2;
+//          }
+//      }
+//      if (isFib) System.out.println(num + " is a Fibonacci number");
+//      else        System.out.println(num + " is not a Fibonacci number");
+
+// Q33. Power of a number without Math.pow()
+//      int base = s.nextInt();
+//      int exp = s.nextInt();
+//      long result = 1;
+//      for (int i = 1; i <= exp; i++) {
+//          result *= base;
+//      }
+//      System.out.println(base + "^" + exp + " = " + result);
+
+// Q34. 2^1 + 2^2 + ... + 2^n Series without Math.pow()
+//      int n = s.nextInt();
+//      long sum = 0;
+//      long currentPower = 1;
+//      for (int i = 1; i <= n; i++) {
+//          currentPower *= 2;
+//          sum += currentPower;
+//      }
+//      System.out.println("Sum of series: " + sum);
+
 // ============================================================
 //  PATTERN PROGRAMS
 // ============================================================
@@ -874,6 +925,105 @@ public class New {
 //      for (int pt = 1; pt <= 4; pt++) {
 //          for (int pt1 = 1; pt1 <= pt; pt1++) {
 //              System.out.print(pt + " ");
+//          }
+//          System.out.println();
+//      }
+
+// Pattern 6: Diamond Triangle
+//      int n = s.nextInt();
+//      int space = n / 2;
+//      int stars = 1;
+//      for (int i = 1; i <= n; i++) {
+//          for (int j = 1; j <= space; j++) {
+//              System.out.print(" ");
+//          }
+//          for (int j = 1; j <= stars; j++) {
+//              System.out.print("*");
+//          }
+//          System.out.println();
+//          if (i < n / 2 + 1) {
+//              space--;
+//              stars += 2;
+//          } else {
+//              space++;
+//              stars -= 2;
+//          }
+//      }
+
+// Pattern 7: Odd Number Triangle
+//      int n = s.nextInt();
+//      int val = 1;
+//      for (int i = 1; i <= n; i++) {
+//          for (int j = 1; j <= i; j++) {
+//              System.out.print(val + " ");
+//              val += 2;
+//          }
+//          System.out.println();
+//      }
+
+// Pattern 8: Even Number Triangle
+//      int n = s.nextInt();
+//      int val = 2;
+//      for (int i = 1; i <= n; i++) {
+//          for (int j = 1; j <= i; j++) {
+//              System.out.print(val + " ");
+//              val += 2;
+//          }
+//          System.out.println();
+//      }
+
+// Pattern 9: Alphabet Triangle
+//      int n = s.nextInt();
+//      for (int i = 1; i <= n; i++) {
+//          char ch = 'A';
+//          for (int j = 1; j <= i; j++) {
+//              System.out.print(ch + " ");
+//              ch++;
+//          }
+//          System.out.println();
+//      }
+
+// Pattern 10: Reverse Number Triangle
+//      int n = s.nextInt();
+//      for (int i = 1; i <= n; i++) {
+//          for (int j = i; j >= 1; j--) {
+//              System.out.print(j + " ");
+//          }
+//          System.out.println();
+//      }
+
+// Pattern 11: Row Sum Pattern
+//      int n = s.nextInt();
+//      for (int i = 1; i <= n; i++) {
+//          int sum = 0;
+//          for (int j = 1; j <= i; j++) {
+//              sum += j;
+//              System.out.print(j);
+//              if (j < i) {
+//                  System.out.print("+");
+//              }
+//          }
+//          System.out.println(" = " + sum);
+//      }
+
+// Pattern 12: Column Constant Pattern
+//      int n = s.nextInt();
+//      for (int i = 1; i <= n; i++) {
+//          for (int j = 1; j <= n; j++) {
+//              System.out.print(j + " ");
+//          }
+//          System.out.println();
+//      }
+
+// Pattern 13: Hollow Box Pattern
+//      int n = s.nextInt();
+//      for (int i = 1; i <= n; i++) {
+//          for (int j = 1; j <= n; j++) {
+//              if (i == 1 || i == n || j == 1 || j == n) {
+//                  System.out.print("* ");
+//              } else {
+//                  System.out.print("  ");
+//              }
 //          }
 //          System.out.println();
 //      }
