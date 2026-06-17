@@ -6031,6 +6031,7 @@ let pendingInputKey  = null;
 let collectedInputs  = {};
 let isRunning        = false;
 let activeFilter     = 'all';
+let searchQuery      = '';
 
 // ─────────────────────────────────────────────
 //  DOM Refs
@@ -6098,20 +6099,97 @@ function renderFilterNav() {
   });
 }
 
+function filterPrograms() {
+  const query = searchQuery.trim().toLowerCase();
+  
+  SECTIONS.forEach(sec => {
+    const sectionBlock = document.querySelector(`.section-block[data-section="${sec.id}"]`);
+    if (!sectionBlock) return;
+    
+    let visibleCardsCount = 0;
+    
+    sec.programs.forEach(prog => {
+      const card = document.getElementById(`card-${prog.id}`);
+      if (!card) return;
+      
+      const matchesSearch = !query || 
+                            prog.title.toLowerCase().includes(query) || 
+                            prog.desc.toLowerCase().includes(query) || 
+                            prog.tags.some(tag => tag.toLowerCase().includes(query));
+                            
+      const matchesFilter = activeFilter === 'all' || sec.id === activeFilter;
+      
+      if (matchesSearch && matchesFilter) {
+        if (card.style.display === 'none') {
+          card.style.display = '';
+          card.classList.remove('animate-entrance');
+          void card.offsetWidth; // trigger reflow
+          card.classList.add('animate-entrance');
+        }
+        visibleCardsCount++;
+      } else {
+        card.style.display = 'none';
+        card.classList.remove('animate-entrance');
+      }
+    });
+    
+    // Show/hide section block based on whether it has visible cards
+    const shouldShowSection = visibleCardsCount > 0 && (activeFilter === 'all' || sec.id === activeFilter);
+    sectionBlock.style.display = shouldShowSection ? '' : 'none';
+    
+    // Dynamically update section count badge
+    const countEl = sectionBlock.querySelector('.section-count');
+    if (countEl) {
+      if (query) {
+        countEl.textContent = `${visibleCardsCount} of ${sec.programs.length} matches`;
+      } else {
+        countEl.textContent = `${sec.programs.length} programs`;
+      }
+    }
+  });
+  
+  // Show a "No results found" message if all section blocks are hidden
+  let noResultsMessage = document.getElementById('noResultsMessage');
+  const anyVisible = Array.from(document.querySelectorAll('.section-block')).some(block => block.style.display !== 'none');
+  
+  if (!anyVisible) {
+    if (!noResultsMessage) {
+      noResultsMessage = document.createElement('div');
+      noResultsMessage.id = 'noResultsMessage';
+      noResultsMessage.className = 'no-results-message';
+      noResultsMessage.innerHTML = `
+        <div class="no-results-icon">🔍</div>
+        <h3>No matching programs found</h3>
+        <p>Try searching for other keywords, tags, or select a different section.</p>
+        <button class="clear-search-link-btn" onclick="clearSearchAndFilters()">Clear Search & Filters</button>
+      `;
+      const container = document.getElementById('cardsGrid');
+      container.appendChild(noResultsMessage);
+    }
+    noResultsMessage.style.display = 'flex';
+  } else if (noResultsMessage) {
+    noResultsMessage.style.display = 'none';
+  }
+}
+
+window.clearSearchAndFilters = function() {
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.value = '';
+    searchQuery = '';
+    const clearBtn = document.getElementById('searchClearBtn');
+    if (clearBtn) clearBtn.style.display = 'none';
+  }
+  filterSection('all');
+};
+
 function filterSection(sectionId) {
   activeFilter = sectionId;
   // Update buttons
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.section === sectionId);
   });
-  // Show/hide sections
-  document.querySelectorAll('.section-block').forEach(block => {
-    if (sectionId === 'all') {
-      block.style.display = '';
-    } else {
-      block.style.display = block.dataset.section === sectionId ? '' : 'none';
-    }
-  });
+  filterPrograms();
 }
 
 // ─────────────────────────────────────────────
@@ -6527,11 +6605,50 @@ termInput.addEventListener('keydown', e => {
 document.getElementById('termSubmit').addEventListener('click', submitInput);
 
 // ─────────────────────────────────────────────
+//  Search Bar Event Listeners
+// ─────────────────────────────────────────────
+function initSearch() {
+  const searchInput = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('searchClearBtn');
+  
+  if (!searchInput) return;
+  
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    if (clearBtn) {
+      clearBtn.style.display = searchQuery ? 'flex' : 'none';
+    }
+    filterPrograms();
+  });
+  
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearBtn.style.display = 'none';
+      searchInput.focus();
+      filterPrograms();
+    });
+  }
+  
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      searchQuery = '';
+      if (clearBtn) clearBtn.style.display = 'none';
+      searchInput.blur();
+      filterPrograms();
+    }
+  });
+}
+
+// ─────────────────────────────────────────────
 //  Init
 // ─────────────────────────────────────────────
 spawnParticles();
 renderFilterNav();
 renderCards();
+initSearch();
 
 // Update stats count
 document.querySelectorAll('.stat-num').forEach(el => {
