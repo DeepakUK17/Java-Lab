@@ -1244,7 +1244,7 @@ public class Main {
       },
 
       {
-        id: 'last-digit',
+        id: 'last-digit-op',
         title: 'Last Digit',
         icon: '🔚',
         difficulty: 'Easy',
@@ -1357,7 +1357,7 @@ public class Main {
       },
 
       {
-        id: 'absolute-value',
+        id: 'absolute-value-op',
         title: 'Absolute Value',
         icon: '📏',
         difficulty: 'Easy',
@@ -2194,7 +2194,1193 @@ public class Main {
           yield { type: 'out', text: r.trim() };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
-      }
+      },
+      {
+        id: 'odd-numbers-1-to-n',
+        title: 'Odd Numbers 1 to N',
+        icon: '1️⃣',
+        difficulty: 'Easy',
+        tags: ['for loop', 'odd'],
+        desc: 'Prints all odd numbers from 1 to N.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        for (int i = 1; i <= N; i += 2) {
+            System.out.print(i + " ");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r=''; for(let i=1;i<=n;i+=2) r+=i+' ';
+          yield { type: 'out', text: r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'count-div-by-3',
+        title: 'Count Divisible by 3',
+        icon: '3️⃣',
+        difficulty: 'Easy',
+        tags: ['for loop', 'count', 'divisible'],
+        desc: 'Counts how many numbers from 1 to N are divisible by 3.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int count = 0;
+        for (int i = 1; i <= N; i++) {
+            if (i % 3 == 0) count++;
+        }
+        System.out.println("Count = " + count);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let count=0; for(let i=1;i<=n;i++) if(i%3===0) count++;
+          yield { type: 'out', text: 'Count = ' + count };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'div-by-3-and-5',
+        title: 'Divisible by 3 and 5',
+        icon: '🔢',
+        difficulty: 'Easy',
+        tags: ['for loop', 'divisible'],
+        desc: 'Prints numbers from 1 to N that are divisible by both 3 and 5.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        for (int i = 1; i <= N; i++) {
+            if (i % 3 == 0 && i % 5 == 0)
+                System.out.print(i + " ");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r=''; for(let i=1;i<=n;i++) if(i%3===0&&i%5===0) r+=i+' ';
+          yield { type: 'out', text: r.trim()||'None in range' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'square-numbers-1-to-n',
+        title: 'Squares from 1 to N',
+        icon: '²',
+        difficulty: 'Easy',
+        tags: ['for loop', 'square'],
+        desc: 'Prints the square of each number from 1 to N.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        for (int i = 1; i <= N; i++) {
+            System.out.println(i + "^2 = " + (i * i));
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          for(let i=1;i<=n;i++) yield { type:'out', text: i+'^2 = '+(i*i) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'cube-numbers-1-to-n',
+        title: 'Cubes from 1 to N',
+        icon: '³',
+        difficulty: 'Easy',
+        tags: ['for loop', 'cube'],
+        desc: 'Prints the cube of each number from 1 to N.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        for (int i = 1; i <= N; i++) {
+            System.out.println(i + "^3 = " + (i * i * i));
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          for(let i=1;i<=n;i++) yield { type:'out', text: i+'^3 = '+(i*i*i) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'skip-multiples-of-4',
+        title: 'Skip Multiples of 4',
+        icon: '4️⃣',
+        difficulty: 'Easy',
+        tags: ['for loop', 'continue'],
+        desc: 'Prints numbers from 1 to N, skipping multiples of 4.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        for (int i = 1; i <= N; i++) {
+            if (i % 4 == 0) continue;
+            System.out.print(i + " ");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r=''; for(let i=1;i<=n;i++){if(i%4===0)continue;r+=i+' ';}
+          yield { type: 'out', text: r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'remove-last-digit-to-single',
+        title: 'Remove Digits Until Single',
+        icon: '🔄',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits'],
+        desc: 'Removes the last digit repeatedly until the number becomes a single digit.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.print(n);
+        while (n >= 10) {
+            n /= 10;
+            System.out.print(" -> " + n);
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          let n = parseInt(inputs['n']);
+          if (isNaN(n)||n<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r = String(n);
+          while(n>=10){n=Math.floor(n/10);r+=' -> '+n;}
+          yield { type: 'out', text: r };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'replace-zero-with-one',
+        title: 'Replace 0s with 1s',
+        icon: '0️⃣',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits', 'transform'],
+        desc: 'Replaces every digit 0 with 1 in a number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        String result = s.replace('0', '1');
+        System.out.println("Result: " + result);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const s = String(inputs['n'] || '');
+          if (!s || isNaN(parseInt(s))) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type: 'out', text: 'Result: ' + s.replace(/0/g,'1') };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'swap-first-last-digit',
+        title: 'Swap First & Last Digit',
+        icon: '🔀',
+        difficulty: 'Hard',
+        tags: ['while loop', 'digits', 'swap'],
+        desc: 'Swaps the first and last digit of a number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int last = n % 10;
+        int len  = (int)Math.log10(n);
+        int first = n / (int)Math.pow(10, len);
+        long pow  = (long)Math.pow(10, len);
+        long result = n - first * pow - last;
+        result += last * pow + first;
+        System.out.println("Result: " + result);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number (2+ digits): ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<10) { yield { type:'error', text:'Enter a number with at least 2 digits.' }; return; }
+          const s = String(n).split('');
+          [s[0], s[s.length-1]] = [s[s.length-1], s[0]];
+          yield { type: 'out', text: 'Result: ' + parseInt(s.join('')) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'digits-in-words',
+        title: 'Digits in Words',
+        icon: '🔤',
+        difficulty: 'Medium',
+        tags: ['for loop', 'digits', 'string'],
+        desc: 'Prints each digit of a number as a word (e.g. 123 → One Two Three).',
+        code: `import java.util.Scanner;
+public class Main {
+    static String[] w = {"Zero","One","Two","Three","Four",
+                         "Five","Six","Seven","Eight","Nine"};
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        for (char c : s.toCharArray())
+            System.out.print(w[c - '0'] + " ");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const s = String(Math.abs(parseInt(inputs['n'])||0));
+          const w=['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine'];
+          yield { type: 'out', text: s.split('').map(c=>w[+c]).join(' ') };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'add-one-to-each-digit',
+        title: 'Add 1 to Each Digit',
+        icon: '➕',
+        difficulty: 'Medium',
+        tags: ['for loop', 'digits', 'transform'],
+        desc: 'Forms a new number by adding 1 to each digit (9 wraps to 0).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray())
+            sb.append((c - '0' + 1) % 10);
+        System.out.println("Result: " + sb);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const s = String(Math.abs(parseInt(inputs['n'])||0));
+          yield { type: 'out', text: 'Result: ' + s.split('').map(c=>(+c+1)%10).join('') };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'sum-even-odd-digits-sep',
+        title: 'Sum of Even & Odd Digits',
+        icon: '⚖️',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits', 'sum'],
+        desc: 'Finds the sum of even digits and the sum of odd digits of a number separately.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int evenSum = 0, oddSum = 0;
+        while (n > 0) {
+            int d = n % 10;
+            if (d % 2 == 0) evenSum += d; else oddSum += d;
+            n /= 10;
+        }
+        System.out.println("Even digit sum = " + evenSum);
+        System.out.println("Odd digit sum  = " + oddSum);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          let n = parseInt(inputs['n']);
+          if (isNaN(n)||n<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          let es=0,os=0,t=n;
+          while(t>0){const d=t%10;if(d%2===0)es+=d;else os+=d;t=Math.floor(t/10);}
+          yield { type: 'out', text: 'Even digit sum = '+es };
+          yield { type: 'out', text: 'Odd digit sum  = '+os };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'product-of-digits',
+        title: 'Product of Digits',
+        icon: '✖️',
+        difficulty: 'Easy',
+        tags: ['while loop', 'digits', 'product'],
+        desc: 'Calculates the product of all digits in a number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int product = 1;
+        while (n > 0) { product *= n % 10; n /= 10; }
+        System.out.println("Product = " + product);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          let n = parseInt(inputs['n']);
+          if (isNaN(n)||n<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          let prod=1,t=n;
+          while(t>0){prod*=t%10;t=Math.floor(t/10);}
+          yield { type: 'out', text: 'Product = '+prod };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'diff-sum-product-digits',
+        title: 'Diff: Sum vs Product of Digits',
+        icon: '📉',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits', 'math'],
+        desc: 'Finds the absolute difference between the sum and the product of digits.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sum = 0, product = 1;
+        while (n > 0) {
+            int d = n % 10; sum += d; product *= d; n /= 10;
+        }
+        System.out.println("Sum = " + sum);
+        System.out.println("Product = " + product);
+        System.out.println("Difference = " + Math.abs(sum - product));
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          let n = parseInt(inputs['n']);
+          if (isNaN(n)||n<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          let sum=0,prod=1,t=n;
+          while(t>0){const d=t%10;sum+=d;prod*=d;t=Math.floor(t/10);}
+          yield { type: 'out', text: 'Sum = '+sum };
+          yield { type: 'out', text: 'Product = '+prod };
+          yield { type: 'out', text: 'Difference = '+Math.abs(sum-prod) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'power-without-pow',
+        title: 'Power (Without Math.pow)',
+        icon: '⚡',
+        difficulty: 'Easy',
+        tags: ['for loop', 'power', 'math'],
+        desc: 'Calculates base^exponent using a loop, without using Math.pow.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int base = sc.nextInt(), exp = sc.nextInt();
+        long result = 1;
+        for (int i = 0; i < exp; i++) result *= base;
+        System.out.println(base + "^" + exp + " = " + result);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter base: ', inputKey: 'base' };
+          yield { type: 'ask', text: 'Enter exponent: ', inputKey: 'exp' };
+          const base=parseInt(inputs['base']),exp=parseInt(inputs['exp']);
+          if (isNaN(base)||isNaN(exp)||exp<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          let result=1; for(let i=0;i<exp;i++) result*=base;
+          yield { type: 'out', text: base+'^'+exp+' = '+result };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'lcm-using-loop',
+        title: 'LCM Using Loop',
+        icon: '🔗',
+        difficulty: 'Medium',
+        tags: ['while loop', 'lcm'],
+        desc: 'Finds the LCM (Least Common Multiple) of two numbers using a loop.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt();
+        int lcm = Math.max(a, b);
+        while (lcm % a != 0 || lcm % b != 0) lcm++;
+        System.out.println("LCM = " + lcm);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter first number: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter second number: ', inputKey: 'b' };
+          const a=parseInt(inputs['a']),b=parseInt(inputs['b']);
+          if (isNaN(a)||isNaN(b)||a<1||b<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let lcm=Math.max(a,b); while(lcm%a!==0||lcm%b!==0) lcm++;
+          yield { type: 'out', text: 'LCM = '+lcm };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'square-series-loop',
+        title: 'Square Series (1,4,9,16...)',
+        icon: '📈',
+        difficulty: 'Easy',
+        tags: ['for loop', 'series', 'square'],
+        desc: 'Prints the perfect square series: 1, 4, 9, 16, 25, … up to N terms.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++)
+            System.out.print(i*i + " ");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N terms: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r=''; for(let i=1;i<=n;i++) r+=i*i+' ';
+          yield { type: 'out', text: r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'pattern-series-2-6-7',
+        title: 'Series: 2, 6, 7, 21, 22...',
+        icon: '🔣',
+        difficulty: 'Hard',
+        tags: ['for loop', 'series', 'pattern'],
+        desc: 'Prints the pattern-based series: 2, 6, 7, 21, 22, 66, 67, 201…',
+        code: `public class Main {
+    public static void main(String[] args) {
+        long val = 2;
+        for (int i = 0; i < 8; i++) {
+            System.out.print(val + " ");
+            if (i % 2 == 0) val *= 3;
+            else             val += 1;
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          let val=2n, r='';
+          for(let i=0;i<8;i++){r+=val+' ';if(i%2===0)val*=3n;else val+=1n;}
+          yield { type: 'out', text: r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'alternating-series',
+        title: 'Alternating Series: 1 -2 3 -4...',
+        icon: '±',
+        difficulty: 'Easy',
+        tags: ['for loop', 'series', 'alternating'],
+        desc: 'Prints the alternating sign series: 1 -2 3 -4 5 -6 … up to N terms.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            if (i % 2 == 0) System.out.print(-i + " ");
+            else             System.out.print(i  + " ");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N terms: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r=''; for(let i=1;i<=n;i++) r+=(i%2===0?-i:i)+' ';
+          yield { type: 'out', text: r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'harmonic-series-sum',
+        title: 'Harmonic Sum: 1 + 1/2 + ... + 1/N',
+        icon: '∑',
+        difficulty: 'Medium',
+        tags: ['for loop', 'series', 'harmonic'],
+        desc: 'Calculates the sum of the harmonic series: 1 + 1/2 + 1/3 + … + 1/N.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        double sum = 0;
+        for (int i = 1; i <= n; i++) sum += 1.0 / i;
+        System.out.printf("Sum = %.4f%n", sum);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let sum=0; for(let i=1;i<=n;i++) sum+=1/i;
+          yield { type: 'out', text: 'Sum = '+sum.toFixed(4) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'factorial-series-sum',
+        title: 'Factorial Series Sum (1!+2!+...+N!)',
+        icon: '!',
+        difficulty: 'Medium',
+        tags: ['for loop', 'factorial', 'series'],
+        desc: 'Calculates the sum of factorials: 1! + 2! + 3! + … + N!',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long sum = 0, fact = 1;
+        for (int i = 1; i <= n; i++) { fact *= i; sum += fact; }
+        System.out.println("Sum = " + sum);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let sum=0,fact=1; for(let i=1;i<=n;i++){fact*=i;sum+=fact;}
+          yield { type: 'out', text: 'Sum = '+sum };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'break-divisible-by-7',
+        title: 'Stop at Multiple of 7 (break)',
+        icon: '🛑',
+        difficulty: 'Easy',
+        tags: ['for loop', 'break'],
+        desc: 'Prints numbers from 1 to N and stops when a multiple of 7 is encountered.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            if (i % 7 == 0) { System.out.println("\nStopped at: " + i); break; }
+            System.out.print(i + " ");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r='',found=false;
+          for(let i=1;i<=n;i++){if(i%7===0){r+='\nStopped at: '+i;found=true;break;}r+=i+' ';}
+          if(!found) r+='\n(No multiple of 7 in range)';
+          yield { type: 'out', text: r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'skip-divisible-by-5',
+        title: 'Skip Multiples of 5 (continue)',
+        icon: '5️⃣',
+        difficulty: 'Easy',
+        tags: ['for loop', 'continue'],
+        desc: 'Prints numbers from 1 to N, skipping all multiples of 5 using continue.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            if (i % 5 == 0) continue;
+            System.out.print(i + " ");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r=''; for(let i=1;i<=n;i++){if(i%5===0)continue;r+=i+' ';}
+          yield { type: 'out', text: r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'sum-until-exceeds-100',
+        title: 'Print Until Sum Exceeds 100',
+        icon: '💯',
+        difficulty: 'Easy',
+        tags: ['for loop', 'break', 'sum'],
+        desc: 'Prints numbers from 1 upward and stops when the cumulative sum exceeds 100.',
+        code: `public class Main {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 1; ; i++) {
+            sum += i;
+            if (sum > 100) {
+                System.out.println("\nStopped at i=" + i + ", Sum=" + sum);
+                break;
+            }
+            System.out.print(i + " ");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          let sum=0,r='';
+          for(let i=1;;i++){sum+=i;if(sum>100){r+='\nStopped at i='+i+', Sum='+sum;break;}r+=i+' ';}
+          yield { type: 'out', text: r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'sum-until-negative-input',
+        title: 'Sum Until Negative Input',
+        icon: '➕',
+        difficulty: 'Medium',
+        tags: ['do-while', 'input', 'sum'],
+        desc: 'Reads numbers from the user until a negative is entered, then prints the sum.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int sum = 0, num;
+        do {
+            num = sc.nextInt();
+            if (num >= 0) sum += num;
+        } while (num >= 0);
+        System.out.println("Sum = " + sum);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          let sum=0,count=0;
+          while(true){
+            yield { type: 'ask', text: 'Enter number (negative to stop): ', inputKey: 'num'+count };
+            const num=parseInt(inputs['num'+count]);
+            if(isNaN(num)||num<0) break;
+            sum+=num; count++;
+          }
+          yield { type: 'out', text: 'Sum = '+sum };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'count-pos-neg-zero-inputs',
+        title: 'Count Positive, Negative, Zero',
+        icon: '📊',
+        difficulty: 'Medium',
+        tags: ['for loop', 'input', 'count'],
+        desc: 'Reads N numbers and counts how many are positive, negative, and zero.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), pos=0, neg=0, zero=0;
+        for (int i = 0; i < n; i++) {
+            int num = sc.nextInt();
+            if (num > 0) pos++;
+            else if (num < 0) neg++;
+            else zero++;
+        }
+        System.out.println("Positive: "+pos);
+        System.out.println("Negative: "+neg);
+        System.out.println("Zero: "+zero);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'How many numbers to enter? ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let pos=0,neg=0,zero=0;
+          for(let i=0;i<n;i++){
+            yield { type: 'ask', text: 'Enter number '+(i+1)+': ', inputKey: 'v'+i };
+            const v=parseInt(inputs['v'+i]);
+            if(v>0)pos++;else if(v<0)neg++;else zero++;
+          }
+          yield { type: 'out', text: 'Positive: '+pos };
+          yield { type: 'out', text: 'Negative: '+neg };
+          yield { type: 'out', text: 'Zero: '+zero };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'avg-n-inputs',
+        title: 'Average of N Inputs',
+        icon: 'x̄',
+        difficulty: 'Easy',
+        tags: ['for loop', 'input', 'average'],
+        desc: 'Reads N numbers from the user and calculates their average.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        double sum = 0;
+        for (int i = 0; i < n; i++) sum += sc.nextDouble();
+        System.out.printf("Average = %.2f%n", sum / n);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'How many numbers? ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let sum=0;
+          for(let i=0;i<n;i++){
+            yield { type: 'ask', text: 'Enter number '+(i+1)+': ', inputKey: 'v'+i };
+            sum+=parseFloat(inputs['v'+i])||0;
+          }
+          yield { type: 'out', text: 'Average = '+(sum/n).toFixed(2) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'max-among-n-inputs',
+        title: 'Maximum Among N Inputs',
+        icon: '🔝',
+        difficulty: 'Easy',
+        tags: ['for loop', 'input', 'max'],
+        desc: 'Reads N numbers from the user and finds the maximum value.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), max = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            int num = sc.nextInt();
+            if (num > max) max = num;
+        }
+        System.out.println("Maximum = " + max);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'How many numbers? ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let max=-Infinity;
+          for(let i=0;i<n;i++){
+            yield { type: 'ask', text: 'Enter number '+(i+1)+': ', inputKey: 'v'+i };
+            const v=parseFloat(inputs['v'+i]);
+            if(v>max)max=v;
+          }
+          yield { type: 'out', text: 'Maximum = '+max };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'second-largest-n-inputs',
+        title: 'Second Largest Among N Inputs',
+        icon: '🥈',
+        difficulty: 'Medium',
+        tags: ['for loop', 'input', 'max'],
+        desc: 'Reads N numbers from the user and finds the second largest value.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int max = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            int num = sc.nextInt();
+            if (num > max)      { second = max; max = num; }
+            else if (num > second) second = num;
+        }
+        System.out.println("Second Largest = " + second);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'How many numbers? ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<2) { yield { type:'error', text:'Enter at least 2 numbers.' }; return; }
+          let max=-Infinity,second=-Infinity;
+          for(let i=0;i<n;i++){
+            yield { type: 'ask', text: 'Enter number '+(i+1)+': ', inputKey: 'v'+i };
+            const v=parseFloat(inputs['v'+i]);
+            if(v>max){second=max;max=v;}else if(v>second)second=v;
+          }
+          yield { type: 'out', text: second===-Infinity?'No second largest':'Second Largest = '+second };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'digits-ascending-check',
+        title: 'Digits in Ascending Order?',
+        icon: '📈',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits', 'ascending'],
+        desc: 'Checks whether the digits of a number are in ascending order (left to right).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        boolean asc = true;
+        for (int i = 1; i < s.length(); i++)
+            if (s.charAt(i) < s.charAt(i-1)) { asc = false; break; }
+        System.out.println(asc ? "Ascending ✓" : "Not Ascending ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const s = String(Math.abs(parseInt(inputs['n'])||0));
+          let asc=true;
+          for(let i=1;i<s.length;i++) if(s[i]<s[i-1]){asc=false;break;}
+          yield { type: 'out', text: asc?'Ascending ✓':'Not Ascending ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'digits-descending-check',
+        title: 'Digits in Descending Order?',
+        icon: '📉',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits', 'descending'],
+        desc: 'Checks whether the digits of a number are in descending order (left to right).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        boolean desc = true;
+        for (int i = 1; i < s.length(); i++)
+            if (s.charAt(i) > s.charAt(i-1)) { desc = false; break; }
+        System.out.println(desc ? "Descending ✓" : "Not Descending ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const s = String(Math.abs(parseInt(inputs['n'])||0));
+          let desc=true;
+          for(let i=1;i<s.length;i++) if(s[i]>s[i-1]){desc=false;break;}
+          yield { type: 'out', text: desc?'Descending ✓':'Not Descending ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'unique-digits-check',
+        title: 'Unique Digits Check',
+        icon: '🔍',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits', 'unique'],
+        desc: 'Checks whether all digits of a number are unique (no repeats).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        boolean[] seen = new boolean[10]; boolean unique = true;
+        while (n > 0) {
+            int d = n % 10;
+            if (seen[d]) { unique = false; break; }
+            seen[d] = true; n /= 10;
+        }
+        System.out.println(unique ? "All digits unique ✓" : "Repeated digit found ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const s = String(Math.abs(parseInt(inputs['n'])||0));
+          const u = new Set(s.split(''));
+          yield { type: 'out', text: u.size===s.length?'All digits unique ✓':'Repeated digit found ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'frequency-of-each-digit',
+        title: 'Frequency of Each Digit',
+        icon: '📊',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits', 'frequency'],
+        desc: 'Finds how many times each digit (0–9) appears in a number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] freq = new int[10];
+        while (n > 0) { freq[n % 10]++; n /= 10; }
+        for (int i = 0; i < 10; i++)
+            if (freq[i] > 0) System.out.println(i + ": " + freq[i] + " time(s)");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          const freq=new Array(10).fill(0);
+          String(n).split('').forEach(c=>freq[+c]++);
+          for(let i=0;i<10;i++) if(freq[i]>0) yield { type:'out', text: i+': '+freq[i]+' time(s)' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'harshad-number-loop',
+        title: 'Harshad Number',
+        icon: '🔢',
+        difficulty: 'Easy',
+        tags: ['while loop', 'digits', 'harshad'],
+        desc: 'Checks if a number is a Harshad number (divisible by the sum of its digits).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), sum=0, temp=n;
+        while (temp > 0) { sum += temp % 10; temp /= 10; }
+        if (n % sum == 0) System.out.println(n + " is a Harshad Number ✓");
+        else               System.out.println(n + " is NOT a Harshad Number ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let sum=0,t=n; while(t>0){sum+=t%10;t=Math.floor(t/10);}
+          yield { type: 'out', text: n%sum===0?n+' is a Harshad Number ✓':n+' is NOT a Harshad Number ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'automorphic-number-check',
+        title: 'Automorphic Number',
+        icon: '🔄',
+        difficulty: 'Medium',
+        tags: ['while loop', 'digits', 'automorphic'],
+        desc: 'Checks if a number is Automorphic — its square ends with the number itself.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long sq = (long)n * n;
+        int d = String.valueOf(n).length();
+        long mod = (long)Math.pow(10, d);
+        if (sq % mod == n) System.out.println(n + " is Automorphic ✓");
+        else               System.out.println(n + " is NOT Automorphic ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          const sq=n*n, mod=Math.pow(10,String(n).length);
+          yield { type: 'out', text: sq%mod===n?n+' is Automorphic ✓':n+' is NOT Automorphic ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'perfect-squares-in-range',
+        title: 'Perfect Squares in Range',
+        icon: '✅',
+        difficulty: 'Easy',
+        tags: ['for loop', 'square', 'range'],
+        desc: 'Prints all perfect squares between two given numbers (inclusive).',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int low = sc.nextInt(), high = sc.nextInt();
+        System.out.print("Perfect squares: ");
+        for (int i = low; i <= high; i++) {
+            int sq = (int)Math.sqrt(i);
+            if (sq * sq == i) System.out.print(i + " ");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter lower bound: ', inputKey: 'low' };
+          yield { type: 'ask', text: 'Enter upper bound: ', inputKey: 'high' };
+          const low=parseInt(inputs['low']),high=parseInt(inputs['high']);
+          if (isNaN(low)||isNaN(high)||low>high) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r='';
+          for(let i=low;i<=high;i++){const sq=Math.floor(Math.sqrt(i));if(sq*sq===i)r+=i+' ';}
+          yield { type: 'out', text: 'Perfect squares: '+(r.trim()||'None') };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'factors-of-number',
+        title: 'All Factors of a Number',
+        icon: '🔢',
+        difficulty: 'Easy',
+        tags: ['for loop', 'factors', 'divisors'],
+        desc: 'Prints all factors (divisors) of a given number.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.print("Factors: ");
+        for (int i = 1; i <= n; i++)
+            if (n % i == 0) System.out.print(i + " ");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let r=''; for(let i=1;i<=n;i++) if(n%i===0) r+=i+' ';
+          yield { type: 'out', text: 'Factors: '+r.trim() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+
 
     ]
   },
@@ -2725,7 +3911,1044 @@ public class Main {
           }
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
-      }
+      },
+      {
+        id: 'min-two-numbers',
+        title: 'Minimum of Two Numbers',
+        icon: '🔻',
+        difficulty: 'Easy',
+        tags: ['if-else', 'min'],
+        desc: 'Finds the minimum of two numbers using an if-else statement.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt();
+        if (a < b)       System.out.print(a + " is smaller");
+        else if (b < a)  System.out.print(b + " is smaller");
+        else             System.out.print("Both are equal");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter first number: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter second number: ', inputKey: 'b' };
+          const a=parseInt(inputs['a']),b=parseInt(inputs['b']);
+          if (isNaN(a)||isNaN(b)) { yield { type:'error', text:'Invalid input.' }; return; }
+          if(a<b) yield { type:'out', text: a+' is smaller' };
+          else if(b<a) yield { type:'out', text: b+' is smaller' };
+          else yield { type:'out', text: 'Both are equal' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'divisible-by-5',
+        title: 'Divisible by 5?',
+        icon: '5️⃣',
+        difficulty: 'Easy',
+        tags: ['if-else', 'modulo'],
+        desc: 'Checks whether a given number is divisible by 5.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n % 5 == 0) System.out.print("Divisible by 5 ✓");
+        else             System.out.print("Not divisible by 5 ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: n%5===0?n+' is Divisible by 5 ✓':n+' is Not divisible by 5 ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'multiple-of-3-and-7',
+        title: 'Multiple of Both 3 and 7?',
+        icon: '7️⃣',
+        difficulty: 'Easy',
+        tags: ['if-else', 'modulo'],
+        desc: 'Checks whether a number is a multiple of both 3 and 7.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n % 3 == 0 && n % 7 == 0)
+            System.out.print("Multiple of both 3 and 7 ✓");
+        else
+            System.out.print("Not a multiple of both 3 and 7 ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: n%3===0&&n%7===0?n+' is Multiple of both 3 and 7 ✓':n+' is Not a multiple of both 3 and 7 ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'smallest-of-three',
+        title: 'Smallest Among Three Numbers',
+        icon: '🔻',
+        difficulty: 'Easy',
+        tags: ['if-else', 'min'],
+        desc: 'Finds the smallest among three numbers using else-if ladder.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+        if (a <= b && a <= c) System.out.print(a + " is smallest");
+        else if (b <= a && b <= c) System.out.print(b + " is smallest");
+        else System.out.print(c + " is smallest");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter b: ', inputKey: 'b' };
+          yield { type: 'ask', text: 'Enter c: ', inputKey: 'c' };
+          const a=parseInt(inputs['a']),b=parseInt(inputs['b']),c=parseInt(inputs['c']);
+          if (isNaN(a)||isNaN(b)||isNaN(c)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: 'Smallest = '+Math.min(a,b,c) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'char-type-check',
+        title: 'Character Type Check',
+        icon: '🔤',
+        difficulty: 'Medium',
+        tags: ['if-else', 'char', 'type'],
+        desc: 'Checks if a character is Uppercase, Lowercase, Digit, or Special character.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char ch = sc.next().charAt(0);
+        if (ch >= 'A' && ch <= 'Z')        System.out.print("Uppercase");
+        else if (ch >= 'a' && ch <= 'z')   System.out.print("Lowercase");
+        else if (ch >= '0' && ch <= '9')   System.out.print("Digit");
+        else                               System.out.print("Special Character");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a character: ', inputKey: 'ch' };
+          const ch = (inputs['ch']||'')[0];
+          if (!ch) { yield { type:'error', text:'Invalid input.' }; return; }
+          let type;
+          if(ch>='A'&&ch<='Z') type='Uppercase';
+          else if(ch>='a'&&ch<='z') type='Lowercase';
+          else if(ch>='0'&&ch<='9') type='Digit';
+          else type='Special Character';
+          yield { type:'out', text: "'"+ch+"' is "+type };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'digit-count-type',
+        title: 'Single / Double / Triple Digit',
+        icon: '🔢',
+        difficulty: 'Easy',
+        tags: ['if-else', 'digits'],
+        desc: 'Checks whether a number is a single, double, or triple digit number.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = Math.abs(sc.nextInt());
+        if (n < 10)        System.out.print("Single digit");
+        else if (n < 100)  System.out.print("Double digit");
+        else if (n < 1000) System.out.print("Triple digit");
+        else               System.out.print("More than triple digit");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = Math.abs(parseInt(inputs['n']));
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let type = n<10?'Single digit':n<100?'Double digit':n<1000?'Triple digit':'More than triple digit';
+          yield { type:'out', text: n+' → '+type };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'second-largest-three',
+        title: 'Second Largest of Three',
+        icon: '🥈',
+        difficulty: 'Medium',
+        tags: ['nested if', 'comparison'],
+        desc: 'Finds the second largest among three numbers using nested if conditions.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+        int second;
+        if (a >= b && a >= c)       second = Math.max(b, c);
+        else if (b >= a && b >= c)  second = Math.max(a, c);
+        else                        second = Math.max(a, b);
+        System.out.print("Second largest = " + second);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter b: ', inputKey: 'b' };
+          yield { type: 'ask', text: 'Enter c: ', inputKey: 'c' };
+          const a=parseInt(inputs['a']),b=parseInt(inputs['b']),c=parseInt(inputs['c']);
+          if (isNaN(a)||isNaN(b)||isNaN(c)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const arr=[a,b,c].sort((x,y)=>y-x);
+          yield { type:'out', text: 'Second largest = '+arr[1] };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'voting-with-id',
+        title: 'Voting Eligibility with ID',
+        icon: '🪪',
+        difficulty: 'Medium',
+        tags: ['nested if', 'condition'],
+        desc: 'Checks if a person is eligible to vote (age ≥ 18) AND has a valid ID.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int age = sc.nextInt();
+        int hasId = sc.nextInt(); // 1=Yes, 0=No
+        if (age >= 18) {
+            if (hasId == 1) System.out.print("Eligible to Vote ✓");
+            else            System.out.print("Age OK but No ID ✗");
+        } else {
+            System.out.print("Not Eligible (age < 18) ✗");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter age: ', inputKey: 'age' };
+          yield { type: 'ask', text: 'Has valid ID? (1=Yes, 0=No): ', inputKey: 'id' };
+          const age=parseInt(inputs['age']),id=parseInt(inputs['id']);
+          if (isNaN(age)||isNaN(id)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let res;
+          if(age>=18){ res = id===1?'Eligible to Vote ✓':'Age OK but No valid ID ✗'; }
+          else { res='Not Eligible (age < 18) ✗'; }
+          yield { type:'out', text: res };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'div-by-2-and-3',
+        title: 'Divisible by 2 and 3?',
+        icon: '÷',
+        difficulty: 'Easy',
+        tags: ['nested if', 'modulo'],
+        desc: 'Checks whether a number is divisible by both 2 and 3 using nested if.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n % 2 == 0) {
+            if (n % 3 == 0) System.out.print("Divisible by both 2 and 3 ✓");
+            else             System.out.print("Divisible by 2 only");
+        } else {
+            if (n % 3 == 0) System.out.print("Divisible by 3 only");
+            else             System.out.print("Not divisible by 2 or 3 ✗");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let res;
+          if(n%2===0){ res=n%3===0?'Divisible by both 2 and 3 ✓':'Divisible by 2 only'; }
+          else { res=n%3===0?'Divisible by 3 only':'Not divisible by 2 or 3 ✗'; }
+          yield { type:'out', text: res };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'max-nested-if',
+        title: 'Maximum of Three (Nested If)',
+        icon: '🏆',
+        difficulty: 'Medium',
+        tags: ['nested if', 'max'],
+        desc: 'Finds the maximum of three numbers using nested if conditions.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+        int max;
+        if (a > b) {
+            if (a > c) max = a; else max = c;
+        } else {
+            if (b > c) max = b; else max = c;
+        }
+        System.out.print("Maximum = " + max);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter b: ', inputKey: 'b' };
+          yield { type: 'ask', text: 'Enter c: ', inputKey: 'c' };
+          const a=parseInt(inputs['a']),b=parseInt(inputs['b']),c=parseInt(inputs['c']);
+          if (isNaN(a)||isNaN(b)||isNaN(c)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: 'Maximum = '+Math.max(a,b,c) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'between-10-and-50',
+        title: 'Number Between 10 and 50?',
+        icon: '📏',
+        difficulty: 'Easy',
+        tags: ['if-else', 'range'],
+        desc: 'Checks if a number lies strictly between 10 and 50.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n > 10 && n < 50) System.out.print("Number is between 10 and 50 ✓");
+        else                   System.out.print("Number is NOT between 10 and 50 ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: n>10&&n<50?n+' is between 10 and 50 ✓':n+' is NOT between 10 and 50 ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'day-of-week-switch',
+        title: 'Day of Week (Switch)',
+        icon: '📅',
+        difficulty: 'Easy',
+        tags: ['switch', 'day'],
+        desc: 'Prints the name of the day given a number 1–7 using switch-case.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int d = sc.nextInt();
+        switch (d) {
+            case 1: System.out.print("Monday");    break;
+            case 2: System.out.print("Tuesday");   break;
+            case 3: System.out.print("Wednesday"); break;
+            case 4: System.out.print("Thursday");  break;
+            case 5: System.out.print("Friday");    break;
+            case 6: System.out.print("Saturday");  break;
+            case 7: System.out.print("Sunday");    break;
+            default: System.out.print("Invalid day number");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter day number (1-7): ', inputKey: 'd' };
+          const d = parseInt(inputs['d']);
+          const days=['','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+          yield { type:'out', text: d>=1&&d<=7?days[d]:'Invalid day number' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'month-name-switch',
+        title: 'Month Name (Switch)',
+        icon: '🗓️',
+        difficulty: 'Easy',
+        tags: ['switch', 'month'],
+        desc: 'Prints the name of the month given a number 1–12 using switch-case.',
+        code: `import java.util.*;
+public class Main {
+    static String[] m = {"","January","February","March","April","May","June",
+                          "July","August","September","October","November","December"};
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n >= 1 && n <= 12) System.out.print(m[n]);
+        else System.out.print("Invalid month number");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter month number (1-12): ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          const months=['','January','February','March','April','May','June','July','August','September','October','November','December'];
+          yield { type:'out', text: n>=1&&n<=12?months[n]:'Invalid month number' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'menu-driven-calc',
+        title: 'Menu-Driven (Add/Sub/Mul)',
+        icon: '📋',
+        difficulty: 'Easy',
+        tags: ['switch', 'menu'],
+        desc: 'Menu-driven program: 1 → Add, 2 → Subtract, 3 → Multiply.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1.Add  2.Subtract  3.Multiply");
+        int choice = sc.nextInt();
+        int a = sc.nextInt(), b = sc.nextInt();
+        switch (choice) {
+            case 1: System.out.print("Result: " + (a + b)); break;
+            case 2: System.out.print("Result: " + (a - b)); break;
+            case 3: System.out.print("Result: " + (a * b)); break;
+            default: System.out.print("Invalid choice");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '1.Add  2.Subtract  3.Multiply' };
+          yield { type: 'ask', text: 'Enter choice (1/2/3): ', inputKey: 'ch' };
+          yield { type: 'ask', text: 'Enter first number: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter second number: ', inputKey: 'b' };
+          const ch=parseInt(inputs['ch']),a=parseInt(inputs['a']),b=parseInt(inputs['b']);
+          if (isNaN(a)||isNaN(b)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let res;
+          switch(ch){ case 1:res=a+b;break; case 2:res=a-b;break; case 3:res=a*b;break; default:res='Invalid choice'; }
+          yield { type:'out', text: 'Result: '+res };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'salary-with-bonus',
+        title: 'Salary with Bonus',
+        icon: '💰',
+        difficulty: 'Easy',
+        tags: ['if-else', 'salary'],
+        desc: 'Calculates salary bonus: 10% if salary > 50000, otherwise 5%.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double salary = sc.nextDouble();
+        double bonus = salary > 50000 ? salary * 0.10 : salary * 0.05;
+        System.out.printf("Bonus: %.2f%n", bonus);
+        System.out.printf("Total: %.2f%n", salary + bonus);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter salary: ', inputKey: 'sal' };
+          const sal = parseFloat(inputs['sal']);
+          if (isNaN(sal)||sal<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          const bonus = sal>50000?sal*0.10:sal*0.05;
+          yield { type:'out', text: 'Bonus: ₹'+bonus.toFixed(2) };
+          yield { type:'out', text: 'Total: ₹'+(sal+bonus).toFixed(2) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'driving-eligibility',
+        title: 'Driving Eligibility',
+        icon: '🚗',
+        difficulty: 'Easy',
+        tags: ['if-else', 'age'],
+        desc: 'Checks driving eligibility: age ≥ 18 → Eligible, otherwise Not eligible.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int age = sc.nextInt();
+        if (age >= 18) System.out.print("Eligible to Drive ✓");
+        else           System.out.print("Not Eligible to Drive ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter age: ', inputKey: 'age' };
+          const age = parseInt(inputs['age']);
+          if (isNaN(age)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: age>=18?'Eligible to Drive ✓':'Not Eligible to Drive ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'div-2-3-both-none',
+        title: 'Divisible by 2, 3, Both, or None',
+        icon: '÷',
+        difficulty: 'Easy',
+        tags: ['if-else', 'modulo'],
+        desc: 'Checks whether a number is divisible by 2, 3, both, or neither.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        boolean d2 = n%2==0, d3 = n%3==0;
+        if (d2 && d3)       System.out.print("Divisible by both 2 and 3");
+        else if (d2)        System.out.print("Divisible by 2 only");
+        else if (d3)        System.out.print("Divisible by 3 only");
+        else                System.out.print("Not divisible by 2 or 3");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const d2=n%2===0,d3=n%3===0;
+          let res;
+          if(d2&&d3) res='Divisible by both 2 and 3';
+          else if(d2) res='Divisible by 2 only';
+          else if(d3) res='Divisible by 3 only';
+          else res='Not divisible by 2 or 3';
+          yield { type:'out', text: res };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'perfect-square-check',
+        title: 'Perfect Square Check',
+        icon: '✅',
+        difficulty: 'Easy',
+        tags: ['if-else', 'math', 'square'],
+        desc: 'Checks whether a given number is a perfect square.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sq = (int)Math.sqrt(n);
+        if (sq * sq == n) System.out.print(n + " is a Perfect Square ✓");
+        else              System.out.print(n + " is NOT a Perfect Square ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          const sq = Math.floor(Math.sqrt(n));
+          yield { type:'out', text: sq*sq===n?n+' is a Perfect Square ✓':n+' is NOT a Perfect Square ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'triangle-sides-check',
+        title: 'Triangle Possible?',
+        icon: '📐',
+        difficulty: 'Easy',
+        tags: ['if-else', 'triangle'],
+        desc: 'Checks whether three given side lengths can form a valid triangle.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+        if (a+b>c && b+c>a && a+c>b) System.out.print("Valid Triangle ✓");
+        else                          System.out.print("Not a Triangle ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter side a: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter side b: ', inputKey: 'b' };
+          yield { type: 'ask', text: 'Enter side c: ', inputKey: 'c' };
+          const a=parseInt(inputs['a']),b=parseInt(inputs['b']),c=parseInt(inputs['c']);
+          if (isNaN(a)||isNaN(b)||isNaN(c)||a<=0||b<=0||c<=0) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: a+b>c&&b+c>a&&a+c>b?'Valid Triangle ✓':'Not a Triangle ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'triangle-type-check',
+        title: 'Triangle Type',
+        icon: '🔺',
+        difficulty: 'Easy',
+        tags: ['if-else', 'triangle', 'type'],
+        desc: 'Determines if a triangle is Equilateral, Isosceles, or Scalene.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+        if (a==b && b==c)           System.out.print("Equilateral Triangle");
+        else if (a==b||b==c||a==c) System.out.print("Isosceles Triangle");
+        else                        System.out.print("Scalene Triangle");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter side a: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter side b: ', inputKey: 'b' };
+          yield { type: 'ask', text: 'Enter side c: ', inputKey: 'c' };
+          const a=parseInt(inputs['a']),b=parseInt(inputs['b']),c=parseInt(inputs['c']);
+          if (isNaN(a)||isNaN(b)||isNaN(c)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let type;
+          if(a===b&&b===c) type='Equilateral Triangle';
+          else if(a===b||b===c||a===c) type='Isosceles Triangle';
+          else type='Scalene Triangle';
+          yield { type:'out', text: type };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'alphabet-check',
+        title: 'Alphabet or Not?',
+        icon: '🔡',
+        difficulty: 'Easy',
+        tags: ['if-else', 'char', 'alphabet'],
+        desc: 'Checks whether a given character is an alphabet letter or not.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char ch = sc.next().charAt(0);
+        if ((ch>='A'&&ch<='Z') || (ch>='a'&&ch<='z'))
+            System.out.print("'" + ch + "' is an Alphabet ✓");
+        else
+            System.out.print("'" + ch + "' is NOT an Alphabet ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a character: ', inputKey: 'ch' };
+          const ch = (inputs['ch']||'')[0];
+          if (!ch) { yield { type:'error', text:'Invalid input.' }; return; }
+          const isAlpha = (ch>='A'&&ch<='Z')||(ch>='a'&&ch<='z');
+          yield { type:'out', text: isAlpha?"'"+ch+"' is an Alphabet ✓":"'"+ch+"' is NOT an Alphabet ✗" };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'ends-with-5',
+        title: 'Number Ends with 5?',
+        icon: '5️⃣',
+        difficulty: 'Easy',
+        tags: ['if-else', 'modulo', 'digit'],
+        desc: 'Checks whether the last digit of a number is 5.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (Math.abs(n) % 10 == 5) System.out.print("Ends with 5 ✓");
+        else                       System.out.print("Does NOT end with 5 ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: Math.abs(n)%10===5?n+' ends with 5 ✓':n+' does NOT end with 5 ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'same-digits-check',
+        title: 'All Digits Same? (111, 222...)',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['if-else', 'digits', 'repunit'],
+        desc: 'Checks whether all digits in a number are the same (e.g. 111, 222, 444).',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        char first = s.charAt(0);
+        boolean same = true;
+        for (char c : s.toCharArray())
+            if (c != first) { same = false; break; }
+        System.out.println(same ? "All digits are same ✓" : "Digits are NOT all same ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const s = String(inputs['n']||'');
+          if (!s||isNaN(+s)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const same = s.split('').every(c=>c===s[0]);
+          yield { type:'out', text: same?'All digits are same ✓':'Digits are NOT all same ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'sum-digits-even-odd',
+        title: 'Sum of Digits: Even or Odd?',
+        icon: '⚖️',
+        difficulty: 'Medium',
+        tags: ['if-else', 'digits', 'sum'],
+        desc: 'Checks whether the sum of all digits of a number is even or odd.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), sum = 0, temp = n;
+        while (temp > 0) { sum += temp % 10; temp /= 10; }
+        if (sum % 2 == 0) System.out.println("Sum " + sum + " is Even ✓");
+        else              System.out.println("Sum " + sum + " is Odd");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          let n = parseInt(inputs['n']);
+          if (isNaN(n)||n<0) { yield { type:'error', text:'Invalid input.' }; return; }
+          let sum=0,t=n; while(t>0){sum+=t%10;t=Math.floor(t/10);}
+          yield { type:'out', text: 'Sum = '+sum+' → '+(sum%2===0?'Even ✓':'Odd') };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'even-div5-odd-div3',
+        title: 'Even & Div by 5 / Odd & Div by 3',
+        icon: '🔀',
+        difficulty: 'Medium',
+        tags: ['if-else', 'modulo', 'condition'],
+        desc: 'Checks if a number is (Even and divisible by 5) or (Odd and divisible by 3).',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n%2==0 && n%5==0) System.out.print("Even and divisible by 5 ✓");
+        else if (n%2!=0 && n%3==0) System.out.print("Odd and divisible by 3 ✓");
+        else System.out.print("Neither condition met ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let res;
+          if(n%2===0&&n%5===0) res='Even and divisible by 5 ✓';
+          else if(n%2!==0&&n%3===0) res='Odd and divisible by 3 ✓';
+          else res='Neither condition met ✗';
+          yield { type:'out', text: res };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'student-pass-all-check',
+        title: 'Student Pass All Subjects',
+        icon: '🎓',
+        difficulty: 'Medium',
+        tags: ['if-else', 'condition', 'average'],
+        desc: 'Checks if a student passed all subjects (each ≥ 35) AND has an average ≥ 50.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int s1=sc.nextInt(),s2=sc.nextInt(),s3=sc.nextInt();
+        double avg = (s1+s2+s3)/3.0;
+        if (s1>=35 && s2>=35 && s3>=35 && avg>=50)
+            System.out.println("Passed ✓ (Average: " + avg + ")");
+        else
+            System.out.println("Failed ✗ (Average: " + avg + ")");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter Subject 1 marks: ', inputKey: 's1' };
+          yield { type: 'ask', text: 'Enter Subject 2 marks: ', inputKey: 's2' };
+          yield { type: 'ask', text: 'Enter Subject 3 marks: ', inputKey: 's3' };
+          const s1=parseInt(inputs['s1']),s2=parseInt(inputs['s2']),s3=parseInt(inputs['s3']);
+          if (isNaN(s1)||isNaN(s2)||isNaN(s3)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const avg=(s1+s2+s3)/3;
+          if(s1>=35&&s2>=35&&s3>=35&&avg>=50) yield { type:'out', text: 'Passed ✓ (Average: '+avg.toFixed(2)+')' };
+          else yield { type:'out', text: 'Failed ✗ (Average: '+avg.toFixed(2)+')' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'login-system-check',
+        title: 'Login System',
+        icon: '🔐',
+        difficulty: 'Easy',
+        tags: ['if-else', 'string', 'login'],
+        desc: 'Simulates a simple login: checks if username and password match.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String user = sc.next(), pass = sc.next();
+        if (user.equals("admin") && pass.equals("1234"))
+            System.out.print("Login Successful ✓");
+        else
+            System.out.print("Invalid Credentials ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter username: ', inputKey: 'u' };
+          yield { type: 'ask', text: 'Enter password: ', inputKey: 'p' };
+          const u=inputs['u'],p=inputs['p'];
+          yield { type:'out', text: u==='admin'&&p==='1234'?'Login Successful ✓':'Invalid Credentials ✗' };
+          yield { type: 'out', text: '(Hint: username=admin, password=1234)' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'atm-withdrawal-check',
+        title: 'ATM Withdrawal',
+        icon: '🏧',
+        difficulty: 'Medium',
+        tags: ['nested if', 'condition', 'atm'],
+        desc: 'ATM withdrawal: checks if balance is sufficient AND amount is a multiple of 100.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double balance = sc.nextDouble();
+        double amount  = sc.nextDouble();
+        if (amount % 100 == 0) {
+            if (balance >= amount) {
+                balance -= amount;
+                System.out.printf("Withdrawn: %.0f%nBalance: %.0f%n", amount, balance);
+            } else System.out.print("Insufficient Balance ✗");
+        } else System.out.print("Amount must be a multiple of 100 ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter current balance: ', inputKey: 'bal' };
+          yield { type: 'ask', text: 'Enter amount to withdraw: ', inputKey: 'amt' };
+          const bal=parseFloat(inputs['bal']),amt=parseFloat(inputs['amt']);
+          if (isNaN(bal)||isNaN(amt)||amt<=0) { yield { type:'error', text:'Invalid input.' }; return; }
+          if(amt%100!==0) yield { type:'out', text:'Amount must be a multiple of 100 ✗' };
+          else if(bal<amt) yield { type:'out', text:'Insufficient Balance ✗' };
+          else { yield { type:'out', text:'Withdrawn: ₹'+amt }; yield { type:'out', text:'Remaining Balance: ₹'+(bal-amt) }; }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'second-smallest-three',
+        title: 'Second Smallest of Three',
+        icon: '🥉',
+        difficulty: 'Medium',
+        tags: ['if-else', 'min', 'comparison'],
+        desc: 'Finds the second smallest among three numbers.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+        int second;
+        if (a <= b && a <= c)      second = Math.min(b, c);
+        else if (b <= a && b <= c) second = Math.min(a, c);
+        else                       second = Math.min(a, b);
+        System.out.print("Second smallest = " + second);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a: ', inputKey: 'a' };
+          yield { type: 'ask', text: 'Enter b: ', inputKey: 'b' };
+          yield { type: 'ask', text: 'Enter c: ', inputKey: 'c' };
+          const a=parseInt(inputs['a']),b=parseInt(inputs['b']),c=parseInt(inputs['c']);
+          if (isNaN(a)||isNaN(b)||isNaN(c)) { yield { type:'error', text:'Invalid input.' }; return; }
+          const arr=[a,b,c].sort((x,y)=>x-y);
+          yield { type:'out', text: 'Second smallest = '+arr[1] };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'between-two-values',
+        title: 'Number Between Two Values?',
+        icon: '↔️',
+        difficulty: 'Easy',
+        tags: ['if-else', 'range'],
+        desc: 'Checks if a number lies between two given values (inclusive).',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), low = sc.nextInt(), high = sc.nextInt();
+        if (n >= low && n <= high)
+            System.out.print(n + " is in range [" + low + ", " + high + "] ✓");
+        else
+            System.out.print(n + " is NOT in range ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter the number: ', inputKey: 'n' };
+          yield { type: 'ask', text: 'Enter lower bound: ', inputKey: 'low' };
+          yield { type: 'ask', text: 'Enter upper bound: ', inputKey: 'high' };
+          const n=parseInt(inputs['n']),low=parseInt(inputs['low']),high=parseInt(inputs['high']);
+          if (isNaN(n)||isNaN(low)||isNaN(high)) { yield { type:'error', text:'Invalid input.' }; return; }
+          yield { type:'out', text: n>=low&&n<=high?n+' is in range ['+low+', '+high+'] ✓':n+' is NOT in range ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'profit-or-loss',
+        title: 'Profit or Loss',
+        icon: '📊',
+        difficulty: 'Easy',
+        tags: ['if-else', 'math', 'finance'],
+        desc: 'Determines profit or loss based on cost price and selling price.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double cp = sc.nextDouble(), sp = sc.nextDouble();
+        if (sp > cp)      System.out.printf("Profit = %.2f%n", sp-cp);
+        else if (sp < cp) System.out.printf("Loss = %.2f%n", cp-sp);
+        else              System.out.print("No Profit No Loss");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter Cost Price: ', inputKey: 'cp' };
+          yield { type: 'ask', text: 'Enter Selling Price: ', inputKey: 'sp' };
+          const cp=parseFloat(inputs['cp']),sp=parseFloat(inputs['sp']);
+          if (isNaN(cp)||isNaN(sp)) { yield { type:'error', text:'Invalid input.' }; return; }
+          if(sp>cp) yield { type:'out', text: 'Profit = ₹'+(sp-cp).toFixed(2) };
+          else if(sp<cp) yield { type:'out', text: 'Loss = ₹'+(cp-sp).toFixed(2) };
+          else yield { type:'out', text: 'No Profit No Loss' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'harshad-number-dm',
+        title: 'Harshad Number (Decision)',
+        icon: '🔢',
+        difficulty: 'Medium',
+        tags: ['if-else', 'digits', 'harshad'],
+        desc: 'Checks if a number is a Harshad Number using if-else (digit sum divides the number).',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), sum=0, temp=n;
+        while (temp > 0) { sum += temp%10; temp /= 10; }
+        if (n % sum == 0) System.out.println(n+" is a Harshad Number ✓");
+        else              System.out.println(n+" is NOT a Harshad Number ✗");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter a number: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n)||n<1) { yield { type:'error', text:'Invalid input.' }; return; }
+          let sum=0,t=n; while(t>0){sum+=t%10;t=Math.floor(t/10);}
+          yield { type:'out', text: n%sum===0?n+' is a Harshad Number ✓':n+' is NOT a Harshad Number ✗' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+
 
     ]
   },

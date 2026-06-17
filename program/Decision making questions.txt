@@ -1,0 +1,106 @@
+Basic If / If-Else
+1.Check whether a number is positive or negative
+2.Check whether a number is even or odd
+3.Find the maximum of two numbers
+4.Find the minimum of two numbers
+5.Check whether a number is divisible by 5
+6.Check whether a number is multiple of both 3 and 7
+7.Check whether a number is zero, positive, or negative
+8.Print absolute value of a number (without using built-in function)
+
+Else-If Ladder Problems
+9.Find the largest among three numbers
+10.Find the smallest among three numbers
+11.Check whether a year is a leap year
+12.Grade system:
+	90+ → A
+	75–89 → B
+	50–74 → C
+	<50 → Fail
+13.Check whether a character is:
+	Uppercase
+	Lowercase
+	Digit
+	Special character
+14.Check whether a number is:
+	Single digit
+	Double digit
+	Triple digit
+
+Nested If Problems
+15.Find the second largest of three numbers
+16.Check whether a number is eligible for voting AND has ID
+17.Check whether a number is divisible by both 2 and 3
+18.Find maximum of three numbers using nested if
+19.Check if a number lies between 10 and 50
+
+Switch Case Problems
+20.Create a simple calculator (+, -, *, /)
+21.Print day of week using number (1–7)
+22.Print month name using number (1–12)
+23.Check whether a character is a vowel or consonant
+24.Menu-driven program:
+1 → Add
+2 → Subtract
+3 → Multiply
+
+Real-Life Problems
+25. Calculate electricity bill based on units:
+	0–100 → ₹1/unit
+	101–200 → ₹2/unit
+	Above 200 → ₹3/unit
+26.Calculate salary with bonus:
+	Salary > 50,000 → 10% bonus
+	Otherwise → 5%
+27.Calculate discount:
+	Amount > 5000 → 20%
+	Amount > 2000 → 10%
+	Otherwise → No discount
+28. Check driving eligibility:
+	Age ≥ 18 → Eligible
+	Otherwise → Not eligible
+
+Mathematical Decision Problems
+29.Check whether a number is divisible by 2, 3, both, or none
+30.Check whether a number is perfect square
+31.Check whether a number is prime or not (basic logic using if)
+32.Check whether a number is Armstrong or not (decision-based)
+33.Check whether a number is palindrome or not
+
+Logical Thinking Problems
+34.Check whether three sides form a triangle
+35.Check triangle type:
+	Equilateral
+	Isosceles
+	Scalene
+36.Check whether a character is alphabet or not
+37.Check whether a number ends with 5 or not
+38.Compare two numbers and print:
+	Equal
+	Greater
+	Smaller
+
+
+39.Find largest digit in a number using if
+40.Find smallest digit in a number
+41.Check whether digits are same (e.g., 111, 222)
+42.Reverse a number and check if equal (palindrome logic using decision)
+43.Check whether sum of digits is even or odd
+
+Mixed Condition Problems
+44.Check whether a number is:
+	Even & divisible by 5
+	Odd & divisible by 3
+45.Check whether a student:
+	Passed all subjects AND average ≥ 50
+46.Check login system:
+	Username & password match
+47.ATM withdrawal:
+	Balance sufficient AND amount multiple of 100
+
+
+48.Find second smallest among three numbers
+49.Check whether a number is between two values (inclusive)
+50.Convert marks to grade + pass/fail status
+51.Determine profit or loss
+52.Check whether a number is Harshad number
