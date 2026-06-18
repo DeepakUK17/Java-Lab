@@ -73,3 +73,4 @@ public class Main {
 2. Figure out which Section it belongs to (e.g., Looping -> `data/section3_looping.js`).
 3. Construct the JSON-like object with the generator function.
 4. Use a `replace_file_content` tool (or similar) to insert it at the end of the `programs` array in that file.
+5. If you created any temporary scripts (e.g., Node.js generator scripts) to automate the insertion, be sure to delete them once the process is complete to keep the repository clean.
