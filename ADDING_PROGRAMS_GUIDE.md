@@ -74,3 +74,4 @@ public class Main {
 3. Construct the JSON-like object with the generator function.
 4. Use a `replace_file_content` tool (or similar) to insert it at the end of the `programs` array in that file.
 5. If you created any temporary scripts (e.g., Node.js generator scripts) to automate the insertion, be sure to delete them once the process is complete to keep the repository clean.
+6. Increment the version number (`?v=...`) in `index.html` for both `style.css` and `app.js` to ensure browsers fetch the latest updates.
