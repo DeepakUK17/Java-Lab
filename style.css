@@ -321,6 +321,32 @@ body {
   box-shadow: var(--shadow-card);
 }
 
+/* ---- Drive Button ---- */
+a.search-box.drive-btn {
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(79, 156, 249, 0.2), rgba(167, 139, 250, 0.2));
+  border: 2px solid var(--accent-blue);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 14px 18px;
+  box-shadow: 0 0 15px rgba(79, 156, 249, 0.3), var(--shadow-card);
+}
+
+a.search-box.drive-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  border-color: #fff;
+  box-shadow: 0 0 30px rgba(167, 139, 250, 0.8), var(--shadow-card);
+}
+
+a.search-box.drive-btn .search-icon {
+  color: white !important;
+  font-size: 1.3rem;
+  margin-right: 12px;
+}
+
 .search-box:focus-within {
   border-color: var(--accent-blue);
   box-shadow: 0 0 20px rgba(79, 156, 249, 0.25), var(--shadow-card);

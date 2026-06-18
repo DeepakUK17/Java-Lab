@@ -731,5 +731,1364 @@ public class HollowBoxPattern {
         }
       }
 
+,
+
+      {
+        id: 'reverse-floyd',
+        title: 'Reverse Floyd',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints Floyds triangle in reverse.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter rows: ");
+        int n = sc.nextInt();
+        int val = (n * (n + 1)) / 2;
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(val + " ");
+                val--;
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          let val = (n * (n + 1)) / 2;
+          for (let i = n; i >= 1; i--) {
+            let row = '';
+            for (let j = 1; j <= i; j++) {
+              row += val + ' ';
+              val--;
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'zig-zag-pattern',
+        title: 'Zig-Zag Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a zig-zag star pattern.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter columns (e.g. 9): ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= 3; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (((i + j) % 4 == 0) || (i == 2 && j % 4 == 0)) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= 3; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              if (((i + j) % 4 === 0) || (i === 2 && j % 4 === 0)) {
+                row += '* ';
+              } else {
+                row += '  ';
+              }
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'hourglass-pattern',
+        title: 'Hourglass Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints an hourglass star pattern.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter rows: ");
+        int n = sc.nextInt();
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= n - i; j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = n; i >= 1; i--) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += '* ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          for (let i = 2; i <= n; i++) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += '* ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'x-pattern',
+        title: 'X Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints an X shape with stars.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter size (odd): ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (j == i || j == (n - i + 1)) System.out.print("*");
+                else System.out.print(" ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              if (j === i || j === (n - i + 1)) row += '*';
+              else row += ' ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'plus-pattern',
+        title: 'Plus Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a plus sign shape.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter size (odd): ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == n / 2 + 1 || j == n / 2 + 1) System.out.print("* ");
+                else System.out.print("  ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          const mid = Math.floor(n / 2) + 1;
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              if (i === mid || j === mid) row += '* ';
+              else row += '  ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'checkerboard-pattern',
+        title: 'Checkerboard Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a checkerboard pattern of stars.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if ((i + j) % 2 == 0) System.out.print("* ");
+                else System.out.print("  ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              if ((i + j) % 2 === 0) row += '* ';
+              else row += '  ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'spiral-pattern',
+        title: 'Spiral Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints numbers in a spiral matrix.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int[][] arr = new int[n][n];
+        int val = 1, minCol = 0, maxCol = n-1, minRow = 0, maxRow = n-1;
+        while(val <= n*n){
+            for(int j=minCol; j<=maxCol; j++) arr[minRow][j] = val++;
+            minRow++;
+            for(int i=minRow; i<=maxRow; i++) arr[i][maxCol] = val++;
+            maxCol--;
+            for(int j=maxCol; j>=minCol; j--) arr[maxRow][j] = val++;
+            maxRow--;
+            for(int i=maxRow; i>=minRow; i--) arr[i][minCol] = val++;
+            minCol++;
+        }
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          let arr = Array.from({length: n}, () => Array(n).fill(0));
+          let val = 1, minCol = 0, maxCol = n-1, minRow = 0, maxRow = n-1;
+          while(val <= n*n){
+            for(let j=minCol; j<=maxCol; j++) arr[minRow][j] = val++;
+            minRow++;
+            for(let i=minRow; i<=maxRow; i++) arr[i][maxCol] = val++;
+            maxCol--;
+            for(let j=maxCol; j>=minCol; j--) arr[maxRow][j] = val++;
+            maxRow--;
+            for(let i=maxRow; i>=minRow; i--) arr[i][minCol] = val++;
+            minCol++;
+          }
+          for(let i=0; i<n; i++){
+            let row = '';
+            for(let j=0; j<n; j++){
+              row += arr[i][j] + '\t';
+            }
+            yield { type: 'out', text: row };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'border-pattern',
+        title: 'Border Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints stars only on the border.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == 1 || i == n || j == 1 || j == n) System.out.print("* ");
+                else System.out.print("  ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              if (i === 1 || i === n || j === 1 || j === n) row += '* ';
+              else row += '  ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'number-pyramid',
+        title: 'Number Pyramid',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a symmetric number pyramid.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int s = 1; s <= n - i; s++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print(j);
+            for (int j = i - 1; j >= 1; j--) System.out.print(j);
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += j;
+            for (let j = i - 1; j >= 1; j--) row += j;
+            yield { type: 'out', text: row };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'butterfly-pattern',
+        title: 'Butterfly Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a butterfly pattern.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) System.out.print("*");
+            for (int j = 1; j <= 2*(n-i); j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print("*");
+            System.out.println();
+        }
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) System.out.print("*");
+            for (int j = 1; j <= 2*(n-i); j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print("*");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '*'.repeat(i) + ' '.repeat(2*(n-i)) + '*'.repeat(i);
+            yield { type: 'out', text: row };
+          }
+          for (let i = n; i >= 1; i--) {
+            let row = '*'.repeat(i) + ' '.repeat(2*(n-i)) + '*'.repeat(i);
+            yield { type: 'out', text: row };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'hollow-butterfly',
+        title: 'Hollow Butterfly',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a hollow butterfly pattern.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                if(j==1 || j==i) System.out.print("*"); else System.out.print(" ");
+            }
+            for (int j = 1; j <= 2*(n-i); j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) {
+                if(j==1 || j==i) System.out.print("*"); else System.out.print(" ");
+            }
+            System.out.println();
+        }
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                if(j==1 || j==i) System.out.print("*"); else System.out.print(" ");
+            }
+            for (int j = 1; j <= 2*(n-i); j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) {
+                if(j==1 || j==i) System.out.print("*"); else System.out.print(" ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= i; j++) row += (j===1 || j===i) ? '*' : ' ';
+            row += ' '.repeat(2*(n-i));
+            for (let j = 1; j <= i; j++) row += (j===1 || j===i) ? '*' : ' ';
+            yield { type: 'out', text: row };
+          }
+          for (let i = n; i >= 1; i--) {
+            let row = '';
+            for (let j = 1; j <= i; j++) row += (j===1 || j===i) ? '*' : ' ';
+            row += ' '.repeat(2*(n-i));
+            for (let j = 1; j <= i; j++) row += (j===1 || j===i) ? '*' : ' ';
+            yield { type: 'out', text: row };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'sandglass-pattern',
+        title: 'Sandglass Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a sandglass star pattern.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= n - i; j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = n; i >= 1; i--) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += '* ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += '* ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'rhombus-pattern',
+        title: 'Rhombus Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a solid rhombus pattern.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) System.out.print(" ");
+            for (int j = 1; j <= n; j++) System.out.print("*");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(n - i) + '*'.repeat(n);
+            yield { type: 'out', text: row };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'hollow-rhombus',
+        title: 'Hollow Rhombus',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a hollow rhombus pattern.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) System.out.print(" ");
+            for (int j = 1; j <= n; j++) {
+                if (i == 1 || i == n || j == 1 || j == n) System.out.print("*");
+                else System.out.print(" ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= n; j++) {
+              if (i === 1 || i === n || j === 1 || j === n) row += '*';
+              else row += ' ';
+            }
+            yield { type: 'out', text: row };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      }
+,
+
+      {
+        id: 'binary-pyramid',
+        title: 'Binary Pyramid',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a binary number pyramid.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                if ((i + j) % 2 == 0) System.out.print("1 ");
+                else System.out.print("0 ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= i; j++) {
+              if ((i + j) % 2 === 0) row += '1 ';
+              else row += '0 ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'palindrome-triangle',
+        title: 'Palindrome Triangle',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a palindromic number triangle.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) System.out.print("  ");
+            for (int j = i; j >= 1; j--) System.out.print(j + " ");
+            for (int j = 2; j <= i; j++) System.out.print(j + " ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '  '.repeat(n - i);
+            for (let j = i; j >= 1; j--) row += j + ' ';
+            for (let j = 2; j <= i; j++) row += j + ' ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'number-diamond',
+        title: 'Number Diamond',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a number diamond.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print(j + " ");
+            System.out.println();
+        }
+        for (int i = n - 1; i >= 1; i--) {
+            for (int j = 1; j <= n - i; j++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print(j + " ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += j + ' ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+          for (let i = n - 1; i >= 1; i--) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += j + ' ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'snake-pattern',
+        title: 'Snake Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints numbers in a snake pattern.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int val = 1;
+        for (int i = 1; i <= n; i++) {
+            if (i % 2 != 0) {
+                for (int j = 1; j <= n; j++) System.out.print(val++ + "\t");
+            } else {
+                int temp = val + n - 1;
+                for (int j = 1; j <= n; j++) System.out.print(temp-- + "\t");
+                val += n;
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          let val = 1;
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            if (i % 2 !== 0) {
+              for (let j = 1; j <= n; j++) row += (val++) + '\t';
+            } else {
+              let temp = val + n - 1;
+              for (let j = 1; j <= n; j++) row += (temp--) + '\t';
+              val += n;
+            }
+            yield { type: 'out', text: row };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'wave-pattern',
+        title: 'Wave Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a wave shape using stars.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter wave height: ");
+        int n = sc.nextInt();
+        int waveLength = 4; // predefined waves
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n * waveLength; j++) {
+                if (i % n == j % n || (i + j) % n == 0) System.out.print("*");
+                else System.out.print(" ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          let waveLength = 4;
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n * waveLength; j++) {
+              if (i % n === j % n || (i + j) % n === 0) row += '*';
+              else row += ' ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'star-spiral',
+        title: 'Star Spiral',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a spiral pattern of stars.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int min = Math.min(Math.min(i, j), Math.min(n - 1 - i, n - 1 - j));
+                if (min % 2 == 0) System.out.print("* ");
+                else System.out.print("  ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 0; i < n; i++) {
+            let row = '';
+            for (let j = 0; j < n; j++) {
+              let min = Math.min(Math.min(i, j), Math.min(n - 1 - i, n - 1 - j));
+              if (min % 2 === 0) row += '* ';
+              else row += '  ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'pyramid-increasing-numbers',
+        title: 'Pyramid with Increasing Numbers',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a pyramid with sequentially increasing numbers.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int val = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int s = 1; s <= n - i; s++) System.out.print("  ");
+            for (int j = 1; j <= i; j++) System.out.print(val++ + "   ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          let val = 1;
+          for (let i = 1; i <= n; i++) {
+            let row = '  '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += (val++) + '   ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'reverse-pyramid-numbers',
+        title: 'Reverse Pyramid Numbers',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints an inverted pyramid with numbers.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = n; i >= 1; i--) {
+            for (int s = 1; s <= n - i; s++) System.out.print(" ");
+            for (int j = 1; j <= i; j++) System.out.print(j + " ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = n; i >= 1; i--) {
+            let row = ' '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += j + ' ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'double-hill-pattern',
+        title: 'Double Hill Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints two adjacent hills of numbers.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) System.out.print(j + " ");
+            for (int j = 1; j <= 2*(n-i); j++) System.out.print("  ");
+            for (int j = i; j >= 1; j--) System.out.print(j + " ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= i; j++) row += j + ' ';
+            row += '  '.repeat(2*(n-i));
+            for (let j = i; j >= 1; j--) row += j + ' ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'mirror-triangle',
+        title: 'Mirror Triangle',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a mirrored right triangle.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int s = 1; s <= n - i; s++) System.out.print("  ");
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '  '.repeat(n - i);
+            for (let j = 1; j <= i; j++) row += '* ';
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'cross-number-pattern',
+        title: 'Cross Number Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints an X shape with numbers.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == j || i + j == n + 1) System.out.print(j + " ");
+                else System.out.print("  ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              if (i === j || i + j === n + 1) row += j + ' ';
+              else row += '  ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'staircase-pattern',
+        title: 'Staircase Pattern',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a simple staircase.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (j <= n - i) System.out.print(" ");
+                else System.out.print("#");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = '';
+            for (let j = 1; j <= n; j++) {
+              if (j <= n - i) row += ' ';
+              else row += '#';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'alphabet-pyramid',
+        title: 'Alphabet Pyramid',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a pyramid with alphabet letters.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int s = 1; s <= n - i; s++) System.out.print(" ");
+            char ch = 'A';
+            for (int j = 1; j <= i; j++) {
+                System.out.print(ch + " ");
+                ch++;
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(n - i);
+            let ch = 65;
+            for (let j = 1; j <= i; j++) {
+              row += String.fromCharCode(ch++) + ' ';
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'hollow-alphabet-pyramid',
+        title: 'Hollow Alphabet Pyramid',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a hollow alphabet pyramid.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            for (int s = 1; s <= n - i; s++) System.out.print(" ");
+            char ch = 'A';
+            for (int j = 1; j <= i; j++) {
+                if (j == 1 || j == i || i == n) System.out.print(ch + " ");
+                else System.out.print("  ");
+                ch++;
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          for (let i = 1; i <= n; i++) {
+            let row = ' '.repeat(n - i);
+            let ch = 65;
+            for (let j = 1; j <= i; j++) {
+              if (j === 1 || j === i || i === n) row += String.fromCharCode(ch) + ' ';
+              else row += '  ';
+              ch++;
+            }
+            yield { type: 'out', text: row.trimEnd() };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'advanced-spiral-matrix',
+        title: 'Advanced Spiral Matrix',
+        icon: '🔷',
+        difficulty: 'Medium',
+        tags: ['pattern'],
+        desc: 'Prints a full spiral matrix matching typical Java behavior.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int[][] arr = new int[n][n];
+        int val = 1, top = 0, bottom = n-1, left = 0, right = n-1;
+        while(val <= n*n){
+            for(int j=left; j<=right; j++) arr[top][j] = val++;
+            top++;
+            for(int i=top; i<=bottom; i++) arr[i][right] = val++;
+            right--;
+            for(int j=right; j>=left; j--) arr[bottom][j] = val++;
+            bottom--;
+            for(int i=bottom; i>=top; i--) arr[i][left] = val++;
+            left++;
+        }
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++) System.out.print(arr[i][j] + "\t");
+            System.out.println();
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          
+          let arr = Array.from({length: n}, () => Array(n).fill(0));
+          let val = 1, top = 0, bottom = n-1, left = 0, right = n-1;
+          while(val <= n*n){
+            for(let j=left; j<=right && val<=n*n; j++) arr[top][j] = val++;
+            top++;
+            for(let i=top; i<=bottom && val<=n*n; i++) arr[i][right] = val++;
+            right--;
+            for(let j=right; j>=left && val<=n*n; j--) arr[bottom][j] = val++;
+            bottom--;
+            for(let i=bottom; i>=top && val<=n*n; i--) arr[i][left] = val++;
+            left++;
+          }
+          for(let i=0; i<n; i++){
+            let row = '';
+            for(let j=0; j<n; j++) row += arr[i][j] + '\t';
+            yield { type: 'out', text: row };
+          }
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      }
     ]
   };

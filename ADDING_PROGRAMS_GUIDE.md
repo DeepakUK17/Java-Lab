@@ -12,6 +12,7 @@ The 7200-line `app.js` file has been split into modular ES Modules inside the `d
 - `data/section5_scenariobased.js`
 - `data/section6_numberlogic.js`
 - `data/section7_patterns.js`
+- `data/section8_functions.js`
 
 You should **ONLY** edit the file that corresponds to the category of the new program. Do NOT edit `app.js`.
 

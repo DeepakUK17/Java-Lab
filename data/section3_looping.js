@@ -1831,5 +1831,514 @@ public class Main {
 
 
 
+,
+
+      {
+        id: 'divisible-3-and-4',
+        title: 'Divisible by 3 and 4',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints numbers up to N that are divisible by both 3 and 4.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for(int i=1; i<=n; i++) {
+            if (i%3==0 && i%4==0) {
+                System.out.print(i + " ");
+            }
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          for(let i=1; i<=n; i++) if(i%3===0 && i%4===0) out += i + ' ';
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'print-squares',
+        title: 'Print Squares',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints squares of numbers up to N.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for(int i=1; i<=n; i++) {
+            System.out.print((int)Math.pow(i,2) + "  ");
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          for(let i=1; i<=n; i++) out += Math.pow(i,2) + '  ';
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'not-divisible-by-5',
+        title: 'Not Divisible by 5',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints numbers up to N that are not divisible by 5.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for(int i=1; i<=n; i++) {
+            if(i%5!=0) System.out.print(i + " ");
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          for(let i=1; i<=n; i++) if(i%5!==0) out += i + ' ';
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'sum-of-even-numbers',
+        title: 'Sum of Even Numbers',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Calculates the sum of even numbers up to N.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int sum = 0;
+        for(int i=0; i<=n; i+=2) sum += i;
+        System.out.println(sum);
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let sum = 0;
+          for(let i=0; i<=n; i+=2) sum += i;
+          yield { type: 'out', text: sum.toString() };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'reverse-fibonacci',
+        title: 'Reverse Fibonacci',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Generates Fibonacci series up to N terms and prints them in reverse order.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        if(n<2) return;
+        int first = 1, second = 1, next = 0;
+        for(int i=1; i<n-1; i++) {
+            next = first + second;
+            first = second;
+            second = next;
+        }
+        for(int i=n; i>0; i--) {
+            System.out.print(second + " ");
+            next = second - first;
+            second = first;
+            first = next;
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          if(n<2) return;
+          let first = 1, second = 1, next = 0;
+          for(let i=1; i<n-1; i++) {
+              next = first + second;
+              first = second;
+              second = next;
+          }
+          let out = '';
+          for(let i=n; i>0; i--) {
+              out += second + ' ';
+              next = second - first;
+              second = first;
+              first = next;
+          }
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'alternating-sign-series',
+        title: 'Alternating Sign Series',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints numbers up to N, with even numbers being negative.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for(int i=1; i<=n; i++) {
+            if(i%2==0) System.out.print("-"+i+" ");
+            else System.out.print(i+" ");
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          for(let i=1; i<=n; i++) {
+            if(i%2===0) out += '-'+i+' ';
+            else out += i+' ';
+          }
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'triangular-numbers',
+        title: 'Triangular Numbers',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints the sequence formed by adding the natural numbers.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int num = 1;
+        for(int i=1; i<=n; i++) {
+            System.out.print(num + " ");
+            num += i+1;
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          let num = 1;
+          for(let i=1; i<=n; i++) {
+            out += num + ' ';
+            num += i+1;
+          }
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'underscore-separator',
+        title: 'Underscore Separator',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints 1 separated by underscores N times.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int ans = 1;
+        for(int i=1; i<=n; i++) {
+            if(i==n) System.out.print(ans);
+            else System.out.print(ans + "_");
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          let ans = 1;
+          for(let i=1; i<=n; i++) {
+            if(i===n) out += ans;
+            else out += ans + '_';
+          }
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'print-cubes',
+        title: 'Print Cubes',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints the cubes of numbers up to N.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for(int i=1; i<=n; i++) {
+            System.out.print((i*i*i) + " ");
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          for(let i=1; i<=n; i++) out += (i*i*i) + ' ';
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'fibonacci-like-series',
+        title: 'Fibonacci-Like Series',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints a series starting with 1, 2 and adding the previous two.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int a = 1, b = 2;
+        for(int i=1; i<=n; i++) {
+            System.out.print(a + " ");
+            int ad = a + b;
+            a = b;
+            b = ad;
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          let a = 1, b = 2;
+          for(let i=1; i<=n; i++) {
+            out += a + ' ';
+            let ad = a + b;
+            a = b;
+            b = ad;
+          }
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'multiply-and-subtract-series',
+        title: 'Multiply and Subtract Series',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Starts at 10, subtracts 5 if divisible by 10, otherwise multiplies by 2.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int a = 10;
+        for(int i=0; i<=n; i++) {
+            System.out.print(a + " ");
+            if(a%10==0 && a!=10) a -= 5;
+            else a *= 2;
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          let a = 10;
+          for(let i=0; i<=n; i++) {
+            out += a + ' ';
+            if(a%10===0 && a!==10) a -= 5;
+            else a *= 2;
+          }
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'number-and-multiple',
+        title: 'Number and Multiple',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Prints the number and its multiple by 5 alternately.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        for(int i=1; i<=n/2; i++) {
+            System.out.print(i + " " + (i*5) + " ");
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          for(let i=1; i<=Math.floor(n/2); i++) out += i + ' ' + (i*5) + ' ';
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+
+      {
+        id: 'alternating-increment',
+        title: 'Alternating Increment',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['loop', 'series'],
+        desc: 'Starts at 2, increments by varying amounts.',
+        code: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter N: ");
+        int n = sc.nextInt();
+        int a = 2, b = 4;
+        for(int i=1; i<=n; i++) {
+            System.out.print(a + " ");
+            a += b;
+            b += 2;
+        }
+        sc.close();
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if(isNaN(n)) { yield { type:'error', text:'Invalid input.' }; return; }
+          let out = '';
+          let a = 2, b = 4;
+          for(let i=1; i<=n; i++) {
+            out += a + ' ';
+            a += b;
+            b += 2;
+          }
+          yield { type: 'out', text: out };
+    
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      }
     ]
   };

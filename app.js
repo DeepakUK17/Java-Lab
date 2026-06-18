@@ -16,6 +16,7 @@ import { section4 } from './data/section4_decisionmaking.js';
 import { section5 } from './data/section5_scenariobased.js';
 import { section6 } from './data/section6_numberlogic.js';
 import { section7 } from './data/section7_patterns.js';
+import { section8 } from './data/section8_functions.js';
 
 const SECTIONS = [
   section1,
@@ -24,7 +25,8 @@ const SECTIONS = [
   section4,
   section5,
   section6,
-  section7
+  section7,
+  section8
 ];
 
 
