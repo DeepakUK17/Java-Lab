@@ -877,6 +877,332 @@ public class Main {
           yield { type: 'out', text: min.toString() };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
+      },
+      {
+        id: 'find-first-even-number',
+        title: 'Find First Even Number',
+        icon: '2️⃣',
+        difficulty: 'Easy',
+        tags: ['array', 'search', 'even'],
+        desc: 'Find and print the first even number in the array. If not found, print No even number.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] % 2 == 0) {
+                System.out.println("First Even: " + arr[i]);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No even number");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let found = false;
+          for (let i = 0; i < n; i++) {
+            if (arr[i] % 2 === 0) {
+              yield { type: 'out', text: 'First Even: ' + arr[i] };
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            yield { type: 'out', text: 'No even number' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'find-last-odd-number',
+        title: 'Find Last Odd Number',
+        icon: '1️⃣',
+        difficulty: 'Easy',
+        tags: ['array', 'search', 'odd'],
+        desc: 'Find the last odd number in the array.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int lastOdd = -1;
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] % 2 != 0) {
+                lastOdd = arr[i];
+                found = true;
+            }
+        }
+        if (found) {
+            System.out.println("Last Odd: " + lastOdd);
+        } else {
+            System.out.println("No odd number");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let lastOdd = -1;
+          let found = false;
+          for (let i = 0; i < n; i++) {
+            if (arr[i] % 2 !== 0) {
+              lastOdd = arr[i];
+              found = true;
+            }
+          }
+          if (found) {
+            yield { type: 'out', text: 'Last Odd: ' + lastOdd };
+          } else {
+            yield { type: 'out', text: 'No odd number' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'find-first-repeating-element',
+        title: 'Find First Repeating Element',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['array', 'search', 'repeating'],
+        desc: 'Find the first element that repeats in the array.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                    System.out.println("First Repeating: " + arr[i]);
+                    found = true;
+                    break;
+                }
+            }
+            if (found) break;
+        }
+        if (!found) {
+            System.out.println("No repeating element");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let found = false;
+          for (let i = 0; i < n; i++) {
+            for (let j = i + 1; j < n; j++) {
+              if (arr[i] === arr[j]) {
+                yield { type: 'out', text: 'First Repeating: ' + arr[i] };
+                found = true;
+                break;
+              }
+            }
+            if (found) break;
+          }
+          if (!found) {
+            yield { type: 'out', text: 'No repeating element' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'find-first-non-repeating-element',
+        title: 'Find First Non-Repeating Element',
+        icon: '🔂',
+        difficulty: 'Medium',
+        tags: ['array', 'search', 'non-repeating'],
+        desc: 'Find the first element that does NOT repeat in the array.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            boolean repeats = false;
+            for (int j = 0; j < n; j++) {
+                if (i != j && arr[i] == arr[j]) {
+                    repeats = true;
+                    break;
+                }
+            }
+            if (!repeats) {
+                System.out.println("First Non-Repeating: " + arr[i]);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("All elements repeat");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let found = false;
+          for (let i = 0; i < n; i++) {
+            let repeats = false;
+            for (let j = 0; j < n; j++) {
+              if (i !== j && arr[i] === arr[j]) {
+                repeats = true;
+                break;
+              }
+            }
+            if (!repeats) {
+              yield { type: 'out', text: 'First Non-Repeating: ' + arr[i] };
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            yield { type: 'out', text: 'All elements repeat' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'binary-search',
+        title: 'Binary Search (Sorted Array)',
+        icon: '🔍',
+        difficulty: 'Medium',
+        tags: ['array', 'search', 'binary'],
+        desc: 'Perform binary search on a sorted array to find a given element.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int search = sc.nextInt();
+        int low = 0, high = n - 1;
+        boolean found = false;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == search) {
+                System.out.println(mid);
+                found = true;
+                break;
+            } else if (arr[mid] > search) {
+                high = mid - 1;
+            } else if (arr[mid] < search) {
+                low = mid + 1;
+            }
+        }
+        if (!found) {
+            System.out.println("Not found");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i} (must be sorted): `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          yield { type: 'ask', text: 'Enter search key: ', inputKey: 'key' };
+          const search = parseInt(inputs['key']);
+          if (isNaN(search)) { yield { type: 'error', text: 'Invalid search key.' }; return; }
+          
+          let low = 0, high = n - 1;
+          let found = false;
+          while (low <= high) {
+            let mid = Math.floor((low + high) / 2);
+            if (arr[mid] === search) {
+              yield { type: 'out', text: String(mid) };
+              found = true;
+              break;
+            } else if (arr[mid] > search) {
+              high = mid - 1;
+            } else if (arr[mid] < search) {
+              low = mid + 1;
+            }
+          }
+          if (!found) {
+            yield { type: 'out', text: 'Not found' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
       }
     ]
   };
