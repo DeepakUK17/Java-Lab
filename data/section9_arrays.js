@@ -1203,6 +1203,354 @@ public class Main {
           }
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
+      },
+      {
+        id: 'check-array-is-palindrome',
+        title: 'Check Array is Palindrome',
+        icon: '🔄',
+        difficulty: 'Easy',
+        tags: ['array', 'palindrome', 'check'],
+        desc: 'Check whether the given array reads the same from both directions.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean isPalindrome = true;
+        for (int i = 0; i < n / 2; i++) {
+            if (arr[i] != arr[n - 1 - i]) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        if (isPalindrome) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not Palindrome");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let isPalindrome = true;
+          for (let i = 0; i < Math.floor(n / 2); i++) {
+            if (arr[i] !== arr[n - 1 - i]) {
+              isPalindrome = false;
+              break;
+            }
+          }
+          yield { type: 'out', text: isPalindrome ? 'Palindrome' : 'Not Palindrome' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'sales-performance-cognizant',
+        title: 'Cognizant – Sales Performance',
+        icon: '💼',
+        difficulty: 'Medium',
+        tags: ['array', 'sales', 'max', 'cognizant'],
+        desc: 'A salesman records sales for N days. Find Total Sales, Maximum Sale, and Day of Maximum Sale.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        int total = 0;
+        int max = Integer.MIN_VALUE;
+        int day = 0;
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+            total += arr[i];
+            if (arr[i] > max) {
+                max = arr[i];
+                day = i + 1;
+            }
+        }
+        System.out.println("Total Sales = " + total);
+        System.out.println("Maximum Sale = " + max);
+        System.out.println("Day = " + day);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of days: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid number of days.' }; return; }
+          const arr = [];
+          let total = 0;
+          let max = -Infinity;
+          let day = 0;
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter sales for day ${i + 1}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+            total += v;
+            if (v > max) {
+              max = v;
+              day = i + 1;
+            }
+          }
+          yield { type: 'out', text: `Total Sales = ${total}` };
+          yield { type: 'out', text: `Maximum Sale = ${max}` };
+          yield { type: 'out', text: `Day = ${day}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'bank-transaction-summary-hcl',
+        title: 'HCL – Bank Transaction Summary',
+        icon: '🏦',
+        difficulty: 'Medium',
+        tags: ['array', 'bank', 'transactions', 'hcl'],
+        desc: 'Positive numbers indicate deposits and negative numbers indicate withdrawals. Find Total Deposit, Total Withdrawal, and Final Balance.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int deposit = 0;
+        int withdrawal = 0;
+        for (int i = 0; i < n; i++) {
+            int amount = sc.nextInt();
+            if (amount > 0) {
+                deposit += amount;
+            } else {
+                withdrawal += Math.abs(amount);
+            }
+        }
+        System.out.println("Deposit = " + deposit);
+        System.out.println("Withdrawal = " + withdrawal);
+        System.out.println("Balance = " + (deposit - withdrawal));
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of transactions: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          let deposit = 0;
+          let withdrawal = 0;
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter transaction ${i + 1}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            if (v > 0) {
+              deposit += v;
+            } else {
+              withdrawal += Math.abs(v);
+            }
+          }
+          yield { type: 'out', text: `Deposit = ${deposit}` };
+          yield { type: 'out', text: `Withdrawal = ${withdrawal}` };
+          yield { type: 'out', text: `Balance = ${deposit - withdrawal}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'warehouse-box-counter-infosys',
+        title: 'Infosys – Warehouse Box Counter',
+        icon: '📦',
+        difficulty: 'Easy',
+        tags: ['array', 'counter', 'infosys'],
+        desc: 'Boxes weighing more than 50 kg are considered heavy. Find Heavy Boxes and Light Boxes.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int heavy = 0;
+        int light = 0;
+        for (int i = 0; i < n; i++) {
+            int weight = sc.nextInt();
+            if (weight > 50) {
+                heavy++;
+            } else {
+                light++;
+            }
+        }
+        System.out.println("Heavy = " + heavy);
+        System.out.println("Light = " + light);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of boxes: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          let heavy = 0;
+          let light = 0;
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter weight of box ${i + 1}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            if (v > 50) {
+              heavy++;
+            } else {
+              light++;
+            }
+          }
+          yield { type: 'out', text: `Heavy = ${heavy}` };
+          yield { type: 'out', text: `Light = ${light}` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'employee-attendance-wipro',
+        title: 'Wipro – Employee Attendance',
+        icon: '📅',
+        difficulty: 'Easy',
+        tags: ['array', 'attendance', 'percentage', 'wipro'],
+        desc: 'Attendance is represented as 1 (Present) and 0 (Absent). Print Total Present, Total Absent, and Attendance Percentage.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int present = 0;
+        int absent = 0;
+        for (int i = 0; i < n; i++) {
+            int attendance = sc.nextInt();
+            if (attendance == 1) {
+                present++;
+            } else if (attendance == 0) {
+                absent++;
+            }
+        }
+        double percentage = ((double) present / n) * 100;
+        System.out.println("Present = " + present);
+        System.out.println("Absent = " + absent);
+        System.out.println("Attendance = " + percentage + "%");
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter number of days: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          let present = 0;
+          let absent = 0;
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter attendance for day ${i + 1} (1 or 0): `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            if (v === 1) {
+              present++;
+            } else if (v === 0) {
+              absent++;
+            }
+          }
+          let percentage = (present / n) * 100;
+          yield { type: 'out', text: `Present = ${present}` };
+          yield { type: 'out', text: `Absent = ${absent}` };
+          yield { type: 'out', text: `Attendance = ${percentage.toFixed(1)}%` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'print-prime-numbers-in-array',
+        title: 'Print Prime Numbers in an Array',
+        icon: '🔢',
+        difficulty: 'Medium',
+        tags: ['array', 'prime', 'math'],
+        desc: 'Given an array of N integers, print all the prime numbers present in the array.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean hasPrime = false;
+        for (int i = 0; i < n; i++) {
+            int num = arr[i];
+            boolean isPrime = true;
+            if (num <= 1) {
+                isPrime = false;
+            } else {
+                for (int j = 2; j <= Math.sqrt(num); j++) {
+                    if (num % j == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+            if (isPrime) {
+                System.out.print(num + " ");
+                hasPrime = true;
+            }
+        }
+        if (!hasPrime) {
+            System.out.print("-1");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let primes = [];
+          for (let i = 0; i < n; i++) {
+            let num = arr[i];
+            let isPrime = true;
+            if (num <= 1) {
+              isPrime = false;
+            } else {
+              for (let j = 2; j <= Math.sqrt(num); j++) {
+                if (num % j === 0) {
+                  isPrime = false;
+                  break;
+                }
+              }
+            }
+            if (isPrime) {
+              primes.push(num);
+            }
+          }
+          if (primes.length > 0) {
+            yield { type: 'out', text: primes.join(' ') + ' ' };
+          } else {
+            yield { type: 'out', text: '-1' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
       }
     ]
   };
