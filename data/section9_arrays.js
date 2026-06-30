@@ -1551,6 +1551,304 @@ public class Main {
           }
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
+      },
+      {
+        id: 'print-armstrong-numbers-in-array',
+        title: 'Print All Armstrong Numbers in an Array',
+        icon: '💪',
+        difficulty: 'Medium',
+        tags: ['array', 'armstrong', 'math'],
+        desc: 'Given an array of N integers, print all the Armstrong numbers present in the array.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            int num = arr[i];
+            int temp = num;
+            int sum = 0;
+            int digits = String.valueOf(num).length();
+            while (temp > 0) {
+                int rem = temp % 10;
+                sum += Math.pow(rem, digits);
+                temp /= 10;
+            }
+            if (sum == num && num > 0) {
+                System.out.print(num + " ");
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.print("No Armstrong Number");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let result = [];
+          for (let i = 0; i < n; i++) {
+            let num = arr[i];
+            if (num > 0) {
+              let temp = num;
+              let sum = 0;
+              let digits = String(num).length;
+              while (temp > 0) {
+                let rem = temp % 10;
+                sum += Math.pow(rem, digits);
+                temp = Math.floor(temp / 10);
+              }
+              if (sum === num) {
+                result.push(num);
+              }
+            }
+          }
+          if (result.length > 0) {
+            yield { type: 'out', text: result.join(' ') + ' ' };
+          } else {
+            yield { type: 'out', text: 'No Armstrong Number' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'print-automorphic-numbers-in-array',
+        title: 'Print All Automorphic Numbers in an Array',
+        icon: '🔢',
+        difficulty: 'Medium',
+        tags: ['array', 'automorphic', 'math'],
+        desc: 'Given an array of N integers, print all the Automorphic Numbers present in the array.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            int num = arr[i];
+            long sq = (long)num * num;
+            if (String.valueOf(sq).endsWith(String.valueOf(num))) {
+                System.out.print(num + " ");
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.print("No Automorphic Number");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let result = [];
+          for (let i = 0; i < n; i++) {
+            let num = arr[i];
+            let sq = num * num;
+            if (String(sq).endsWith(String(num))) {
+              result.push(num);
+            }
+          }
+          if (result.length > 0) {
+            yield { type: 'out', text: result.join(' ') + ' ' };
+          } else {
+            yield { type: 'out', text: 'No Automorphic Number' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'print-perfect-numbers-in-array',
+        title: 'Print All Perfect Numbers in an Array',
+        icon: '🌟',
+        difficulty: 'Medium',
+        tags: ['array', 'perfect', 'math'],
+        desc: 'Given an array of N integers, print all the Perfect Numbers present in the array.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            int num = arr[i];
+            if (num > 0) {
+                int sum = 0;
+                for (int j = 1; j <= num / 2; j++) {
+                    if (num % j == 0) {
+                        sum += j;
+                    }
+                }
+                if (sum == num) {
+                    System.out.print(num + " ");
+                    found = true;
+                }
+            }
+        }
+        if (!found) {
+            System.out.print("No Perfect Number");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let result = [];
+          for (let i = 0; i < n; i++) {
+            let num = arr[i];
+            if (num > 0) {
+              let sum = 0;
+              for (let j = 1; j <= Math.floor(num / 2); j++) {
+                if (num % j === 0) sum += j;
+              }
+              if (sum === num) result.push(num);
+            }
+          }
+          if (result.length > 0) {
+            yield { type: 'out', text: result.join(' ') + ' ' };
+          } else {
+            yield { type: 'out', text: 'No Perfect Number' };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'remove-duplicate-elements-from-array',
+        title: 'Remove Duplicate Elements from an Array',
+        icon: '🧹',
+        difficulty: 'Medium',
+        tags: ['array', 'duplicate', 'unique'],
+        desc: 'Given an array of N integers, remove all duplicate elements and print the array containing only unique elements.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        ArrayList<Integer> uniqueList = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (!uniqueList.contains(arr[i])) {
+                uniqueList.add(arr[i]);
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter array size: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let unique = [];
+          for (let i = 0; i < n; i++) {
+            if (!unique.includes(arr[i])) {
+              unique.push(arr[i]);
+            }
+          }
+          yield { type: 'out', text: unique.join(' ') + ' ' };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'find-the-missing-number-in-array',
+        title: 'Find the Missing Number in an Array',
+        icon: '🔎',
+        difficulty: 'Medium',
+        tags: ['array', 'missing', 'math'],
+        desc: 'Given an array of N-1 distinct integers containing numbers from 1 to N, exactly one number is missing. Find the missing number.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n - 1];
+        for (int i = 0; i < n - 1; i++) {
+            arr[i] = sc.nextInt();
+        }
+        long expectedSum = (long) n * (n + 1) / 2;
+        long actualSum = 0;
+        for (int i = 0; i < n - 1; i++) {
+            actualSum += arr[i];
+        }
+        System.out.print(expectedSum - actualSum);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter expected N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n < 2) { yield { type: 'error', text: 'Invalid N.' }; return; }
+          let actualSum = 0;
+          for (let i = 0; i < n - 1; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            actualSum += v;
+          }
+          let expectedSum = (n * (n + 1)) / 2;
+          yield { type: 'out', text: String(expectedSum - actualSum) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
       }
     ]
   };
