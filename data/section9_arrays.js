@@ -1849,6 +1849,826 @@ public class Main {
           yield { type: 'out', text: String(expectedSum - actualSum) };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
+      },
+      {
+        id: 'count-distinct-pairs',
+        title: 'Count Distinct Pairs',
+        icon: '🔗',
+        difficulty: 'Medium',
+        tags: ['array', 'pairs'],
+        desc: 'Given an array A of N elements, count the number of distinct pairs (i,j) such that i < j and A[i] < A[j].',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] < a[j]) {
+                    count++;
+                }
+            }
+        }
+        if (count == 0) {
+            System.out.print(-1);
+        } else {
+            System.out.print(count);
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const a = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            a.push(v);
+          }
+          let count = 0;
+          for (let i = 0; i < n; i++) {
+            for (let j = i + 1; j < n; j++) {
+              if (a[i] < a[j]) count++;
+            }
+          }
+          yield { type: 'out', text: count === 0 ? '-1' : count.toString() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'determine-array-rotation',
+        title: 'Determine Array Rotation',
+        icon: '🔄',
+        difficulty: 'Medium',
+        tags: ['array', 'rotation'],
+        desc: 'Given a value M followed by an array of M elements that has been rotated N times from ascending order, find N. Print -1 if no rotation made or cannot be determined.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int[] arr = new int[m];
+        for (int i = 0; i < m; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int minIndex = 0;
+        int minVal = arr[0];
+        for(int i = 1; i < m; i++){
+            if(arr[i] < minVal){
+                minVal = arr[i];
+                minIndex = i;
+            }
+        }
+        if(minIndex == 0){
+            System.out.print(-1);
+        } else {
+            System.out.print(minIndex);
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter M: ', inputKey: 'm' };
+          const m = parseInt(inputs['m']);
+          if (isNaN(m) || m <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < m; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let minIndex = 0;
+          let minVal = arr[0];
+          for (let i = 1; i < m; i++) {
+            if (arr[i] < minVal) {
+              minVal = arr[i];
+              minIndex = i;
+            }
+          }
+          yield { type: 'out', text: minIndex === 0 ? '-1' : minIndex.toString() };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'delete-last-k-elements',
+        title: 'Delete Last K Elements',
+        icon: '✂️',
+        difficulty: 'Easy',
+        tags: ['array', 'delete'],
+        desc: 'Given 2 numbers N and K, print the array after deleting the last K elements.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        for(int i = 0; i < n - k; i++){
+            System.out.print(arr[i] + (i < n - k - 1 ? " " : ""));
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          yield { type: 'ask', text: 'Enter K: ', inputKey: 'k' };
+          const k = parseInt(inputs['k']);
+          if (isNaN(n) || isNaN(k) || n < k || k < 0) { yield { type: 'error', text: 'Invalid N or K.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let res = [];
+          for(let i=0; i<n-k; i++) res.push(arr[i]);
+          yield { type: 'out', text: res.join(' ') };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'numbers-repeated-k-times',
+        title: 'Numbers Repeated K Times',
+        icon: '🔁',
+        difficulty: 'Medium',
+        tags: ['array', 'frequency'],
+        desc: 'Given an array of N elements, print the number(s) repeated exactly K times in ascending order. Print -1 if none.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] arr = new int[n];
+        Map<Integer, Integer> freq = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+            freq.put(arr[i], freq.getOrDefault(arr[i], 0) + 1);
+        }
+        List<Integer> result = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
+            if (entry.getValue() == k) {
+                result.add(entry.getKey());
+            }
+        }
+        if (result.isEmpty()) {
+            System.out.print("-1");
+        } else {
+            Collections.sort(result);
+            for (int i = 0; i < result.size(); i++) {
+                System.out.print(result.get(i) + (i < result.size() - 1 ? " " : ""));
+            }
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          yield { type: 'ask', text: 'Enter K: ', inputKey: 'k' };
+          const k = parseInt(inputs['k']);
+          if (isNaN(n) || isNaN(k)) { yield { type: 'error', text: 'Invalid N or K.' }; return; }
+          const freq = {};
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            freq[v] = (freq[v] || 0) + 1;
+          }
+          let res = [];
+          for (let key in freq) {
+            if (freq[key] === k) res.push(parseInt(key));
+          }
+          if (res.length === 0) {
+            yield { type: 'out', text: '-1' };
+          } else {
+            res.sort((a,b)=>a-b);
+            yield { type: 'out', text: res.join(' ') };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'consecutive-increasing-count',
+        title: 'Consecutive Increasing Count',
+        icon: '📈',
+        difficulty: 'Medium',
+        tags: ['array', 'subsequence'],
+        desc: 'Find the maximum count of numbers which are consecutively increasing in a list.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        if(n == 0) {
+            System.out.print(0);
+            return;
+        }
+        int maxCount = 1;
+        int currentCount = 1;
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > arr[i - 1]) {
+                currentCount++;
+            } else {
+                if (currentCount > maxCount) {
+                    maxCount = currentCount;
+                }
+                currentCount = 1;
+            }
+        }
+        if (currentCount > maxCount) maxCount = currentCount;
+        System.out.print(maxCount);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter size N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let maxCount = 1, currentCount = 1;
+          for (let i = 1; i < n; i++) {
+            if(arr[i] > arr[i-1]) currentCount++;
+            else {
+              if(currentCount > maxCount) maxCount = currentCount;
+              currentCount = 1;
+            }
+          }
+          if(currentCount > maxCount) maxCount = currentCount;
+          yield { type: 'out', text: String(maxCount) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'sum-min-two-numbers',
+        title: 'Sum of Minimum Two Numbers',
+        icon: '🔢',
+        difficulty: 'Medium',
+        tags: ['array', 'digits', 'math'],
+        desc: 'Given an array of digits (0-9), find the sum of the minimum two numbers that can be formed by those digits.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        Arrays.sort(arr);
+        long num1 = 0, num2 = 0;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                num1 = num1 * 10 + arr[i];
+            } else {
+                num2 = num2 * 10 + arr[i];
+            }
+        }
+        System.out.print(num1 + num2);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter size N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter digit at index ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          arr.sort((a,b)=>a-b);
+          let num1 = "", num2 = "";
+          for(let i=0; i<n; i++){
+            if(i%2===0) num1 += arr[i];
+            else num2 += arr[i];
+          }
+          if(num1==="") num1="0";
+          if(num2==="") num2="0";
+          yield { type: 'out', text: String(parseInt(num1) + parseInt(num2)) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'ecommerce-spending-gap',
+        title: 'E-commerce Spending Gap',
+        icon: '🛒',
+        difficulty: 'Medium',
+        tags: ['array', 'sort', 'math'],
+        desc: 'Find the difference between the average of the top 3 highest orders and the average of the bottom 3 lowest orders. Print "Insufficient Data" if orders < 6.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        if (n < 6) {
+            System.out.print("Insufficient Data");
+            return;
+        }
+        Arrays.sort(arr);
+        double bottomAvg = (arr[0] + arr[1] + arr[2]) / 3.0;
+        double topAvg = (arr[n-1] + arr[n-2] + arr[n-3]) / 3.0;
+        double diff = topAvg - bottomAvg;
+        System.out.printf("%.2f", diff);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter order amount ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          if (n < 6) {
+            yield { type: 'out', text: "Insufficient Data" };
+          } else {
+            arr.sort((a,b)=>a-b);
+            let bottomAvg = (arr[0] + arr[1] + arr[2]) / 3.0;
+            let topAvg = (arr[n-1] + arr[n-2] + arr[n-3]) / 3.0;
+            let diff = topAvg - bottomAvg;
+            yield { type: 'out', text: diff.toFixed(2) };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'suspicious-login-attempts',
+        title: 'Suspicious Login Attempts',
+        icon: '🚨',
+        difficulty: 'Medium',
+        tags: ['array', 'frequency', 'average'],
+        desc: 'A user is flagged if attempt count appears > 1 time AND > average count. Print suspicious counts in order of first appearance. Print "No Suspicious Users" if none.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        long sum = 0;
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+            sum += arr[i];
+        }
+        if (n == 0) {
+            System.out.print("No Suspicious Users");
+            return;
+        }
+        double avg = (double) sum / n;
+        Map<Integer, Integer> counts = new LinkedHashMap<>();
+        for (int x : arr) {
+            counts.put(x, counts.getOrDefault(x, 0) + 1);
+        }
+        boolean found = false;
+        for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
+            if (entry.getValue() > 1 && entry.getKey() > avg) {
+                System.out.print(entry.getKey() + " ");
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.print("No Suspicious Users");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          let sum = 0;
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter attempt count ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+            sum += v;
+          }
+          let avg = sum / n;
+          let counts = new Map();
+          for(let x of arr){
+             counts.set(x, (counts.get(x)||0) + 1);
+          }
+          let found = false;
+          let res = [];
+          for(let [key, val] of counts.entries()){
+             if(val > 1 && key > avg){
+                res.push(key);
+                found = true;
+             }
+          }
+          if(!found){
+             yield { type: 'out', text: "No Suspicious Users" };
+          } else {
+             yield { type: 'out', text: res.join(" ") + " " };
+          }
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'stock-market-strategy',
+        title: 'Stock Market Strategy',
+        icon: '📊',
+        difficulty: 'Medium',
+        tags: ['array', 'sort', 'reverse'],
+        desc: 'Reverse the first half, sort the second half in ascending order, merge and print. If N is odd, middle element stays in its original position.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int mid = n / 2;
+        int left = 0, right = mid - 1;
+        while (left < right) {
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++; right--;
+        }
+        int startSecondHalf = (n % 2 == 0) ? mid : mid + 1;
+        Arrays.sort(arr, startSecondHalf, n);
+        for(int i = 0; i < n; i++){
+            System.out.print(arr[i] + (i < n - 1 ? " " : ""));
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter element ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let mid = Math.floor(n / 2);
+          let firstHalf = arr.slice(0, mid).reverse();
+          let middle = (n % 2 !== 0) ? [arr[mid]] : [];
+          let startSecondHalf = (n % 2 === 0) ? mid : mid + 1;
+          let secondHalf = arr.slice(startSecondHalf, n).sort((a,b)=>a-b);
+          let res = firstHalf.concat(middle).concat(secondHalf);
+          yield { type: 'out', text: res.join(' ') };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'above-average-patient-score',
+        title: 'Above-Average Patient Score',
+        icon: '🏥',
+        difficulty: 'Medium',
+        tags: ['array', 'average', 'search'],
+        desc: 'Find the smallest score that is greater than the average recovery score. If no such score, print "None".',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        long sum = 0;
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+            sum += arr[i];
+        }
+        if (n == 0) {
+            System.out.print("None");
+            return;
+        }
+        double avg = (double) sum / n;
+        Integer minScore = null;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > avg) {
+                if (minScore == null || arr[i] < minScore) {
+                    minScore = arr[i];
+                }
+            }
+        }
+        if (minScore == null) {
+            System.out.print("None");
+        } else {
+            System.out.print(minScore);
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          let sum = 0;
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter score ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+            sum += v;
+          }
+          let avg = sum / n;
+          let minScore = null;
+          for(let x of arr){
+             if(x > avg){
+                if(minScore === null || x < minScore) minScore = x;
+             }
+          }
+          yield { type: 'out', text: minScore === null ? "None" : String(minScore) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'logistics-route-rotation',
+        title: 'Logistics Route Rotation',
+        icon: '🚚',
+        difficulty: 'Medium',
+        tags: ['array', 'rotate', 'max-min'],
+        desc: 'Rotate array left by K positions, then find the maximum and minimum distances in the rotated array and print their index positions.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        k = k % n;
+        int[] rotated = new int[n];
+        for (int i = 0; i < n; i++) {
+            rotated[i] = arr[(i + k) % n];
+        }
+        int maxVal = rotated[0], maxIndex = 0;
+        int minVal = rotated[0], minIndex = 0;
+        for (int i = 1; i < n; i++) {
+            if (rotated[i] > maxVal) {
+                maxVal = rotated[i];
+                maxIndex = i;
+            }
+            if (rotated[i] < minVal) {
+                minVal = rotated[i];
+                minIndex = i;
+            }
+        }
+        System.out.println("Max: " + maxVal + " at index " + maxIndex);
+        System.out.print("Min: " + minVal + " at index " + minIndex);
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          yield { type: 'ask', text: 'Enter K: ', inputKey: 'k' };
+          let k = parseInt(inputs['k']);
+          if (isNaN(n) || isNaN(k) || n <= 0) { yield { type: 'error', text: 'Invalid inputs.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter distance ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          k = k % n;
+          let rotated = [];
+          for(let i=0; i<n; i++){
+             rotated.push(arr[(i+k)%n]);
+          }
+          let maxVal = rotated[0], maxIndex = 0;
+          let minVal = rotated[0], minIndex = 0;
+          for(let i=1; i<n; i++){
+             if(rotated[i] > maxVal){ maxVal = rotated[i]; maxIndex = i; }
+             if(rotated[i] < minVal){ minVal = rotated[i]; minIndex = i; }
+          }
+          yield { type: 'out', text: \`Max: \${maxVal} at index \${maxIndex}\\nMin: \${minVal} at index \${minIndex}\` };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'second-highest-cricket-score',
+        title: 'Second Highest Cricket Score',
+        icon: '🏏',
+        difficulty: 'Easy',
+        tags: ['array', 'max'],
+        desc: 'Find the second highest score among all players.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int max = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > max) {
+                secondMax = max;
+                max = arr[i];
+            } else if (arr[i] > secondMax && arr[i] != max) {
+                secondMax = arr[i];
+            }
+        }
+        if(secondMax == Integer.MIN_VALUE) {
+            System.out.print(-1);
+        } else {
+            System.out.print(secondMax);
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter score ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          let max = -Infinity, secondMax = -Infinity;
+          for(let x of arr){
+             if(x > max){ secondMax = max; max = x; }
+             else if(x > secondMax && x !== max){ secondMax = x; }
+          }
+          yield { type: 'out', text: secondMax === -Infinity ? "-1" : String(secondMax) };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'binary-search-book-id',
+        title: 'Binary Search Book ID',
+        icon: '📚',
+        difficulty: 'Easy',
+        tags: ['array', 'search', 'binary-search'],
+        desc: 'Check if a particular book ID exists in the system using binary search. The input array is already sorted.',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int target = sc.nextInt();
+        int low = 0, high = n - 1;
+        boolean found = false;
+        int index = -1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] == target) {
+                found = true;
+                index = mid;
+                break;
+            }
+            if (arr[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        if (found) {
+            System.out.print("Found at index " + index);
+        } else {
+            System.out.print("Not Found");
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter sorted ID ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          yield { type: 'ask', text: 'Enter Target ID: ', inputKey: 't' };
+          const target = parseInt(inputs['t']);
+          let low = 0, high = n - 1, index = -1;
+          while(low <= high){
+             let mid = Math.floor((low+high)/2);
+             if(arr[mid] === target){ index = mid; break; }
+             if(arr[mid] < target) low = mid + 1;
+             else high = mid - 1;
+          }
+          if(index !== -1) yield { type: 'out', text: "Found at index " + index };
+          else yield { type: 'out', text: "Not Found" };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
+      },
+      {
+        id: 'sort-marathon-times-descending',
+        title: 'Sort Marathon Times Descending',
+        icon: '🏃',
+        difficulty: 'Easy',
+        tags: ['array', 'sort', 'descending'],
+        desc: 'Participants\\' finish times are recorded. Print the times sorted in descending order (slowest to fastest).',
+        code: `import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Integer[] arr = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        Arrays.sort(arr, Collections.reverseOrder());
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + (i < n - 1 ? " " : ""));
+        }
+    }
+}`,
+        run: function*(inputs) {
+          yield { type: 'system', text: 'Compiling Main.java...' };
+          yield { type: 'system', text: 'Build successful ✓' };
+          yield { type: 'out', text: '' };
+          yield { type: 'ask', text: 'Enter N: ', inputKey: 'n' };
+          const n = parseInt(inputs['n']);
+          if (isNaN(n) || n <= 0) { yield { type: 'error', text: 'Invalid size.' }; return; }
+          const arr = [];
+          for (let i = 0; i < n; i++) {
+            yield { type: 'ask', text: `Enter time ${i}: `, inputKey: `val_${i}` };
+            const v = parseInt(inputs[`val_${i}`]);
+            if (isNaN(v)) { yield { type: 'error', text: 'Invalid input.' }; return; }
+            arr.push(v);
+          }
+          arr.sort((a,b)=>b-a);
+          yield { type: 'out', text: arr.join(' ') };
+          yield { type: 'success', text: '\nProcess finished with exit code 0' };
+        }
       }
     ]
   };

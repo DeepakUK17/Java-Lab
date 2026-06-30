@@ -1,0 +1,132 @@
+1.Print All Armstrong Numbers in an Array
+Problem Statement
+
+Given an array of N integers, print all the Armstrong numbers present in the array.
+
+An Armstrong Number is a number that is equal to the sum of its digits, where each digit is raised to the power of the total number of digits.
+
+If no Armstrong number is present, print:
+
+No Armstrong Number
+Input Format
+N
+Array Elements
+Output Format
+Print all Armstrong numbers separated by a space.
+
+or
+
+No Armstrong Number
+Constraints
+1 ≤ N ≤ 100
+0 ≤ Array Element ≤ 1000000
+Sample Input
+6
+153 123 370 407 100 9474
+Sample Output
+153 370 407 9474
+
+
+2.Print All Automorphic Numbers in an Array
+Problem Statement
+
+Given an array of N integers, print all the Automorphic Numbers present in the array.
+
+An Automorphic Number is a number whose square ends with the same digits as the number itself.
+
+If no Automorphic Number is present, print:
+
+No Automorphic Number
+Input Format
+N
+Array Elements
+Output Format
+Print all Automorphic Numbers separated by space.
+
+or
+
+No Automorphic Number
+Sample Input
+6
+5 6 10 25 76 13
+Sample Output
+5 6 25 76
+
+
+3.Print All Perfect Numbers in an Array
+Problem Statement
+
+Given an array of N integers, print all the Perfect Numbers present in the array.
+
+A Perfect Number is a positive integer that is equal to the sum of its proper factors (excluding the number itself).
+
+If no Perfect Number is present, print:
+
+No Perfect Number
+Input Format
+N
+Array Elements
+Output Format
+Print all Perfect Numbers separated by space.
+
+or
+
+No Perfect Number
+Sample Input
+6
+6 10 28 15 496 18
+Sample Output
+6 28 496
+
+4.Remove Duplicate Elements from an Array
+Problem Statement
+
+Given an array of N integers, remove all duplicate elements and print the array containing only unique elements in the order of their first occurrence.
+
+If all elements are unique, print the array as it is.
+
+Input Format
+N
+Array Elements
+Output Format
+Print the array after removing duplicate elements.
+Constraints
+1 ≤ N ≤ 100
+-10^5 ≤ Array Element ≤ 10^5
+Sample Input
+10
+4 3 2 1 2 3 4 5 6 5
+Sample Output
+4 3 2 1 5 6
+
+5.Find the Missing Number in an Array
+Problem Statement
+
+Given an array of N-1 distinct integers containing numbers from 1 to N, exactly one number is missing.
+
+Find and print the missing number.
+
+Input Format
+N
+N-1 Array Elements
+
+Where:
+
+N is the total number of numbers expected.
+The array contains N-1 distinct integers.
+Output Format
+Print the missing number.
+Constraints
+2 ≤ N ≤ 10^5
+1 ≤ Array Element ≤ N
+Sample Input
+5
+1 2 4 5
+Sample Output
+3
+Test Cases
+Input	Output
+5
+1 2 4 5	3
+6
+1 2 3 5 6	4

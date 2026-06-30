@@ -1,0 +1,73 @@
+Problem Statement:
+Given an array A of N elements, count the number of distinct pairs (i,j) such that i < j and A[i] < A[j].If no such pairs can be made print -1
+Input Description:
+The input consists of an integer N, representing the number of elements, followed by N space-separated integers representing the elements of array A.
+Output Description:
+The output is a single integer representing the count of distinct pairs (i,j) such that i < j and A[i] < A[j]. If no such pairs can be made, print -1.
+Sample Input:
+5
+1 2 3 4 5
+Sample Output:
+10
+
+Problem Statement:
+Given an value 'M' follwed by array of M elements in which the elements would have been rotated for certain 'N' times from the intial array representation where all elements are arranged in ascending order.Print the 'N' or print -1 if there is no rotation made or cannot be determined.Note: 1<=N<=length of the given array.
+Sample Input:
+6
+15 18 2 3 6 12
+Sample Output:
+2
+
+Problem Statement:
+Given 2 numbers N,K print the array after deleting the last K elements.
+Input Description:
+N,K <= 100000
+Output Description:
+The array after deleting the last K elements.
+Sample Input:
+5 4
+1 2 3 4 5
+Sample Output:
+1
+
+Problem Statement:
+Given 2 numbers N,K and an array of N elements, print the number(s) that has been repeated K times.Print them in ascending order if there are more than one number to be printed.If no element satisfies the pattern then print -1
+Input Description:
+The input consists of two integers N and K, followed by an array of N elements. N and K are up to 100000.
+Output Description:
+Print the numbers that have been repeated K times in ascending order. If no such element exists, print -1.
+Sample Input:
+5 2
+1 2 4 1 2
+Sample Output:
+1 2
+
+Problem Statement:
+You are given with list of numbers,Your task is to find the maximum count of the numbers which are consecutively increasing in list
+Input Description:
+You are given a number n denoting size of array,Next line contains ‘n’ space separated numbers.
+Output Description:
+Print the desired result
+Explanation:
+Explanation 0 3 4 5 makes maximum count =4
+Sample Input:
+6
+1 2 0 3 4 5
+Sample Output:
+4
+
+
+Problem Statement:
+rahul is given an array containing digits values ranging from 0-9,Rahul's task is to find the sum of minimum two numbers formed by the digits,but he has some other work to do, he called you and told you that he is busy with some work,your task is to do the same work for rahul
+Input Description:
+You are given a number ‘n’ denoting size of array
+Next line contains n space separated numbers
+Output Description:
+Print the sum of numbers formed by it
+Explanation:
+Numbers are 246 and 358 hence sum is 604
+Sample Input:
+6
+6 8 4 5 2 3
+Sample Output:
+604

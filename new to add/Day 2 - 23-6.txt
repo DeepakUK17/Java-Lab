@@ -1,0 +1,355 @@
+18.Find position to insert element in sorted array
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[n];
+		for(int i=0;i<n;;i++){
+			arr[i] = sc.nextInt();
+		}
+		int low = 0,high = n-1;
+		int ele = sc.nextInt();
+		while(low<=high){
+			int mid = (low+high)/2;
+			if(arr[mid] == ele){
+				S.O.P("Element found at index"+mid);
+				return;
+			}
+			else if(arr[mid]>ele){
+				high = mid - 1;
+			}
+			else{
+				low = mid + 1;
+			}}
+		System.out.print("Insert position"+low);	
+	}}
+Case 1:
+Input
+5
+1 3 5 7 9
+5
+Output
+Element found at index 2
+Case 2: 
+Input
+5
+0 1 2 3 4 -> index
+1 3 5 7 9 -> ele
+6
+Output
+Insert position 3
+low = 0, high = 4, mid = 2
+arr[2] = 5
+low = 2+1 = 3
+mid = 3
+arr[3](7) == 6, 7>6(T), h = m-1 => 3-1 = 2=>high
+low = 3, high = 2
+Case 3: 
+Input
+5
+2 4 6 8 10
+1
+Output
+Insert position 0
+
+Case 4:
+Input
+5
+2 4 6 8 10
+12
+Output
+Insert position 5
+
+19.Find maximum element
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[n];
+		for(int i=0;i<n;;i++){
+			arr[i] = sc.nextInt();
+		}
+		int max = arr[0]; 
+		for(int i=1;i<n;i++){
+			if(arr[i] > max){
+				max = arr[i]; 
+			}
+		}
+		System.out.print(max);}}
+20.Find minimum element
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[n];
+		for(int i=0;i<n;;i++){
+			arr[i] = sc.nextInt();
+		}
+		int min = arr[0]; 
+		for(int i=1;i<n;i++){
+			if(arr[i] < min){
+				min = arr[i]; 
+			}
+		}
+		System.out.print(min);}}
+
+21.Find second maximum
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[n];
+		for(int i=0;i<n;;i++){
+			arr[i] = sc.nextInt();
+		}
+		int max = arr[0];
+		int s_max = arr[1];
+		for(int i=0;i<n;i++){
+			if(arr[i]>max)
+				max = arr[i]; 
+		}
+		for(int i=0;i<n;i++){
+			if(arr[i]<max && arr[i] >s_max){
+				s_max = arr[i];	}}
+		
+		System.out.print(s_max);}}
+5
+2 5 3 16 7
+arr[0] = 2 -> max
+arr[1] = 5 ->s_max
+max<s_max -> 2<5(T) -> max = 5, s_max = 2;
+i=2, 2<5(T), arr[2](3) > 5(F), i->3
+i=3, 3<5(T), arr[3](16) > 5(T), max = 16, i->4
+i=4, 4<5(T), arr[4](7) > 16(F), i->5
+i=5, 5<5(F)
+
+i=1, arr[1](5)<16(T) && arr[1](5) > 2(T), s_max = 5, i->2
+i=2, arr[2](3)<16(T) && arr[2](3) > 5(F), i->3
+i=3, arr[3](16)<16(F), i-> 4
+i=4, arr[4](7)<16(T) && arr[4](7) > 5, s_max = 7,i->5
+i=5, 5<5(F)
+ 
+22.Find second minimum
+23.Find largest and smallest in one loop
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[n];
+		for(int i=0;i<n;;i++){
+			arr[i] = sc.nextInt();
+		}
+		int max = arr[0], min = arr[1];
+		for(int i=0;i<n;i++){
+			if(arr[i]>max){
+				max = arr[i];
+			}
+			else if(arr[i]<min){
+				min = arr[i];}}
+		System.out.print("max: "+max)
+
+24.Find difference between max and min
+
+25.Find maximum sum of two elements
+26.Find minimum sum of two elements
+Problem Statement:
+Given a number N followed by N elements, if the number '0' occurs, print the proceeding numbers until the next '0' is encountered. If there are no balancing 0's, print -1.
+Input Description:
+The input consists of an integer N, followed by N elements. N is constrained such that 1 < N <= 100000.
+Output Description:
+Print the numbers between the first two occurrences of '0'. If there are no two '0's, print -1.
+Sample Input:
+10
+1 1 1 0 1 0 1 1 0 1
+Sample Output:
+1 1 1
+case 1
+Input
+5
+1 1 0 1 1
+Output
+-1
+case 2
+Input
+5
+0 1 0 1 0
+Output
+1
+Hint 1
+The core condition for a valid output is the presence of at least two occurrences of the number '0' in the input sequence. If this condition is not met, a special value should be printed.
+
+Hint 2
+Perform a single pass over the input elements. During this pass, identify and store the index of the first '0' and determine if a second '0' appears later in the sequence.
+
+Hint 3
+If two or more '0's are found, iterate through the elements that appear *before* the very first '0' and print them. Ensure proper handling of spaces between numbers and the case where no numbers precede the first '0'.
+
+Sorting
+27.Bubble sort
+import java.til.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[n];
+		for(int i=0;i<n;i++){
+			arr[i] = sc.nextInt();
+		}
+		for(int i=0;i<n-1;i++){
+			for(int j=0;j<n-i-1;j++){
+				if(arr[j]>arr[j+1]){
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1]= temp;
+				}
+		}}
+		for(int i=0;i<n;i++){
+			S.O.P(arr[i]+" ");
+		}
+	}}
+5
+0  1 2 3 4
+11 8 13 2 7
+i=0;0<5(T),j=0,j<5(T),arr[0](11)>arr[1](8)(T),
+	temp = 11, arr[0] = 8, arr[1] = 11, j=1,i=1
+0  1 2 3 4
+8 11 13 2 7
+	j=1,1<5(T),arr[1](11)>arr[2](13)(F),j=2
+	j=2,2<5(T),arr[2](13)>arr[3](2)(T)
+	temp = 13,  arr[2] = 2, arr[3] = 13,j=3
+0  1 2 3 4
+8 11 2 13 7
+	j=3,3<5(T),arr[3](13)>arr[4](7)(T),
+	temp = 13, arr[3] = 7, arr[4] = 13,j=4
+0  1 2 3 4
+8 11 2 7 13
+	j=4,4<4(F)
+i=1,1<5(T),j=0,0<4(T),arr[0](8)>arr[1](11)(F),j=1,1=2
+	j=1,1<4(T),arr[1](11)>arr[2](2)(T),
+	temp = 11, arr[1] = 2, arr[2] = 11, j=2
+0 1 2 3 4
+8 2 11 7 13
+	j=2,2<4(T),arr[2](11)>arr[3](7)(T),
+	temp = 11,arr[2] = 7, arr[3] = 11,j=3
+0 1 2 3 4
+8 2 7 11 13
+	j=3,3<3(F)
+i=2,2<5(T),j=0,0<2(T),arr[0](8)>arr[1](2)(T),
+	temp = 8, arr[0] = 2, arr[1] = 8, j=1,i=3
+0 1 2 3 4
+2 8 7 11 13
+	j=1,1<2(T),arr[1](8)>arr[2](7)(T),
+	temp = 8,arr[1] = 7, arr[2] = 8,j=2
+0 1 2 3 4
+2 7 8 11 13	
+	j=2,2<2(F)
+i=3,3<5(T),j=0,j<n-i-1,0<1(T),arr[0](2)>arr[1](7)(F)
+	j=1,1>1(F)
+i=4,4<5(T),j=0,j<n-i-1=>0<5-4-1(F)
+
+28.Selection sort
+import java.til.*;
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[n];
+		for(int i=0;i<n;i++){
+			arr[i] = sc.nextInt();
+		}
+5
+0  1 2 3 4
+11 8 13 2 7		//Descending logic
+		for(int i=0;i<n;i++){
+			int max_i = i;	//0 2
+			for(int j=i+1;j<n;j++){
+				if(arr[j] > arr[max_i]){
+					max_i = j;}
+			}
+			int temp = arr[i];
+			arr[i] = arr[max_i];
+			arr[max_i] = temp;}
+i=0,0<5(T),min = 0, j=1,1<5(T), arr[1](8)<arr[0](11)(T)
+	min = 1, 
+	j=2,2<5(T), arr[2](13)<arr[1](8)(F)
+	j=3,3<5(T),arr[3](2)<arr[1](8)(T), min = 3
+	j=4,4<5(T),arr[4](7)<arr[3](2)(F)
+	j=5,5<5(F)
+	temp = arr[0](11), arr[0] = 2,arr[3] = 11
+0 1 2 3 4
+2 8 13 11 7
+
+30.Sort array in ascending order
+Sample Input
+5
+4 2 8 1 3
+Sample Output
+1 2 3 4 8
+
+31.Sort array in descending order
+Sample Input
+5
+4 2 8 1 3
+Sample Output
+8 4 3 2 1
+
+32.Sort only even numbers
+Sample Input
+6
+5 2 8 7 4 3
+Sample Output
+5 2 4 7 8 3
+
+33.Sort only odd numbers
+Sample Input
+6
+5 2 8 7 4 3
+Sample Output
+3 2 8 5 4 7
+
+34.Sort first half ascending, second half descending
+Sample Input
+6
+9 3 7 1 8 2
+Sample Output
+3 7 9 8 2 1
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt(); }
+        Arrays.sort(arr); // built-in sort
+        for(int i : arr) {
+            System.out.print(i + " ");}}}
+
+for(datatype variable : array_name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
