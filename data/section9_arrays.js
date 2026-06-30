@@ -2501,7 +2501,7 @@ public class Main {
              if(rotated[i] > maxVal){ maxVal = rotated[i]; maxIndex = i; }
              if(rotated[i] < minVal){ minVal = rotated[i]; minIndex = i; }
           }
-          yield { type: 'out', text: \`Max: \${maxVal} at index \${maxIndex}\\nMin: \${minVal} at index \${minIndex}\` };
+          yield { type: 'out', text: `Max: ${maxVal} at index ${maxIndex}\nMin: ${minVal} at index ${minIndex}` };
           yield { type: 'success', text: '\nProcess finished with exit code 0' };
         }
       },
@@ -2635,7 +2635,7 @@ public class Main {
         icon: '🏃',
         difficulty: 'Easy',
         tags: ['array', 'sort', 'descending'],
-        desc: 'Participants\\' finish times are recorded. Print the times sorted in descending order (slowest to fastest).',
+        desc: 'Participants\' finish times are recorded. Print the times sorted in descending order (slowest to fastest).',
         code: `import java.util.*;
 public class Main {
     public static void main(String[] args) {
